@@ -1,0 +1,229 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:400, 700");
+/*
+ * BASIC
+ */
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Lato", sans-serif;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  color: #333;
+}
+
+@media (min-width: 500px) {
+  body {
+    flex-direction: row;
+  }
+}
+
+/*
+ * SIDEBAR
+ */
+.sidebar {
+  order: 0;
+  flex: 0 1 220px;
+  display: flex;
+  flex-direction: column;
+  color: #eee;
+  background-color: #333;
+}
+
+@media (max-width: 500px) {
+  .sidebar {
+    flex-direction: row;
+  }
+}
+
+.sidebar-header {
+  text-align: center;
+  flex: 1;
+}
+
+.sidebar-footer {
+  align-self: end;
+  text-align: center;
+  width: 100%;
+}
+
+.sidebar-footer small {
+  color: #aaa;
+}
+
+.top-left {
+  flex-shrink: 0;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul > li {
+  background-color: #999;
+  padding: 10px;
+}
+
+.logo {
+  text-align: left;
+  max-width: 140px;
+}
+
+img.circular {
+  max-width: 140px;
+  border-radius: 50%;
+}
+
+img.inverted {
+  filter: invert(100%);
+}
+
+/*
+ * CONTENT
+ */
+.content {
+  order: 1;
+  flex: 0 1 100%;
+  min-height: 100vh;
+  padding: 20px;
+  flex-direction: row;
+}
+
+/*
+ * TABS
+ */
+.tabbed figure {
+  display: block;
+  margin-left: 0;
+  clear: both;
+}
+
+.tabbed > input,
+.tabbed figure > div {
+  display: none;
+}
+
+.tabbed figure > div {
+  padding: 20px;
+  width: 100%;
+  background: #fff;
+  line-height: 1.5em;
+  letter-spacing: 0.3px;
+  color: #444;
+}
+
+#tab1:checked ~ figure .tab1,
+#tab2:checked ~ figure .tab2,
+#tab3:checked ~ figure .tab3 {
+  display: block;
+}
+
+nav label {
+  float: left;
+  padding: 15px 15px;
+  color: #444;
+  font-weight: bold;
+}
+
+/*nav label:nth-child(1) {
+  border-left: 1px solid silver;
+}*/
+nav label:hover {
+  border-bottom: 2px solid darkred;
+  cursor: pointer;
+}
+
+#tab1:checked ~ nav label[for="tab1"],
+#tab2:checked ~ nav label[for="tab2"],
+#tab3:checked ~ nav label[for="tab3"] {
+  background: white;
+  color: #111;
+  position: relative;
+  border-bottom: 2px solid black;
+}
+
+#tab1:checked ~ nav label[for="tab1"]:after,
+#tab2:checked ~ nav label[for="tab2"]:after,
+#tab3:checked ~ nav label[for="tab3"]:after {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: white;
+  left: 0;
+  bottom: -1px;
+}
+
+/*
+ * MODAL
+ */
+.modal-window {
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.6);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  overflow: scroll;
+}
+
+.modal-window:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-window > div {
+  width: 70%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2em;
+  background: #ffffff;
+  color: #333333;
+}
+
+.modal-window header {
+  font-weight: bold;
+}
+
+.modal-window h1 {
+  margin: 0 0 15px;
+  color: #333333;
+}
+
+.modal-close {
+  color: #aaa;
+  line-height: 50px;
+  font-size: 80%;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 70px;
+  text-decoration: none;
+}
+
+.modal-close:hover {
+  color: #000;
+}
