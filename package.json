@@ -24,6 +24,11 @@
     "node-sass": "^4.10.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
+    "vue": "^2.5.18",
+    "vue-loader": "^15.4.2",
+    "vue-router": "^3.0.2",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.5.18",
     "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10"
