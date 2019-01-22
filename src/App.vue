@@ -1,6 +1,11 @@
 <template>
   <div id="app">
     <Sidebar/>
+    <span class="burger" v-on:click="openNav()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </span>
     <div class="content">
       <router-view></router-view>
     </div>
@@ -14,6 +19,12 @@ export default {
   name: "App",
   components: {
     Sidebar
+  },
+  methods: {
+    openNav: function() {
+      document.getElementsByClassName("closebtn")[0].style.display = "inline";
+      document.getElementById("sidebar").style.width = "210px";
+    }
   }
 };
 </script>
@@ -47,8 +58,28 @@ body {
   color: #333;
   min-height: 100vh;
 
-  @media (min-width: 500px) {
+  @media (min-width: 450px) {
     flex-direction: row;
+  }
+}
+
+.burger {
+  padding-top: 5px;
+  padding-left: 20px;
+
+  @media (min-width: 451px) {
+    display: none;
+  }
+
+  @media screen and (max-width: 450px) {
+    display: inline;
+  }
+
+  div {
+    width: 25px;
+    height: 4px;
+    background-color: black;
+    margin: 3px 0;
   }
 }
 
@@ -56,7 +87,12 @@ body {
   order: 1;
   flex: 0 1 100%;
   min-height: 100vh;
-  padding: 20px;
+  padding: 5px 20px;
   flex-direction: row;
+  margin-left: 210px;
+
+  @media screen and (max-width: 450px) {
+    margin-left: 0;
+  }
 }
 </style>

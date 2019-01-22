@@ -1,8 +1,22 @@
 <template>
-  <div class="sidebar">
+  <div id="sidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" v-on:click="closeNav()">&times;</a>
     <div class="sidebar-header">
       <h2>Marco Kretz</h2>
       <img class="circular" src="../assets/img/me.jpg" alt="Marco Kretz">
+    </div>
+    <div class="sidebar-nav">
+      <ul>
+        <li>
+          <router-link to="/">Home</router-link>
+        </li>
+        <li>
+          <router-link to="/ueber-mich">Über Mich</router-link>
+        </li>
+        <li>
+          <router-link to="/leistungen">Leistungen</router-link>
+        </li>
+      </ul>
     </div>
     <div class="sidebar-footer">
       <small>Made with ♥ in Ehrenfeld.</small>
@@ -11,7 +25,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    closeNav: function() {
+      document.getElementsByClassName("closebtn")[0].style.display = "none";
+      this.$el.style.width = "0";
+    }
+  }
+};
 </script>
 
 <style lang="scss">
@@ -22,16 +43,42 @@ export default {};
   flex-direction: column;
   color: #eee;
   background-color: #333;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transition: 0.3s;
+  height: 100vh;
+  overflow: hidden;
+  width: 210px;
+
+  .closebtn {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    font-size: 36px;
+    margin-left: 50px;
+    display: none;
+    color: #fff;
+    text-decoration: none;
+  }
 }
 
-@media (max-width: 500px) {
+@media screen and (max-width: 450px) {
   .sidebar {
-    flex-direction: row;
+    width: 0;
+
+    .closebtn {
+      display: "inline";
+    }
   }
 }
 
 .sidebar-header {
   text-align: center;
+}
+
+.sidebar-nav {
   flex: 1;
 }
 
@@ -39,10 +86,10 @@ export default {};
   align-self: end;
   text-align: center;
   width: 100%;
-}
 
-.sidebar-footer small {
-  color: #aaa;
+  small {
+    color: #aaa;
+  }
 }
 
 .top-left {
@@ -53,11 +100,16 @@ export default {};
 ul {
   list-style: none;
   padding: 0;
-}
 
-ul > li {
-  background-color: #999;
-  padding: 10px;
+  li {
+    padding: 10px;
+
+    a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+    }
+  }
 }
 
 .logo {
@@ -65,12 +117,14 @@ ul > li {
   max-width: 140px;
 }
 
-img.circular {
-  max-width: 140px;
-  border-radius: 50%;
-}
+img {
+  &.circular {
+    max-width: 140px;
+    border-radius: 50%;
+  }
 
-img.inverted {
-  filter: invert(100%);
+  &.inverted {
+    filter: invert(100%);
+  }
 }
 </style>
