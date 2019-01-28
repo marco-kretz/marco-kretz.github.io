@@ -1,5 +1,6 @@
 const { VueLoaderPlugin } = require("vue-loader");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const path = require("path");
 
@@ -50,7 +51,8 @@ const config = {
       filename: path.join(__dirname, "dist", "index.html"),
       template: path.join(__dirname, "index.html"),
       inject: true
-    })
+    }),
+    new CopyWebpackPlugin(["CNAME"])
   ]
 };
 
