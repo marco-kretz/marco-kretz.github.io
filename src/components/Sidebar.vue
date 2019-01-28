@@ -16,6 +16,9 @@
         <li>
           <router-link to="/leistungen">Leistungen</router-link>
         </li>
+        <li>
+          <router-link to="/impressum">Impressum</router-link>
+        </li>
       </ul>
     </div>
     <div class="sidebar-footer">
@@ -35,7 +38,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .sidebar {
   order: 0;
   flex: 0 1 220px;
@@ -51,6 +54,7 @@ export default {
   height: 100vh;
   overflow: hidden;
   width: 210px;
+  white-space: nowrap;
 
   .closebtn {
     position: absolute;
@@ -86,6 +90,7 @@ export default {
   align-self: end;
   text-align: center;
   width: 100%;
+  padding: 5px 0;
 
   small {
     color: #aaa;

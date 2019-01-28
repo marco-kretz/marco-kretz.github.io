@@ -64,7 +64,7 @@ body {
 }
 
 .burger {
-  padding-top: 5px;
+  padding-top: 15px;
   padding-left: 20px;
 
   @media (min-width: 451px) {
@@ -87,7 +87,7 @@ body {
   order: 1;
   flex: 0 1 100%;
   min-height: 100vh;
-  padding: 5px 20px;
+  padding: 10px 20px;
   flex-direction: row;
   margin-left: 210px;
 
