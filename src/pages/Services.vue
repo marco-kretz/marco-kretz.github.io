@@ -22,24 +22,24 @@ export default {
     return {
       skills: [
         {
-          icon: "build",
-          title: "WordPress",
-          text: "CMS-Lösungen auf Basis von WordPress"
-        },
-        {
-          icon: "extension",
-          title: "Themes & Plugins",
-          text: "Moderne Themes & Plugins für WordPress"
-        },
-        {
-          icon: "build",
+          icon: "favorite",
           title: "Symfony 4",
           text: "Hochwertige Maßanfertigungen "
         },
         {
+          icon: "build",
+          title: "WordPress",
+          text: "Moderne CMS-Lösungen"
+        },
+        {
+          icon: "extension",
+          title: "Themes & Plugins",
+          text: "Professionelle Modulentwicklung"
+        },
+        {
           icon: "face",
           title: "Beratung",
-          text: "CMS-Lösungen auf Basis von WordPress"
+          text: "Passendes Webhosting"
         }
       ]
     };
