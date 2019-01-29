@@ -12,7 +12,7 @@
         <br>E-Mail: mk@marco-kretz.de
         <br>
         <br>
-        <!--Umsatzsteuer-Identifikationsnummer gem. § 27a UStG: DE 123456789-->
+        Umsatzsteuer-Identifikationsnummer gem. § 27a UStG: DE 300917855
         Inhaltlich Verantwortlicher gem. § 55 II RStV: Marco Kretz (Anschrift s.o.)
       </p>
     </article>
