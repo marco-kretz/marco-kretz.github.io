@@ -1,12 +1,12 @@
 <template>
   <div id="app">
     <Sidebar/>
-    <span class="burger" v-on:click="openNav()">
-      <div></div>
-      <div></div>
-      <div></div>
-    </span>
     <div class="content">
+      <span class="burger" v-on:click="openNav()">
+        <div></div>
+        <div></div>
+        <div></div>
+      </span>
       <router-view></router-view>
     </div>
   </div>
