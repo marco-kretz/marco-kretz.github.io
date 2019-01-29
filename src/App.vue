@@ -20,8 +20,9 @@ export default {
   components: {
     Sidebar
   },
+
   methods: {
-    openNav: function() {
+    openNav() {
       document.getElementsByClassName("closebtn")[0].style.display = "inline";
       document.getElementById("sidebar").style.width = "210px";
     }

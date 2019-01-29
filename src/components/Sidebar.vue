@@ -29,23 +29,33 @@
 
 <script>
 export default {
+  name: "sidebar",
+
   methods: {
-    closeNav: function() {
+    closeNav() {
       document.getElementsByClassName("closebtn")[0].style.display = "none";
       this.$el.style.width = "0";
+    }
+  },
+
+  watch: {
+    $route() {
+      this.closeNav();
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+$sidebarColor: #333;
+
 .sidebar {
   order: 0;
   flex: 0 1 220px;
   display: flex;
   flex-direction: column;
   color: #eee;
-  background-color: #333;
+  background-color: $sidebarColor;
   position: fixed;
   top: 0;
   left: 0;
@@ -105,6 +115,7 @@ export default {
 ul {
   list-style: none;
   padding: 0;
+  text-align: center;
 
   li {
     padding: 10px;
@@ -113,6 +124,12 @@ ul {
       color: #fff;
       text-decoration: none;
       display: block;
+      text-transform: uppercase;
+
+      &.router-link-exact-active,
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }

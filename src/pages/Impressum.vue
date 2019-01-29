@@ -9,11 +9,10 @@
         <br>50825 Köln
         <br>
         <br>Telefon: 0178 - 887 95 78
-        <br>E-Mail: mk@marco-kretz.de
+        <br>E-Mail: info@marco-kretz.de
         <br>
-        <br>
-        Umsatzsteuer-Identifikationsnummer gem. § 27a UStG: DE 300917855
-        Inhaltlich Verantwortlicher gem. § 55 II RStV: Marco Kretz (Anschrift s.o.)
+        <br>Umsatzsteuer-Identifikationsnummer gem. § 27a UStG: DE 300917855
+        <br>Inhaltlich Verantwortlicher gem. § 55 II RStV: Marco Kretz (Anschrift s.o.)
       </p>
     </article>
 

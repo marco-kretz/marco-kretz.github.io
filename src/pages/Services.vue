@@ -1,23 +1,55 @@
 <template>
   <div>
     <h1>Leistungen</h1>
-
-    <article>
-      <p>
-        <ul>
-          <li>CMS-Lösungen auf Basis von WordPress</li>
-          <li>WordPress-Plugins -und Themes</li>
-          <li>Maßgeschneiderte Web-Lösungen auf Basis von <a href="https://symfony.com/" target="_blank">Symfony 4</a></li>
-          <li>Beratung zum Thema Webhosting & Sicherheit</li>
-          <li>Einrichtung & Absicherung von Servern</li>
-        </ul>
-        Egal ob Sie nun einen einfachen Blog oder eine komplexe Maßanfertigung brauchen, gemeinsam finden wir für
-        jede Situation eine passende Lösung. <br>Ich freue mich über jede neue Herausforderung!
-      </p>
-    </article>
+    <section>
+      <skill
+        v-for="skill in skills"
+        :key="skill.title"
+        :icon="skill.icon"
+        :title="skill.title"
+        :text="skill.text"
+      ></skill>
+    </section>
   </div>
 </template>
 
 <script>
-export default {};
+import Skill from "../components/Skill.vue";
+export default {
+  name: "services",
+  components: { Skill },
+  data() {
+    return {
+      skills: [
+        {
+          icon: "build",
+          title: "WordPress",
+          text: "CMS-Lösungen auf Basis von WordPress"
+        },
+        {
+          icon: "extension",
+          title: "Themes & Plugins",
+          text: "Moderne Themes & Plugins für WordPress"
+        },
+        {
+          icon: "build",
+          title: "Symfony 4",
+          text: "Hochwertige Maßanfertigungen "
+        },
+        {
+          icon: "face",
+          title: "Beratung",
+          text: "CMS-Lösungen auf Basis von WordPress"
+        }
+      ]
+    };
+  }
+};
 </script>
+
+<style lang="scss">
+section {
+  display: flex;
+  flex-wrap: wrap;
+}
+</style>
