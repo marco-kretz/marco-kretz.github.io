@@ -38,9 +38,17 @@ export default {
     }
   },
 
+  computed: {
+    isMobile() {
+      return (window.outerWidth || document.body.clientWidth) < 800;
+    }
+  },
+
   watch: {
     $route() {
-      this.closeNav();
+      if (this.isMobile) {
+        this.closeNav();
+      }
     }
   }
 };
