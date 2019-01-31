@@ -56,16 +56,20 @@ export default {
 
 <style lang="scss" scoped>
 $sidebarColor: #333;
+$pale-sky: #6b717f;
+$darkColor: #233940;
+$darkAccent: #46737f;
+$fontColor: #8ce5ff;
 
 .sidebar {
   order: 0;
   flex: 0 1 220px;
   display: flex;
   flex-direction: column;
-  color: #eee;
-  background-color: $sidebarColor;
+  color: $fontColor;
+  background-color: $darkColor;
   position: fixed;
-  top: 0;
+  top: 3px;
   left: 0;
   z-index: 1;
   transition: 0.3s;
@@ -73,6 +77,55 @@ $sidebarColor: #333;
   overflow: hidden;
   width: 210px;
   white-space: nowrap;
+  border-top-right-radius: 3px;
+
+  .sidebar-header {
+    text-align: center;
+  }
+
+  .sidebar-nav {
+    flex: 1;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      text-align: center;
+
+      li {
+        padding: 10px;
+        padding: 3px 7px;
+
+        a {
+          padding: 5px;
+          background-color: darken($darkAccent, 15);
+          color: #fff;
+          text-decoration: none;
+          display: block;
+
+          &.router-link-exact-active,
+          &:hover {
+            &::before {
+              content: "- ";
+            }
+            &::after {
+              content: " -";
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .sidebar-footer {
+    align-self: end;
+    text-align: center;
+    width: 100%;
+    padding: 5px 0;
+
+    small {
+      color: #aaa;
+    }
+  }
 
   .closebtn {
     position: absolute;
@@ -96,50 +149,9 @@ $sidebarColor: #333;
   }
 }
 
-.sidebar-header {
-  text-align: center;
-}
-
-.sidebar-nav {
-  flex: 1;
-}
-
-.sidebar-footer {
-  align-self: end;
-  text-align: center;
-  width: 100%;
-  padding: 5px 0;
-
-  small {
-    color: #aaa;
-  }
-}
-
 .top-left {
   flex-shrink: 0;
   text-align: center;
-}
-
-ul {
-  list-style: none;
-  padding: 0;
-  text-align: center;
-
-  li {
-    padding: 10px;
-
-    a {
-      color: #fff;
-      text-decoration: none;
-      display: block;
-      text-transform: uppercase;
-
-      &.router-link-exact-active,
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
 }
 
 .logo {
