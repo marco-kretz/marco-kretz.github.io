@@ -104,12 +104,8 @@ $fontColor: #8ce5ff;
 
           &.router-link-exact-active,
           &:hover {
-            &::before {
-              content: "- ";
-            }
-            &::after {
-              content: " -";
-            }
+            border-left: 2px solid white;
+            margin-left: -2px;
           }
         }
       }
