@@ -3,7 +3,7 @@
     <a href="javascript:void(0)" class="closebtn" v-on:click="closeNav()">&times;</a>
     <div class="sidebar-header">
       <h2>Marco Kretz</h2>
-      <img class="circular" src="../assets/img/me.jpg" alt="Marco Kretz">
+      <img class="circular" src="../assets/img/self.jpg" alt="Marco Kretz">
     </div>
     <div class="sidebar-nav">
       <ul>
