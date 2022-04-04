@@ -1,28 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="description" content="" />
-		<link rel="icon" href="./favicon.png" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta http-equiv="content-security-policy" content="">
-	<link rel="modulepreload" href="/_app/start-b61468ea.js">
-	<link rel="modulepreload" href="/_app/chunks/index-dd45c2ae.js">
-	<link rel="modulepreload" href="/_app/layout.svelte-97940e45.js">
-	<link rel="modulepreload" href="/_app/pages/index.svelte-85dd9d89.js">
-	</head>
-	<body>
-		<div>
+<html lang="de">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="description" content="" />
+	<link rel="icon" href="./favicon.png" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+	<meta http-equiv="content-security-policy" content="">
+	<link rel="stylesheet" href="/_app/assets/pages/__layout.svelte-85635a3c.css">
+	<link rel="modulepreload" href="/_app/start-1f617f75.js">
+	<link rel="modulepreload" href="/_app/chunks/index-02e5120b.js">
+	<link rel="modulepreload" href="/_app/pages/__layout.svelte-5b100f2c.js">
+	<link rel="modulepreload" href="/_app/pages/index.svelte-087268ef.js">
+</head>
+
+<body>
+	<div id="app">
 
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<div><h1 class="greeting">Hi,</h1>
+	<h1 class="greeting" data-heading="M">ich bin <span>Marco</span>,</h1>
+	<h1 class="greeting">Web-Entwickler.</h1></div>
+<div><img class="profile" src="me_square.jpg" width="auth" height="100"></div>
 
 
-		<script type="module" data-hydrate="1oibf46">
-		import { start } from "/_app/start-b61468ea.js";
+		<script type="module" data-hydrate="px49us">
+		import { start } from "/_app/start-1f617f75.js";
 		start({
-			target: document.querySelector('[data-hydrate="1oibf46"]').parentNode,
+			target: document.querySelector('[data-hydrate="px49us"]').parentNode,
 			paths: {"base":"","assets":""},
 			session: {},
 			route: true,
@@ -32,13 +40,14 @@
 				status: 200,
 				error: null,
 				nodes: [
-					import("/_app/layout.svelte-97940e45.js"),
-						import("/_app/pages/index.svelte-85dd9d89.js")
+					import("/_app/pages/__layout.svelte-5b100f2c.js"),
+						import("/_app/pages/index.svelte-087268ef.js")
 				],
 				params: {},
 				routeId: ""
 			}
 		});
 	</script></div>
-	</body>
+</body>
+
 </html>
