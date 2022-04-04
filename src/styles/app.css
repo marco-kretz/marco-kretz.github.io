@@ -1,0 +1,55 @@
+/** Variables ------------------------------------- */
+:root {
+    --bg-color: #2d2327;
+    --font-color: #b5c2b7;
+    --font-family: 'Open Sans', sans-serif;
+    --link-color: #8c93a8;
+}
+
+/** Default Styling ------------------------------- */
+html,
+body {
+    background-color: var(--bg-color);
+    color: var(--font-color);
+    font-family: var(--font-family);
+}
+
+a {
+    color: var(--link-color);
+}
+
+/** Page Layout ----------------------------------- */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#app {
+    border: 5px solid var(--font-color);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+h1.greeting {
+    margin-top: 0;
+    margin-bottom: 0;
+    letter-spacing: -.1rem;
+}
+
+h1.greeting span {
+    color: var(--link-color);
+}
+
+img.profile {
+    border-radius: 50%;
+    border: 1px solid rgba(69, 54, 75, 50%);
+    margin-left: 20px;
+    filter: grayscale(25%);
+}

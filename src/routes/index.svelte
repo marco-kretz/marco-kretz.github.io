@@ -1,2 +1,8 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<div>
+	<h1 class="greeting">Hi,</h1>
+	<h1 class="greeting" data-heading="M">ich bin <span>Marco</span>,</h1>
+	<h1 class="greeting">Web-Entwickler.</h1>
+</div>
+<div>
+	<img class="profile" src="me_square.jpg" width="auth" height="100" />
+</div>
