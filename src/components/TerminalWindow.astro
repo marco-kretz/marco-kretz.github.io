@@ -1,0 +1,26 @@
+---
+interface Props {
+	title?: string;
+	titleColor?: string;
+}
+
+const {
+	title = 'terminal',
+	titleColor = 'text-terminal-accent',
+} = Astro.props;
+---
+<div class="terminal-window">
+	<div class="terminal-header">
+		<div class="terminal-dots">
+			<div class="terminal-dot terminal-dot-red"></div>
+			<div class="terminal-dot terminal-dot-yellow"></div>
+			<div class="terminal-dot terminal-dot-green"></div>
+		</div>
+		<div class={`ml-4 text-sm text-terminal-textDim font-mono flex-1`}>
+			<span class={titleColor}>{title}</span>
+		</div>
+	</div>
+	<div class="terminal-body">
+		<slot />
+	</div>
+</div>

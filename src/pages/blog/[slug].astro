@@ -1,0 +1,126 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('blog');
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: { post },
+	}));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout title={`${post.data.title} - Marco Kretz`}>
+	<main class="max-w-4xl mx-auto px-4 py-8 md:py-16">
+		<nav class="mb-8">
+			<a href="/blog" class="text-terminal-accent font-mono hover:underline flex items-center gap-2">
+				<span>←</span>
+				<span>Back to blog</span>
+			</a>
+		</nav>
+
+		<article>
+			<header class="mb-8">
+				<h1 class="text-3xl md:text-4xl font-bold font-mono mb-4">
+					{post.data.title}
+				</h1>
+				<div class="flex flex-wrap items-center gap-4 text-terminal-textDim text-sm mb-4">
+					<time datetime={post.data.pubDate.toISOString()}>
+						{post.data.pubDate.toLocaleDateString('en-US', {
+							year: 'numeric',
+							month: 'long',
+							day: 'numeric',
+						})}
+					</time>
+					{post.data.readTime && <span>· {post.data.readTime} read</span>}
+				</div>
+				{post.data.description && (
+					<p class="text-terminal-textDim text-lg">{post.data.description}</p>
+				)}
+				{post.data.tags && post.data.tags.length > 0 && (
+					<div class="flex flex-wrap gap-2 mt-4">
+						{post.data.tags.map((tag) => (
+							<span
+								class="px-2 py-1 text-xs font-mono bg-[#161b22] border border-terminal-border rounded text-terminal-textDim"
+							>
+								#{tag}
+							</span>
+						))}
+					</div>
+				)}
+			</header>
+
+			<div class="prose prose-invert prose-terminal max-w-none">
+				<Content />
+			</div>
+		</article>
+
+		<footer class="mt-16 pt-8 border-t border-terminal-border">
+			<div class="flex items-center gap-4">
+				<span class="text-terminal-textDim">Share this post:</span>
+				<a
+					href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.data.title)}&url=${encodeURIComponent(Astro.url.toString())}`}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="text-terminal-accent hover:underline"
+				>
+					Twitter
+				</a>
+				<a
+					href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(Astro.url.toString())}`}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="text-terminal-accent hover:underline"
+				>
+					LinkedIn
+				</a>
+			</div>
+		</footer>
+	</main>
+</Layout>
+
+<style>
+	.prose {
+		--tw-prose-body: #c9d1d9;
+		--tw-prose-headings: #ffffff;
+		--tw-prose-lead: #8b949e;
+		--tw-prose-links: #58a6ff;
+		--tw-prose-bold: #ffffff;
+		--tw-prose-counters: #8b949e;
+		--tw-prose-bullets: #8b949e;
+		--tw-prose-hr: #30363d;
+		--tw-prose-quotes: #c9d1d9;
+		--tw-prose-quote-borders: #30363d;
+		--tw-prose-captions: #8b949e;
+		--tw-prose-code: #d29922;
+		--tw-prose-pre-code: #c9d1d9;
+		--tw-prose-pre-bg: #0d1117;
+		--tw-prose-th-borders: #30363d;
+		--tw-prose-td-borders: #30363d;
+	}
+
+	.prose pre {
+		@apply bg-[#161b22] border border-terminal-border rounded-lg overflow-x-auto;
+	}
+
+	.prose code {
+		@apply bg-[#161b22] px-1.5 py-0.5 rounded text-sm font-mono;
+	}
+
+	.prose h2 {
+		@apply text-xl font-mono font-bold mt-8 mb-4 flex items-center gap-2;
+	}
+
+	.prose h2::before {
+		content: '>';
+		@apply text-terminal-accent;
+	}
+
+	.prose h3 {
+		@apply text-lg font-mono font-semibold mt-6 mb-3;
+	}
+</style>

@@ -1,11 +1,200 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const title = 'Marco Kretz';
+const role = 'Web Developer';
+const location = 'Germany';
+const experience = 'nearly 20 years';
+
+const skills = [
+	{
+		category: 'Backend',
+		items: ['PHP', 'Symfony', 'WordPress', 'Shopware', 'API Development'],
+	},
+	{
+		category: 'Frontend',
+		items: ['HTML', 'CSS', 'JavaScript', 'TypeScript'],
+	},
+	{
+		category: 'Tools',
+		items: ['Git', 'Docker', 'Linux', 'Composer', 'npm'],
+	},
+];
+
+const socialLinks = [
+	{
+		name: 'GitHub',
+		href: 'https://github.com/yourusername',
+		icon: '📦',
+	},
+	{
+		name: 'LinkedIn',
+		href: 'https://linkedin.com/in/yourusername',
+		icon: '💼',
+	},
+	{
+		name: 'Email',
+		href: 'mailto:hello@marco-kretz.de',
+		icon: '📧',
+	},
+];
 ---
 
 <Layout>
-	<Welcome />
+	<main class="max-w-4xl mx-auto px-4 py-8 md:py-16">
+		<!-- Hero Section -->
+		<section class="mb-12">
+			<div class="terminal-window mb-8">
+				<div class="terminal-body">
+					<div class="flex items-center gap-2 mb-4">
+						<span class="prompt-symbol">$</span>
+						<span class="text-terminal-textDim">whoami</span>
+					</div>
+					<div class="mb-2">
+						<span class="text-terminal-accent">Name:</span> {title}
+					</div>
+					<div class="mb-2">
+						<span class="text-terminal-accent">Role:</span> {role}
+					</div>
+					<div class="mb-2">
+						<span class="text-terminal-accent">Location:</span> {location}
+					</div>
+					<div class="mb-2">
+						<span class="text-terminal-accent">Experience:</span> {experience}
+					</div>
+					<div class="flex items-center gap-2">
+						<span class="prompt-symbol">$</span>
+						<span class="animate-cursor bg-terminal-accent w-2 h-5"></span>
+					</div>
+				</div>
+			</div>
+
+			<div class="text-center mb-8">
+				<h1 class="text-4xl md:text-5xl font-bold font-mono mb-2">
+					<span class="text-terminal-accent">&lt;</span>
+					{title}
+					<span class="text-terminal-accent">/&gt;</span>
+				</h1>
+				<p class="text-terminal-textDim text-lg">
+					{role} from {location} with {experience} of experience
+				</p>
+			</div>
+
+			<!-- Social Links -->
+			<div class="flex flex-wrap justify-center gap-4 mb-8">
+				{socialLinks.map((link) => (
+					<a
+						href={link.href}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="flex items-center gap-2 px-6 py-3 bg-[#161b22] border border-terminal-border rounded-lg hover:border-terminal-accent hover:text-terminal-accent transition-all duration-200 font-mono"
+					>
+						<span class="text-xl">{link.icon}</span>
+						<span>{link.name}</span>
+					</a>
+				))}
+			</div>
+		</section>
+
+		<!-- About Section -->
+		<section class="mb-12">
+			<h2 class="section-title">
+				<span class="text-white">About</span>
+			</h2>
+			<div class="card">
+				<p class="text-terminal-text leading-relaxed mb-4">
+					Hi! I'm a web developer based in Germany with nearly two decades of experience
+					building robust web applications. I specialize in PHP development, particularly
+					with Symfony, WordPress, and Shopware.
+				</p>
+				<p class="text-terminal-text leading-relaxed">
+					My expertise spans both backend and frontend development, with a strong focus on
+					clean code, API development, and creating seamless user experiences. Whether
+					building custom applications or extending existing systems, I bring a deep
+					understanding of web technologies and best practices.
+				</p>
+			</div>
+		</section>
+
+		<!-- Skills Section -->
+		<section class="mb-12">
+			<h2 class="section-title">
+				<span class="text-white">Skills</span>
+			</h2>
+			<div class="grid md:grid-cols-3 gap-4">
+				{skills.map((skillCategory) => (
+					<div class="card">
+						<h3 class="font-mono text-terminal-accent font-semibold mb-3 flex items-center gap-2">
+							<span class="text-terminal-blue">#</span>
+							{skillCategory.category}
+						</h3>
+						<ul class="space-y-2">
+							{skillCategory.items.map((item) => (
+								<li class="text-terminal-text flex items-center gap-2">
+									<span class="text-terminal-accent">→</span>
+									{item}
+								</li>
+							))}
+						</ul>
+					</div>
+				))}
+			</div>
+		</section>
+
+		<!-- Blog Preview Section -->
+		<section class="mb-12">
+			<h2 class="section-title">
+				<span class="text-white">Latest from the Blog</span>
+			</h2>
+			<div class="card">
+				<p class="text-terminal-text mb-4">
+					Check out my latest thoughts and tutorials on web development.
+				</p>
+				<a
+					href="/blog"
+					class="inline-flex items-center gap-2 text-terminal-accent font-mono hover:underline"
+				>
+					<span>View all posts</span>
+					<span class="text-terminal-accent">→</span>
+				</a>
+			</div>
+		</section>
+
+		<!-- Contact Section -->
+		<section class="mb-8">
+			<h2 class="section-title">
+				<span class="text-white">Contact</span>
+			</h2>
+			<div class="terminal-window">
+				<div class="terminal-body">
+					<div class="flex items-center gap-2 mb-4">
+						<span class="prompt-symbol">$</span>
+						<span class="text-terminal-textDim">echo "Let's work together"</span>
+					</div>
+					<p class="mb-4 text-terminal-text">
+						I'm always interested in hearing about new projects and opportunities.
+					</p>
+					<a
+						href="mailto:hello@marco-kretz.de"
+						class="inline-flex items-center gap-2 text-terminal-accent font-mono hover:underline"
+					>
+						<span>hello@marco-kretz.de</span>
+					</a>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<footer class="text-center text-terminal-textDim text-sm py-8 border-t border-terminal-border">
+			<p class="font-mono">
+				© {new Date().getFullYear()} Marco Kretz. Built with Astro & Tailwind.
+			</p>
+		</footer>
+	</main>
 </Layout>
+
+<style>
+	h1 {
+		text-shadow: 0 0 20px rgba(210, 153, 34, 0.2);
+	}
+</style>

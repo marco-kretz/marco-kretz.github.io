@@ -1,0 +1,19 @@
+---
+interface Props {
+	language?: string;
+	heading?: string;
+}
+
+const {
+	language = '',
+	heading,
+} = Astro.props;
+---
+<div class="code-block">
+	{heading && (
+		<div class="mb-2 pb-2 border-b border-terminal-border text-terminal-textDim text-xs">
+			{heading}
+		</div>
+	)}
+	<slot />
+</div>

@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-terminal-bg text-terminal-text font-sans antialiased;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+}
+
+@layer components {
+  .terminal-window {
+    @apply bg-terminal-bg border border-terminal-border rounded-lg overflow-hidden;
+  }
+
+  .terminal-header {
+    @apply bg-[#161b22] border-b border-terminal-border px-4 py-2 flex items-center gap-2;
+  }
+
+  .terminal-dots {
+    @apply flex gap-1.5;
+  }
+
+  .terminal-dot {
+    @apply w-3 h-3 rounded-full;
+  }
+
+  .terminal-dot-red {
+    @apply bg-terminal-red;
+  }
+
+  .terminal-dot-yellow {
+    @apply bg-yellow-500;
+  }
+
+  .terminal-dot-green {
+    @apply bg-terminal-green;
+  }
+
+  .terminal-body {
+    @apply p-4 font-mono text-sm;
+  }
+
+  .code-block {
+    @apply bg-[#161b22] rounded-md p-4 font-mono text-sm overflow-x-auto border border-terminal-border;
+  }
+
+  .prompt-symbol {
+    @apply text-terminal-accent font-bold;
+  }
+
+  .section-title {
+    @apply font-mono text-xl font-bold mb-4 flex items-center gap-2;
+  }
+
+  .section-title::before {
+    content: '>';
+    @apply text-terminal-accent;
+  }
+
+  .link-hover {
+    @apply transition-colors duration-200 hover:text-terminal-accent;
+  }
+
+  .card {
+    @apply bg-[#161b22] border border-terminal-border rounded-lg p-4 hover:border-terminal-accent transition-colors duration-200;
+  }
+}
