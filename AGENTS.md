@@ -168,6 +168,51 @@ const socialLinks = [
 3. Use theme colors (`bg-terminal-bg`, `text-terminal-accent`)
 4. Test responsive behavior
 
+## Git Commit Conventions
+
+Follow Conventional Commits format for clear, descriptive commit messages:
+
+### Format
+```
+<type>(<scope>): <subject>
+```
+
+### Types
+- `feat`: New feature
+- `fix`: Bug fix
+- `docs`: Documentation changes
+- `style`: Code style changes (formatting, etc.)
+- `refactor`: Code refactoring without feature changes
+- `perf`: Performance improvements
+- `test`: Adding or updating tests
+- `chore`: Maintenance tasks, dependencies, etc.
+- `build`: Build system or dependencies changes
+
+### Scopes
+- `blog`: Blog-related changes
+- `design`: Design/styling changes
+- `content`: Content additions/updates
+- `component`: Reusable components
+- `config`: Configuration changes
+- `deps`: Dependency updates
+
+### Examples
+```
+feat(blog): add blog post about REST APIs
+fix(layout): correct responsive breakpoint
+docs(agents): add commit conventions
+style(component): improve terminal window styling
+chore(deps): upgrade tailwindcss to 3.4.0
+```
+
+### Guidelines
+- Keep subject line under 72 characters
+- Use imperative mood ("add" not "added")
+- Capitalize first letter
+- No period at end of subject
+- Separate subject from body with blank line
+- Reference issues in commit body if applicable
+
 ## Things to Avoid
 
 - ❌ Don't change the color palette significantly
