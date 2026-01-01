@@ -101,7 +101,7 @@ pre.astro-code::before {
 	height: 40px !important;
 	background-color: #0d1117 !important;
 	border-bottom: 1px solid #30363d !important;
-	font-family: ui-monospace, Cascadia Code, Source Code Pro, Menlo, Consolas, Monaco, monospace;
+	font-family: 'JetBrains Mono', ui-monospace, Cascadia Code, Source Code Pro, Menlo, Consolas, Monaco, monospace;
 	font-size: 0.875rem;
 	color: #8b949e;
 	padding-left: 0.75rem;

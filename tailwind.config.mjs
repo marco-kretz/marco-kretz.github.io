@@ -19,7 +19,7 @@ export default {
         },
       },
       fontFamily: {
-        mono: ['ui-monospace', 'Cascadia Code', 'Source Code Pro', 'Menlo', 'Consolas', 'Monaco', 'monospace'],
+        mono: ['JetBrains Mono', 'ui-monospace', 'Cascadia Code', 'Source Code Pro', 'Menlo', 'Consolas', 'Monaco', 'monospace'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
       animation: {
@@ -50,13 +50,13 @@ export default {
             h1: {
               color: '#ffffff',
               fontWeight: '700',
-              fontFamily: 'ui-monospace, Cascadia Code, Source Code Pro, Menlo, Consolas, Monaco, monospace',
+              fontFamily: "'JetBrains Mono', ui-monospace, Cascadia Code, Source Code Pro, Menlo, Consolas, Monaco, monospace",
               marginBottom: '1.5rem',
             },
             h2: {
               color: '#ffffff',
               fontWeight: '700',
-              fontFamily: 'ui-monospace, Cascadia Code, Source Code Pro, Menlo, Consolas, Monaco, monospace',
+              fontFamily: "'JetBrains Mono', ui-monospace, Cascadia Code, Source Code Pro, Menlo, Consolas, Monaco, monospace",
               fontSize: '1.25rem',
               marginTop: '2rem',
               marginBottom: '1rem',
@@ -71,7 +71,7 @@ export default {
             h3: {
               color: '#ffffff',
               fontWeight: '600',
-              fontFamily: 'ui-monospace, Cascadia Code, Source Code Pro, Menlo, Consolas, Monaco, monospace',
+              fontFamily: "'JetBrains Mono', ui-monospace, Cascadia Code, Source Code Pro, Menlo, Consolas, Monaco, monospace",
               fontSize: '1.125rem',
               marginTop: '1.5rem',
               marginBottom: '0.75rem',
@@ -87,7 +87,7 @@ export default {
             h4: {
               color: '#ffffff',
               fontWeight: '600',
-              fontFamily: 'ui-monospace, Cascadia Code, Source Code Pro, Menlo, Consolas, Monaco, monospace',
+              fontFamily: "'JetBrains Mono', ui-monospace, Cascadia Code, Source Code Pro, Menlo, Consolas, Monaco, monospace",
               marginTop: '1rem',
               marginBottom: '0.5rem',
             },
@@ -163,7 +163,7 @@ export default {
             },
             th: {
               fontWeight: '600',
-              fontFamily: 'ui-monospace, Cascadia Code, Source Code Pro, Menlo, Consolas, Monaco, monospace',
+              fontFamily: "'JetBrains Mono', ui-monospace, Cascadia Code, Source Code Pro, Menlo, Consolas, Monaco, monospace",
             },
             tbody: {
               color: '#c9d1d9',
