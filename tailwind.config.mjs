@@ -20,7 +20,7 @@ export default {
       },
       fontFamily: {
         mono: ['JetBrains Mono', 'ui-monospace', 'Cascadia Code', 'Source Code Pro', 'Menlo', 'Consolas', 'Monaco', 'monospace'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        sans: ['IBM Plex Sans', 'system-ui', 'sans-serif'],
       },
       animation: {
         'cursor': 'cursor 1s step-end infinite',
