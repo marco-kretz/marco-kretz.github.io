@@ -50,7 +50,7 @@
   }
 
   .code-block {
-    @apply bg-[#161b22] rounded-md p-4 font-mono text-sm overflow-x-auto border border-terminal-border;
+    @apply bg-[#161b22] rounded-lg p-4 font-mono text-sm overflow-x-auto border border-terminal-border;
   }
 
   .prompt-symbol {
@@ -73,4 +73,75 @@
   .card {
     @apply bg-[#161b22] border border-terminal-border rounded-lg p-4 hover:border-terminal-accent transition-colors duration-200;
   }
+}
+
+.code-block-wrapper {
+	position: relative;
+	width: 100%;
+}
+
+pre.astro-code {
+	position: relative !important;
+	background-color: #0d1117 !important;
+	border: 1px solid #30363d !important;
+	border-radius: 0.5rem !important;
+	overflow: hidden !important;
+	margin-top: 2rem !important;
+	margin-bottom: 2rem !important;
+}
+
+pre.astro-code::before {
+	content: attr(data-title) !important;
+	display: flex !important;
+	align-items: center !important;
+	position: absolute !important;
+	top: 0 !important;
+	left: 0 !important;
+	right: 0 !important;
+	height: 40px !important;
+	background-color: #0d1117 !important;
+	border-bottom: 1px solid #30363d !important;
+	font-family: ui-monospace, Cascadia Code, Source Code Pro, Menlo, Consolas, Monaco, monospace;
+	font-size: 0.875rem;
+	color: #8b949e;
+	padding-left: 0.75rem;
+	z-index: 5;
+	pointer-events: none;
+}
+
+pre.astro-code > code {
+	display: block !important;
+	overflow-x: auto !important;
+	background-color: transparent !important;
+	padding: 3.5rem 1.25rem 1.25rem !important;
+	font-family: ui-monospace, Cascadia Code, Source Code Pro, Menlo, Consolas, Monaco, monospace !important;
+	font-size: 0.875rem !important;
+	line-height: 1.625 !important;
+}
+
+.code-copy-button {
+	position: absolute !important;
+	top: 8px !important;
+	right: 8px !important;
+	background-color: #0d1117 !important;
+	border: 1px solid #30363d !important;
+	color: #8b949e !important;
+	padding: 6px !important;
+	border-radius: 0.375rem !important;
+	cursor: pointer !important;
+	opacity: 0 !important;
+	transition: opacity 0.2s, color 0.2s, background-color 0.2s !important;
+	z-index: 10 !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+}
+
+.code-copy-button:hover {
+	color: #d29922 !important;
+	background-color: #21262d !important;
+}
+
+.code-block-wrapper:hover .code-copy-button {
+	opacity: 1 !important;
 }

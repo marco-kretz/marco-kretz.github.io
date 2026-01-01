@@ -26,10 +26,11 @@ public function index(ProductRepository $repository): JsonResponse
 ```
 
 Keep your endpoints predictable. Use HTTP methods correctly:
-- GET for retrieving resources
-- POST for creating resources
-- PUT/PATCH for updating resources
-- DELETE for removing resources
+
+-   GET for retrieving resources
+-   POST for creating resources
+-   PUT/PATCH for updating resources
+-   DELETE for removing resources
 
 ### Implement API Versioning
 
@@ -62,7 +63,7 @@ class JwtAuthenticator extends AbstractAuthenticator
     public function authenticate(Request $request): Passport
     {
         $token = $this->extractToken($request);
-        
+
         if (!$token) {
             throw new AuthenticationException('No token provided');
         }
