@@ -67,9 +67,14 @@ const posts = allPosts
 		</div>
 
 		<footer class="text-center text-terminal-textDim text-sm py-8 mt-12 border-t border-terminal-border">
-			<p class="font-mono">
+			<p class="font-mono mb-2">
 				© {new Date().getFullYear()} Marco Kretz
 			</p>
+			<div class="flex justify-center gap-4 font-mono">
+				<a href="/impressum" class="hover:text-terminal-accent transition-colors">Impressum</a>
+				<span class="text-terminal-border">|</span>
+				<a href="/datenschutz" class="hover:text-terminal-accent transition-colors">Datenschutz</a>
+			</div>
 		</footer>
 	</main>
 </Layout>

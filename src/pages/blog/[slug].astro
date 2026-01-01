@@ -60,25 +60,35 @@ const { Content } = await post.render();
 		</article>
 
 		<footer class="mt-16 pt-8 border-t border-terminal-border">
-			<div class="flex items-center gap-4">
-				<span class="text-terminal-textDim">Diesen Beitrag teilen:</span>
-				<a
-					href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.data.title)}&url=${encodeURIComponent(Astro.url.toString())}`}
-					target="_blank"
-					rel="noopener noreferrer"
-					class="text-terminal-accent hover:underline"
-				>
-					Twitter
-				</a>
-				<a
-					href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(Astro.url.toString())}`}
-					target="_blank"
-					rel="noopener noreferrer"
-					class="text-terminal-accent hover:underline"
-				>
-					LinkedIn
-				</a>
+			<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+				<div class="flex items-center gap-4">
+					<span class="text-terminal-textDim">Diesen Beitrag teilen:</span>
+					<a
+						href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.data.title)}&url=${encodeURIComponent(Astro.url.toString())}`}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-terminal-accent hover:underline"
+					>
+						Twitter
+					</a>
+					<a
+						href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(Astro.url.toString())}`}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-terminal-accent hover:underline"
+					>
+						LinkedIn
+					</a>
+				</div>
+				<div class="flex items-center gap-4 text-sm text-terminal-textDim font-mono">
+					<a href="/impressum" class="hover:text-terminal-accent transition-colors">Impressum</a>
+					<span class="text-terminal-border">|</span>
+					<a href="/datenschutz" class="hover:text-terminal-accent transition-colors">Datenschutz</a>
+				</div>
 			</div>
+			<p class="text-center text-terminal-textDim text-xs mt-8 font-mono">
+				© {new Date().getFullYear()} Marco Kretz
+			</p>
 		</footer>
 	</main>
 </Layout>
