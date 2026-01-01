@@ -1,0 +1,182 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator" content="Astro v5.16.6"><title>Schluss mit Vendor Lock-in: Warum ich Cursor für OpenCode verlassen habe - Marco Kretz</title><meta name="description" content="Web developer from Germany with nearly 20 years of experience. PHP (Symfony/WordPress/Shopware), API development, backend &#38; frontend."><!-- Open Graph --><meta property="og:type" content="website"><meta property="og:url" content="https://marco-kretz.de/blog/claude-code-vs-opencode/"><meta property="og:title" content="Schluss mit Vendor Lock-in: Warum ich Cursor für OpenCode verlassen habe - Marco Kretz"><meta property="og:description" content="Web developer from Germany with nearly 20 years of experience. PHP (Symfony/WordPress/Shopware), API development, backend &#38; frontend."><meta property="og:image" content="/og-image.png"><!-- Twitter --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Schluss mit Vendor Lock-in: Warum ich Cursor für OpenCode verlassen habe - Marco Kretz"><meta name="twitter:description" content="Web developer from Germany with nearly 20 years of experience. PHP (Symfony/WordPress/Shopware), API development, backend &#38; frontend."><meta name="twitter:image" content="/og-image.png"><link rel="stylesheet" href="/_astro/_slug_.BzuuKfyD.css">
+<style>.prose[data-astro-cid-4sn4zg3r]{--tw-prose-body: #c9d1d9;--tw-prose-headings: #ffffff;--tw-prose-lead: #8b949e;--tw-prose-links: #58a6ff;--tw-prose-bold: #ffffff;--tw-prose-counters: #8b949e;--tw-prose-bullets: #8b949e;--tw-prose-hr: #30363d;--tw-prose-quotes: #c9d1d9;--tw-prose-quote-borders: #30363d;--tw-prose-captions: #8b949e;--tw-prose-code: #d29922;--tw-prose-pre-code: #c9d1d9;--tw-prose-pre-bg: #0d1117;--tw-prose-th-borders: #30363d;--tw-prose-td-borders: #30363d}.prose[data-astro-cid-4sn4zg3r] p[data-astro-cid-4sn4zg3r]>code[data-astro-cid-4sn4zg3r],.prose[data-astro-cid-4sn4zg3r] li[data-astro-cid-4sn4zg3r]>code[data-astro-cid-4sn4zg3r],.prose[data-astro-cid-4sn4zg3r] td[data-astro-cid-4sn4zg3r]>code[data-astro-cid-4sn4zg3r]{border-radius:.25rem;--tw-bg-opacity: 1;background-color:rgb(22 27 34 / var(--tw-bg-opacity, 1));padding:.125rem .375rem;font-family:JetBrains Mono,ui-monospace,Cascadia Code,Source Code Pro,Menlo,Consolas,Monaco,monospace;font-size:.875rem;line-height:1.25rem;--tw-text-opacity: 1;color:rgb(210 153 34 / var(--tw-text-opacity, 1))}
+</style></head> <body> <div class="min-h-screen">  <main class="max-w-4xl mx-auto px-4 py-8 md:py-16" data-astro-cid-4sn4zg3r> <nav class="mb-8" data-astro-cid-4sn4zg3r> <a href="/blog" class="text-terminal-accent font-mono hover:underline flex items-center gap-2" data-astro-cid-4sn4zg3r> <span data-astro-cid-4sn4zg3r>←</span> <span data-astro-cid-4sn4zg3r>Back to blog</span> </a> </nav> <article data-astro-cid-4sn4zg3r> <header class="mb-8" data-astro-cid-4sn4zg3r> <h1 class="text-3xl md:text-4xl font-bold font-mono mb-4" data-astro-cid-4sn4zg3r> Schluss mit Vendor Lock-in: Warum ich Cursor für OpenCode verlassen habe </h1> <div class="flex flex-wrap items-center gap-4 text-terminal-textDim text-sm mb-4" data-astro-cid-4sn4zg3r> <time datetime="2026-01-01T00:00:00.000Z" data-astro-cid-4sn4zg3r> January 1, 2026 </time> <span data-astro-cid-4sn4zg3r>· 8 min read</span> </div> <p class="text-terminal-textDim text-lg" data-astro-cid-4sn4zg3r>Bist du die Abos und starren Limits leid? Ich zeige dir, wie du mit OpenCode und Claude Code die volle Kontrolle über deine KI-Workflows zurückholst – ohne grafischen Ballast.</p> <div class="flex flex-wrap gap-2 mt-4" data-astro-cid-4sn4zg3r> <span class="px-2 py-1 text-xs font-mono bg-[#161b22] border border-terminal-border rounded text-terminal-textDim" data-astro-cid-4sn4zg3r>
+#Claude Code </span><span class="px-2 py-1 text-xs font-mono bg-[#161b22] border border-terminal-border rounded text-terminal-textDim" data-astro-cid-4sn4zg3r>
+#OpenCode </span><span class="px-2 py-1 text-xs font-mono bg-[#161b22] border border-terminal-border rounded text-terminal-textDim" data-astro-cid-4sn4zg3r>
+#Comparison </span><span class="px-2 py-1 text-xs font-mono bg-[#161b22] border border-terminal-border rounded text-terminal-textDim" data-astro-cid-4sn4zg3r>
+#Coding </span><span class="px-2 py-1 text-xs font-mono bg-[#161b22] border border-terminal-border rounded text-terminal-textDim" data-astro-cid-4sn4zg3r>
+#CLI </span> </div> </header> <div class="prose prose-invert max-w-none" data-astro-cid-4sn4zg3r> <p>KI-unterstützte Programmierung ist hier, um zu bleiben. Achtung, persönliche Meinung: Ob man es nun mag oder nicht – wer seinen Workflow nicht adaptiert, wird früher oder später den Anschluss verlieren. Ich habe daher versucht, die für mich optimale Kombination aus Tools + Modell zu finden. Ein kleiner Einblick in meine Reise bisher.</p>
+<h2 id="warum-cli-tools-und-keine-ide">Warum CLI-Tools und keine IDE?</h2>
+<p>Diese Frage ist total berechtigt. Warum nutze ich nicht einfach einen Editor oder eine IDE mit KI-Integration wie bspw. <strong>Cursor</strong> oder <strong>Antigravity</strong>?
+Ist doch super: Alles an einem Ort, maximale Integration, einfache Abrechnung.</p>
+<p>Für viele Einsteiger ist das eine solide Lösung. Ich habe selbst lange Cursor genutzt, aber aus diesen vier Gründen den Schlussstrich gezogen:</p>
+<ol>
+<li><strong>Vendor Lock-in</strong>: Man setzt alles auf einen Anbieter und gerät so auf Dauer in eine zumindest Teilabhängigkeit.<br>
+Sollte der Anbieter auf einmal sein Produkt ändern, es verkaufen oder seine Preise stark anheben, dann muss man sich mit anpassen oder seinen gesamten Workflow wieder ändern.</li>
+<li><strong>Systemunabhängigkeit</strong>: Ich will nicht auf ein grafisches Tool angewiesen sein. Wenn ich auf anderen Systemen, die keine grafische Nutzeroberfläche aufweisen, unterwegs bin, kann ich meine CLI-Tools weiter nutzen.<br>
+<small>Ja, Cursor hat auch inzwischen ein CLI-Tool, was aber mit den Alternativen noch nicht wirklich mithalten kann.</small></li>
+<li><strong>Kosten</strong>: Cursor bietet aktuell für das gezahlte Geld am wenigsten, zumindest wenn man nach den reinen Requests geht. Andere Abonnements bieten für das gleiche Geld deutlich mehr. Antigravity bspw. hat zur Zeit relativ “freundliche” Limits, selbst mit Google AI Pro Abonnement – das sind aber “Lock-Limits”, um Kunden an die Plattform zu binden, und diese Limits werden nicht ewig so hoch sein.</li>
+<li><strong>Flexibilität</strong>: Wer experimentierfreudig ist oder immer das optimale Modell für die aktuelle Aufgabe nutzen will, ist bei Cursor &#x26; Co. auch nicht so gut aufgehoben. Das Auto-Routing funktioniert mal mehr, mal weniger gut, und um selbst das richtige Modell auswählen zu können, muss man sehr mit der Materie vertraut sein. Das Motto <strong>“Opus 4.5 für alles”</strong> ist dumm, unwirtschaftlich und – faktisch gesehen, wenn man mal von den Kosten und den indirekten Folgen für die Umwelt absieht – auch einfach nicht das beste Modell für jede Aufgabe.</li>
+</ol>
+<h2 id="welche-cli-tools-kommen-in-frage">Welche CLI-Tools kommen in Frage?</h2>
+<p>Wenn wir von agentenbasierten CLI-Tools für’s Coden sprechen, dann kommen wir an <strong>Claude Code</strong> nicht vorbei. Der “So wird’s gemacht”-Standard, an dem sich alle anderen Tools messen müssen. Auch wenn es andere Tools gibt, die manche Funktionen eventuell früher implementiert hatten, so schafft Anthropic es, diese SOTA-mäßig (State of the Art) umzusetzen.</p>
+<p>Ich habe mir einige Konkurrenzprodukte angeschaut, sei es nun <strong>Aider</strong>, <strong>Codex von OpenAI</strong>, <strong>Gemini CLI von Google</strong> oder <strong>Cline</strong>, am besten gefällt mir einfach <strong>OpenCode</strong>. Woran es genau liegt, weiß ich gar nicht, aber ich mag das Interface, die User-Experience, die Konfiguration und auch, dass es mit einem Pay-as-you-Go-Service namens <strong>Zen</strong> kommt, über den ich schnell auf alle, von den Entwicklern als gut befundenen, Modelle zugreifen kann.</p>
+<h3 id="opencode">OpenCode</h3>
+<p><strong>OpenCode</strong> kommt standardmäßig mit zwei Primär-Agenten (Modi): <strong>Build</strong> und <strong>Plan</strong>. Im Plan-Modus nimmt OpenCode keinerlei Dateiänderungen vor, es wird lediglich ein Plan erstellt, wie man das aktuelle Problem am besten angeht. Nach dem Wechsel in den Build-Modus und einem <code>implement it</code> startet OpenCode dann mit der Umsetzung. Das Coole: Man kann für jeden Modus ein separates Modell auswählen, so kann man bspw. Claude’s Sonnet 4.5 die Planung übernehmen lassen, während die Planumsetzung, die in der Regel, wenn ein Plan schon existiert, ein nicht ganz so fähiges Modell braucht, von einem etwas günstigeren Modell wie MiniMax M2.1 oder Grok Code Fast übernommen werden kann → maximale Kontrolle.</p>
+<p>OpenCode wird unter der <strong>MIT-Lizenz</strong> entwickelt. Das bedeutet, dass der Code beliebig geändert und weitervertrieben werden kann. Es ist ein echtes Open-Source-Projekt in seiner Reinform. Man muss bei eigenen Weiterentwicklungen lediglich einen Verweis auf den Originalautor nennen.</p>
+<p><a href="https://github.com/sst/opencode" target="_blank" rel="noopener">OpenCode auf Github</a></p>
+<h3 id="claude-code">Claude Code</h3>
+<p><strong>Claude Code</strong> wiederum ist tief verzahnt mit den proprietären Modellen von Anthropic selbst und auf diese hochgradig optimiert. Auch Claude Code hat inzwischen einen Plan-Modus und – wie OpenCode auch – eine sehr gute User-Experience. Es ist anders aufgebaut, aber ebenbürtig in der Benutzung. Die Modellauswahl ist hier eingeschränkter, weil man von Haus aus nur die Anthropic-Modelle Opus, Sonnet und Haiku hat. Wer experimentieren will, muss über Umgebungsvariablen die Modelle manuell ändern und braucht einen Service, der eine Anthropic-kompatible API anbietet wie bspw. von openrouter.ai.</p>
+<p>Claude Code hat nur eine proprietäre Lizenz. Es ist nicht gestattet, den Code zu modifizieren und/oder zu verbreiten ohne die ausdrückliche Genehmigung von Anthropic. Es ist mehr ein SaaS-Produkt mit einem CLI-Wrapper.</p>
+<p><a href="https://github.com/anthropics/claude-code" target="_blank" rel="noopener">Claude Code auf GitHub</a></p>
+<h2 id="der-workflow">Der Workflow</h2>
+<p>Der Fairness halber habe ich beide Tools in ihrer Ausgangskonfiguration getestet und lediglich zwei MCPs bei beiden hinzugefügt:</p>
+<ul>
+<li><strong><a href="https://mcp.grep.app" target="_blank" rel="noopener">grep.app</a></strong>: Durchsucht blitzschnell Millionen von öffentlichen GitHub-Repositories. Ideal zum Finden von Beispielen zur Implementierung bestimmter Funktionen.</li>
+<li><strong><a href="https://context7.com/" target="_blank" rel="noopener">Context7</a></strong>: Durchsuchen von Dokumentationen zu tausenden von Bibliotheken.</li>
+</ul>
+<p>Hier als Beispiel meine <code>opencode.json</code> nur für die MCPs:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">    "$schema"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"https://opencode.ai/config.json"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "autoupdate"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">    "mcp"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">        "grep"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">            "type"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"remote"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">            "url"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"https://mcp.grep.app"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">            "enabled"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
+<span class="line"><span style="color:#E1E4E8">        },</span></span>
+<span class="line"><span style="color:#79B8FF">        "context7"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">            "type"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"remote"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">            "url"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"https://mcp.context7.com/mcp"</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">            "enabled"</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span><span style="color:#E1E4E8">,</span></span>
+<span class="line"><span style="color:#79B8FF">            "headers"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">                "CONTEXT7_API_KEY"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"&#x3C;dein-api-key>"</span></span>
+<span class="line"><span style="color:#E1E4E8">            }</span></span>
+<span class="line"><span style="color:#E1E4E8">        }</span></span>
+<span class="line"><span style="color:#E1E4E8">    }</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>Und damit OpenCode die MCPs auch nutzt, habe ich folgendes in meine globale <code>AGENTS.md</code> geschrieben:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>## MCP usage</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>- Use `grep` to lookup code snippets and example implementations</span></span>
+<span class="line"><span>- Use `context7` to lookup current documentation for all kinds of libraries</span></span></code></pre>
+<p>Mein genereller Workflow ist denkbar einfach:</p>
+<ol>
+<li>Start im <strong>Plan-Modus</strong> und ausführliche Formulierung der anstehenden Aufgabe</li>
+<li>Vor dem Abschicken überlege ich mir, welches Modell wahrscheinlich am besten geeignet ist, auch mit Blick auf den Kosten/Nutzen-Faktor:<br>
+<ul>
+<li>Nur eine einfache Anpassung? Da reicht <strong>GLM-4.7</strong></li>
+<li>Erstellung von Frontend-Komponenten? Hier ist <strong>Gemini 3 Flash</strong> ungeschlagen</li>
+<li>Komplexe Planung mit wichtigen und sicherheitsrelevanten Architekturentscheidungen? <strong>Opus 4.5</strong></li>
+</ul>
+</li>
+<li>Durchlesen des gesamten Plans und eventuelle Anpassungen</li>
+<li>Wechsel in den <strong>Build-Modus</strong> und auf ein einfacheres Modell wie bspw. <strong>Grok Code Fast</strong>, was nur den Plan umsetzen muss. Danach Bestätigung zur Durchführung des erstellten Plans.</li>
+</ol>
+<p>Dieser <strong>Plan-First-Ansatz</strong> hat sich in meiner täglichen Programmierarbeit mehr als bewährt. Ich sehe ganz genau, was umgesetzt werden soll, kann nachjustieren und erst nach meiner Freigabe des Plans werden Änderungen durchgeführt.</p>
+<p>Für das reine Vibe-Coding ist das natürlich nur mäßig geeignet, weil man für diese Art des Promptings verstehen muss, was das LLM nun machen will. Hat man keinen technischen Background und weiß nicht, was da alles passiert, dann ist der Plan-Modus planlos.</p>
+<h4 id="beispiel">Beispiel</h4>
+<p>Besonders stark ist der Plan-Modus, wenn ich alten PHP-Code in moderne, funktionale Strukturen umbaue. Ich sage dem Agenten: ‘Refactor diese Klasse zu einem Readonly DTO und nutze Enums statt Magic Strings.’ – Da trennt sich bei den Modellen schnell die Spreu vom Weizen.</p>
+<h3 id="ergebnis">Ergebnis</h3>
+<p>Beide Tools bieten den Workflow den ich brauche. In Zukunft werde ich mir noch dedizierte Subagents sowie Skills anlegen, um den Kontext meines Haupt-Agenten nicht zu sehr zu verunreinen. Beide Tools können das, hier entscheidet rein das Design und die UX.</p>
+<h2 id="die-modelle">Die Modelle</h2>
+<p>Das ist das eigentliche Problem. Wir haben inzwischen so viele und auch gute Modelle zur Verfügung, dass man sich, wenn man sich ein bisschen mit der Materie auseinandersetzt, schnell überfordert fühlen kann. Mir geht es ehrlich gesagt genauso. Ich springe immer wieder hin und her. Benchmarks sind erstmal nur ein grober Anhaltspunkt, der aber meistens mit der Wirklichkeit nicht immer übereinstimmt. Benchmarks laufen in einem synthetischen Vakuum - in der Realität gibt es aber viel zu viele Faktoren, die die Qualität der Modelle beeinflussen:</p>
+<ol>
+<li>Wie gut ist der Prompt des Users?</li>
+<li>Welchen Umfang hat der Kontext des Prompts?</li>
+<li>Welche Tools stehen dem LLM zu Verfügung?</li>
+<li>Wie gut kommuniziert das Tool mit dem LLM?</li>
+</ol>
+<p>Tools wie Claude Code oder OpenCode geben den LLMs ja nicht nur den eigenen Prompt mit, sondern auch einen Systemprompt. Dieser beeinflusst stark, was das LLM letzendlich alles tut. Bei Claude Code ist dieser Systemprompt natürlich maximal auf die hauseigenen Modelle maßgeschneidert, hier hat OpenCode einen Nachteil, weil es unmöglich für alle verfügbaren Modelle den optimalen Systemprompt mitgeben kann.</p>
+<h3 id="kosten">Kosten</h3>
+<h4 id="claude">Claude</h4>
+<p>Wem Geld egal ist kann es sich einfach machen: <strong>Claude Max für 90€ - 200€ im Monat</strong>. Solange man immer nur an einer Sache gleichzeitig arbeitet und nicht fünf Claude Code Instanzen an mehreren Projekte gleichzeitig arbeiten lässt, sollte man nur schwer an das monatliche Limit kommen. Man sollte auch beachten, dass der tatsächliche Gegenwert, den man für den Preis in Form von API-Aufrufen bekommt, den tatsächlichen Pay-as-you-Go Preisen überlegen ist. Reizt man also die Limits aus kriegt man mehr Nutzung als würde man jeden Request einzeln bezahlen.</p>
+<p>Allerdings nutzt Claude Code als Standard immer Opus 4.5. Das ist zwar das mächtigste Modell, was es derzeit gibts, aber für 80%-90% der täglichen Aufgaben eines Entwicklers auch absoluter Overkill. Auch hat man mit dem Claude Abo nur Zugriff auf die drei Anthropic Modelle. Kein Gemini, kein GPT oder GLM. Experimetieren und optimieren ist hier nicht drin.</p>
+<p>Achja, und sollte man das Limit nicht erreichen, hat man trotzdem dafür bezahlt, ohne es zu nutzen.</p>
+<h4 id="opencode-zen">OpenCode Zen</h4>
+<p>OpenCode Zen ist kein Abo. Man hat ein Credit-Konto, welches man auflädt, und von diesem werden die API-Aufrufe direkt bezahlt. Vorteil: Maximale Kostentransparenz.
+Weiterhin bietet Zen Zugriff auf alle großen Modelle:</p>
+<ul>
+<li>Claude Sonnet 4.5 und Opus 4.5</li>
+<li>GPT 5.1/5.2</li>
+<li>Gemini 3 Pro/Flash</li>
+</ul>
+<p>Auch einige der besten chinesischen Modelle wie bspw. GLM-4.7 und MiniMax M2.1 stehen zur Verfügung. Da Zen noch in der Anfangsphase ist gibt es immer wieder Modelle komplett zur kostenfreien Nutzung. Aktuell sind das:</p>
+<ul>
+<li>Grok Code Fast 1</li>
+<li>Big Pickle (angepasste Variante von GLM-4.6)</li>
+<li>MiniMax M2.1</li>
+<li>GLM 4.7</li>
+</ul>
+<p>Hier sieht man den Vorteil: Man kann sowohl auf die Modelle von Claude Code, als auch auf alle anderen Zugreifen und so einfach mal ausprobieren, welche Modelle für die eigenen Anforderungen die besten Ergebnisse liefern.</p>
+<h4 id="opencode--andere-anbieter">OpenCode + Andere Anbieter</h4>
+<p>OpenCode bietet weiterhin die Möglichkeit sich mit einer ganzen Liste an Drittanbieter-Services/Subscriptions zu verbinden wie bspw.:</p>
+<ul>
+<li>Anthropic (API oder Subscription)</li>
+<li>Google (API Key)</li>
+<li>OpenRouter.ai (API Key)</li>
+<li>GitHub Copilot</li>
+</ul>
+<p>und noch viele mehr! Über ein <a href="https://github.com/NoeFabris/opencode-antigravity-auth" target="_blank">Drittanbieterplugin</a> ist es sogar möglich sich per OAuth mit seiner Google AI Pro Sbscription zu verbinden und so die Antigravity Limits zu nutzen. Geil!</p>
+<h2 id="fazit">Fazit</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Feature</th><th>Claude Code</th><th>OpenCode</th></tr></thead><tbody><tr><td>Lizenz</td><td>Proprietär (SaaS-like)</td><td>MIT (Open Source)</td></tr><tr><td>Modelle</td><td>Nur Anthropic (Opus, Sonnet, Haiku)*</td><td>Alle (Claude, GPT, Gemini, GLM, etc.)</td></tr><tr><td>Bezahlung</td><td>Abo (Claude Max, fix ca. 90-200€)“</td><td>Pay-as-you-Go (Zen) oder eigene API-Keys</td></tr><tr><td>Workflow</td><td>Hochgradig optimiert auf Claude</td><td>Maximal flexibel &#x26; konfigurierbar</td></tr><tr><td>Einstieg</td><td>”It just works”</td><td>Erfordert etwas mehr Konfiguration</td></tr><tr><td>Flexibilität</td><td>Gering (Vendor Lock-in)</td><td>Hoch (Anbieter jederzeit wechselbar)</td></tr></tbody></table>
+<p><small>*Andere Modelle/Anbieter über die Änderung von Umgebungsvariablen</small></p>
+<p>Ich könnte hier noch viele Seiten füllen. Dieser Beitrag soll einfach nur einen Einblick in die Möglichkeiten bieten, die es da draußen, abseits vom “Mainstream”, gibt. Es stellt sich wie immer die Frage zwischen <strong>Convenience</strong> und <strong>Customization</strong>. Will man ein <strong>funktioniert einfach</strong> und Geld ist nicht so wichtig, geht man mit Claude Max Abo und Claude Code. Will man experimentieren können, neue Dinge testen und seinen eigenen, hochgradig optimierten Workflow schaffen oder eventuell einfach nur <strong>flexibel und anbieterunabhängig</strong> sein, dann wählt man OpenCode mit einem Anbieter seiner Wahl. So oder so bekommt man einen starken Partner für die tägliche Arbeit.</p>
+<p>Ebenso wichtig wie das LLM und das Tool sind die eigenen Skills, beides richtig einzusetzen. Erst aus der richtigen Kombination dieser Dinge entsteht die Qualität, die man bei der täglichen Programmierarbeit braucht und auf die man sich verlassen kann.</p>
+<p>Ich für meinen Teil werde definitiv bei OpenCode bleiben und weiter versuchen das für mich optimale Setup zu finden.</p> </div> </article> <footer class="mt-16 pt-8 border-t border-terminal-border" data-astro-cid-4sn4zg3r> <div class="flex items-center gap-4" data-astro-cid-4sn4zg3r> <span class="text-terminal-textDim" data-astro-cid-4sn4zg3r>Share this post:</span> <a href="https://twitter.com/intent/tweet?text=Schluss%20mit%20Vendor%20Lock-in%3A%20Warum%20ich%20Cursor%20f%C3%BCr%20OpenCode%20verlassen%20habe&url=https%3A%2F%2Fmarco-kretz.de%2Fblog%2Fclaude-code-vs-opencode%2F" target="_blank" rel="noopener noreferrer" class="text-terminal-accent hover:underline" data-astro-cid-4sn4zg3r>
+Twitter
+</a> <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fmarco-kretz.de%2Fblog%2Fclaude-code-vs-opencode%2F" target="_blank" rel="noopener noreferrer" class="text-terminal-accent hover:underline" data-astro-cid-4sn4zg3r>
+LinkedIn
+</a> </div> </footer> </main>  </div> </body></html>  <script type="module">const s=document.querySelectorAll("pre.astro-code");s.forEach(t=>{const n=t.getAttribute("data-language")||"text";t.setAttribute("data-title",n);const o=document.createElement("div");o.className="code-block-wrapper",t.parentElement?.insertBefore(o,t),o.appendChild(t);const e=document.createElement("button");e.className="code-copy-button",e.innerHTML=`
+			<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+			</svg>
+		`,e.setAttribute("aria-label","Copy code to clipboard"),e.addEventListener("click",async()=>{const r=t.querySelector("code")?.textContent;if(r)try{await navigator.clipboard.writeText(r),e.innerHTML=`
+					<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+					</svg>
+				`,e.style.color="#238636",setTimeout(()=>{e.innerHTML=`
+						<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+						</svg>
+					`,e.style.color=""},2e3)}catch(a){console.error("Failed to copy code:",a)}}),o.appendChild(e)});</script>
