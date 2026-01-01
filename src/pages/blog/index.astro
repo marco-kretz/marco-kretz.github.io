@@ -13,7 +13,7 @@ const posts = allPosts
 		<nav class="mb-8">
 			<a href="/" class="text-terminal-accent font-mono hover:underline flex items-center gap-2">
 				<span>←</span>
-				<span>Back to home</span>
+				<span>Zurück zur Startseite</span>
 			</a>
 		</nav>
 
@@ -24,7 +24,7 @@ const posts = allPosts
 				<span class="text-terminal-accent">/&gt;</span>
 			</h1>
 			<p class="text-terminal-textDim text-lg">
-				Thoughts, tutorials, and insights from my journey as a web developer.
+				Gedanken, Tutorials und Einblicke aus meiner Reise als Webentwickler.
 			</p>
 		</header>
 
@@ -39,13 +39,13 @@ const posts = allPosts
 						</a>
 						<div class="text-terminal-textDim text-sm flex items-center gap-4">
 							<time datetime={post.data.pubDate.toISOString()}>
-								{post.data.pubDate.toLocaleDateString('en-US', {
+								{post.data.pubDate.toLocaleDateString('de-DE', {
 									year: 'numeric',
 									month: 'long',
 									day: 'numeric',
 								})}
 							</time>
-							{post.data.readTime && <span>· {post.data.readTime} read</span>}
+							{post.data.readTime && <span>· {post.data.readTime} Lesezeit</span>}
 						</div>
 						{post.data.description && (
 							<p class="text-terminal-text mt-2">{post.data.description}</p>

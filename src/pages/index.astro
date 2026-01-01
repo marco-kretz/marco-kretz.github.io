@@ -2,14 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 
 const title = 'Marco Kretz';
-const role = 'Web Developer';
-const location = 'Germany';
-const experience = 'nearly 20 years';
+const role = 'Webentwickler';
+const location = 'Deutschland';
+const experience = '20 Jahren';
 
 const skills = [
 	{
 		category: 'Backend',
-		items: ['PHP', 'Symfony', 'WordPress', 'Shopware', 'API Development'],
+		items: ['PHP', 'Symfony', 'WordPress', 'Shopware', 'API-Entwicklung'],
 	},
 	{
 		category: 'Frontend',
@@ -34,7 +34,7 @@ const socialLinks = [
 	},
 	{
 		name: 'Email',
-		href: 'mailto:marco@codebites.de',
+		href: 'mailto:hallo@marco-kretz.de',
 		icon: '📧',
 	},
 ];
@@ -77,11 +77,11 @@ const socialLinks = [
 						<div class="font-mono text-sm space-y-1">
 							<div class="text-terminal-accent font-bold mb-2">marco@web</div>
 							<div class="border-t border-terminal-border mb-2"></div>
-							<div><span class="text-terminal-accent font-semibold">Role:</span> <span class="text-terminal-text">Web Developer</span></div>
-							<div><span class="text-terminal-accent font-semibold">Location:</span> <span class="text-terminal-text">{location}</span></div>
+							<div><span class="text-terminal-accent font-semibold">Rolle:</span> <span class="text-terminal-text">Webentwickler</span></div>
+							<div><span class="text-terminal-accent font-semibold">Standort:</span> <span class="text-terminal-text">{location}</span></div>
 							<div><span class="text-terminal-accent font-semibold">Kernel:</span> <span class="text-terminal-text">cologne-12.89-de</span></div>
-							<div><span class="text-terminal-accent font-semibold">Experience:</span> <span class="text-terminal-text">{experience}</span></div>
-							<div><span class="text-terminal-accent font-semibold">Core skills:</span> <span class="text-terminal-text">PHP (Symfony, WordPress), JS (Vue.js, Svelte)</span></div>
+							<div><span class="text-terminal-accent font-semibold">Erfahrung:</span> <span class="text-terminal-text">{experience}</span></div>
+							<div><span class="text-terminal-accent font-semibold">Kernkompetenzen:</span> <span class="text-terminal-text">PHP (Symfony, WordPress), JS (Vue.js, Svelte)</span></div>
 							<div><span class="text-terminal-accent font-semibold">Shell:</span> <span class="text-terminal-text">zsh</span></div>
 							<div><span class="text-terminal-accent font-semibold">Editor:</span> <span class="text-terminal-text">VS Code, Neovim</span></div>
 							<div><span class="text-terminal-accent font-semibold">Terminal:</span> <span class="text-terminal-text">Ghostty</span></div>
@@ -111,7 +111,7 @@ const socialLinks = [
 					<span class="text-terminal-accent">/&gt;</span>
 				</h1>
 				<p class="text-terminal-textDim text-lg">
-					{role} from {location} with {experience} of experience
+					{role} aus {location} mit {experience} Erfahrung
 				</p>
 			</div>
 
@@ -134,19 +134,20 @@ const socialLinks = [
 		<!-- About Section -->
 		<section class="mb-12">
 			<h2 class="section-title">
-				<span class="text-white">About</span>
+				<span class="text-white">Über mich</span>
 			</h2>
 			<div class="card">
 				<p class="text-terminal-text leading-relaxed mb-4">
-					Hi! I'm a web developer based in Germany with nearly two decades of experience
-					building robust web applications. I specialize in PHP development, particularly
-					with Symfony, WordPress, and Shopware.
+					Moin! 👋<br>
+					Mein Name ist Marco und ich bin Webentwickler aus Deutschland mit fast 20 Jahren Erfahrung
+					in der Entwicklung robuster Webanwendungen. Ich bin spezialisiert auf PHP-Entwicklung,
+					insbesondere mit Symfony, WordPress und Shopware.
 				</p>
 				<p class="text-terminal-text leading-relaxed">
-					My expertise spans both backend and frontend development, with a strong focus on
-					clean code, API development, and creating seamless user experiences. Whether
-					building custom applications or extending existing systems, I bring a deep
-					understanding of web technologies and best practices.
+					Meine Expertise umfasst sowohl Backend- als auch Frontend-Entwicklung mit einem starken Fokus auf
+					Clean Code, API-Entwicklung und die Erstellung nahtloser Benutzererlebnisse. Ob
+					Custom-Applications oder die Erweiterung bestehender Systeme – ich bringe ein tiefes
+					Verständnis für Webtechnologien und Best Practices ein.
 				</p>
 			</div>
 		</section>
@@ -154,7 +155,7 @@ const socialLinks = [
 		<!-- Skills Section -->
 		<section class="mb-12">
 			<h2 class="section-title">
-				<span class="text-white">Skills</span>
+				<span class="text-white">Fähigkeiten</span>
 			</h2>
 			<div class="grid md:grid-cols-3 gap-4">
 				{skills.map((skillCategory) => (
@@ -179,17 +180,17 @@ const socialLinks = [
 		<!-- Blog Preview Section -->
 		<section class="mb-12">
 			<h2 class="section-title">
-				<span class="text-white">Latest from the Blog</span>
+				<span class="text-white">Neueste Beiträge</span>
 			</h2>
 			<div class="card">
 				<p class="text-terminal-text mb-4">
-					Check out my latest thoughts and tutorials on web development and other topics.
+					Schau dir meine aktuellen Gedanken und Meinungen zu Webentwicklung, KI & mehran.
 				</p>
 				<a
 					href="/blog"
 					class="inline-flex items-center gap-2 text-terminal-accent font-mono hover:underline"
 				>
-					<span>View all posts</span>
+					<span>Alle Beiträge anzeigen</span>
 					<span class="text-terminal-accent">→</span>
 				</a>
 			</div>
@@ -198,22 +199,22 @@ const socialLinks = [
 		<!-- Contact Section -->
 		<section class="mb-8">
 			<h2 class="section-title">
-				<span class="text-white">Contact</span>
+				<span class="text-white">Kontakt</span>
 			</h2>
 			<div class="terminal-window">
 				<div class="terminal-body">
 					<div class="flex items-center gap-2 mb-4">
 						<span class="prompt-symbol">$</span>
-						<span class="text-terminal-textDim">echo "Let's work together"</span>
+						<span class="text-terminal-textDim">echo "Lass uns zusammenarbeiten"</span>
 					</div>
 					<p class="mb-4 text-terminal-text">
-						I'm always interested in hearing about new projects and opportunities.
+						Ich bin immer interessiert an neuen Projekten und Möglichkeiten.
 					</p>
 					<a
-						href="mailto:hello@marco-kretz.de"
+						href="mailto:hallo@marco-kretz.de"
 						class="inline-flex items-center gap-2 text-terminal-accent font-mono hover:underline"
 					>
-						<span>hello@marco-kretz.de</span>
+						<span>hallo@marco-kretz.de</span>
 					</a>
 				</div>
 			</div>
@@ -222,7 +223,7 @@ const socialLinks = [
 		<!-- Footer -->
 		<footer class="text-center text-terminal-textDim text-sm py-8 border-t border-terminal-border">
 			<p class="font-mono">
-				© {new Date().getFullYear()} Marco Kretz. Built with Astro & Tailwind.
+				© {new Date().getFullYear()} Marco Kretz. Erstellt mit Astro & Tailwind.
 			</p>
 		</footer>
 	</main>
