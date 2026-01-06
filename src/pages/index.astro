@@ -69,26 +69,26 @@ const socialLinks = [
 					</div>
 					<div class="grid md:grid-cols-[auto_1fr] gap-x-8 gap-y-0">
 						<!-- ASCII Art -->
-						<div class="font-mono text-terminal-accent leading-tight text-sm hidden md:block">
-							<pre class="whitespace-pre">                   -`
-                  .o+`
-                 `ooo/
-                `+oooo:
-               `+oooooo:
-               -+oooooo+:
-             `/:-:++oooo+:
-            `/++++/+++++++:
-           `/++++++++++++++:
-          `/+++ooooooooooooo/`
-         ./ooosssso++osssssso+`
-        .oossssso-````/ossssss+`
-       -osssssso.      :ssssssso.
-      :osssssss/        osssso+++.
-     /ossssssss/        +ssssooo/-
-   `/ossssso+/:-        -:/+osssso+-
-  `+sso+:-`                 `.-/+oso:
- `++:.                           `-/+/
- .`                                 `</pre>
+						<div class="font-mono text-terminal-accent leading-tight text-sm hidden md:block perspective-container">
+							<pre id="archlogo" class="whitespace-pre rotate-y">                   -`
+                    .o+`
+                   `ooo/
+                  `+oooo:
+                 `+oooooo:
+                 -+oooooo+:
+               `/:-:++oooo+:
+              `/++++/+++++++:
+             `/++++++++++++++:
+            `/+++ooooooooooooo/`
+           ./ooosssso++osssssso+`
+          .oossssso-````/ossssss+`
+         -osssssso.      :ssssssso.
+        :osssssss/        osssso+++.
+       /ossssssss/        +ssssooo/-
+     `/ossssso+/:-        -:/+osssso+-
+    `+sso+:-`                 `.-/+oso:
+   `++:.                           `-/+/
+   .`                                 `</pre>
 						</div>
 						<!-- Info -->
 						<div class="font-mono text-sm space-y-1">
@@ -258,5 +258,23 @@ const socialLinks = [
 <style>
 	h1 {
 		text-shadow: 0 0 20px rgba(210, 153, 34, 0.2);
+	}
+
+	.perspective-container {
+		perspective: 1000px;
+	}
+
+		.rotate-y {
+			animation: rotate-y 8s linear infinite;
+		transform-style: preserve-3d;
+	}
+
+	@keyframes rotate-y {
+		from {
+			transform: rotateY(0deg);
+		}
+		to {
+			transform: rotateY(360deg);
+		}
 	}
 </style>
