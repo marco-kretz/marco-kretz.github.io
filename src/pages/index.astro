@@ -1,6 +1,6 @@
 ---
-import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
 
 const title = 'Marco Kretz';
 const role = 'Webentwickler';
@@ -50,6 +50,17 @@ const socialLinks = [
 	<div class="max-w-4xl mx-auto px-4 py-8 md:py-16">
 		<!-- Hero Section -->
 		<section class="mb-12">
+			<div class="text-center mb-8">
+				<h1 class="text-4xl md:text-5xl font-bold font-mono mb-2">
+					<span class="text-terminal-accent">&lt;</span>
+					{title}
+					<span class="text-terminal-accent">/&gt;</span>
+				</h1>
+				<p class="text-terminal-textDim text-lg">
+					{role} aus {location} mit {experience}n Erfahrung
+				</p>
+			</div>
+
 			<div class="terminal-window mb-8">
 				<div class="terminal-body">
 					<div class="flex items-center gap-2 mb-4">
@@ -108,17 +119,6 @@ const socialLinks = [
 						<span class="animate-cursor bg-terminal-accent w-2 h-5"></span>
 					</div>
 				</div>
-			</div>
-
-			<div class="text-center mb-8">
-				<h1 class="text-4xl md:text-5xl font-bold font-mono mb-2">
-					<span class="text-terminal-accent">&lt;</span>
-					{title}
-					<span class="text-terminal-accent">/&gt;</span>
-				</h1>
-				<p class="text-terminal-textDim text-lg">
-					{role} aus {location} mit {experience}n Erfahrung
-				</p>
 			</div>
 
 			<!-- Social Links -->
