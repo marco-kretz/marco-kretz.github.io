@@ -146,23 +146,3 @@ pre.astro-code > code {
 .code-block-wrapper:hover .code-copy-button {
 	opacity: 1 !important;
 }
-
-/* Terminal Glow Effect - Professional and Accessible */
-.terminal-glow {
-	position: relative;
-	display: inline-block;
-	transition: text-shadow 200ms ease;
-}
-
-.terminal-glow:hover {
-	text-shadow: 0 0 8px rgba(210, 153, 34, 0.4), 0 0 16px rgba(210, 153, 34, 0.2);
-}
-
-/* Respect prefers-reduced-motion for all animations */
-@media (prefers-reduced-motion: reduce) {
-	.terminal-glow,
-	.terminal-glow:hover {
-		text-shadow: none;
-		transition: none;
-	}
-}
