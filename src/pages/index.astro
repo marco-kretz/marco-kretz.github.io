@@ -1,10 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
 
 const title = 'Marco Kretz';
 const role = 'Webentwickler';
 const location = 'Deutschland';
 const experience = '20 Jahre';
+
+const allPosts = await getCollection('blog');
+const recentPosts = allPosts
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 3);
 
 const skills = [
 	{
@@ -41,7 +47,7 @@ const socialLinks = [
 ---
 
 <Layout>
-	<main class="max-w-4xl mx-auto px-4 py-8 md:py-16">
+	<div class="max-w-4xl mx-auto px-4 py-8 md:py-16">
 		<!-- Hero Section -->
 		<section class="mb-12">
 			<div class="terminal-window mb-8">
@@ -182,22 +188,49 @@ const socialLinks = [
 			<h2 class="section-title">
 				<span class="text-white">Neueste Beiträge</span>
 			</h2>
-			<div class="card">
-				<p class="text-terminal-text mb-4">
-					Schau dir meine aktuellen Gedanken und Meinungen zu Webentwicklung, KI & mehr an.
-				</p>
-				<a
-					href="/blog"
-					class="inline-flex items-center gap-2 text-terminal-accent font-mono hover:underline"
-				>
-					<span>Alle Beiträge anzeigen</span>
-					<span class="text-terminal-accent">→</span>
-				</a>
+			<div class="space-y-4">
+				{recentPosts.length > 0 ? (
+					recentPosts.map((post) => (
+						<article class="card hover:border-terminal-accent transition-colors">
+							<a href={`/blog/${post.slug}/`} class="block group">
+								<div class="flex flex-col gap-2">
+									<h3 class="text-lg font-semibold font-mono text-terminal-text group-hover:text-terminal-accent transition-colors">
+										{post.data.title}
+									</h3>
+									<div class="text-terminal-textDim text-sm flex items-center gap-4">
+										<time datetime={post.data.pubDate.toISOString()}>
+											{post.data.pubDate.toLocaleDateString('de-DE', {
+												year: 'numeric',
+												month: 'long',
+												day: 'numeric',
+											})}
+										</time>
+										{post.data.readTime && <span>· {post.data.readTime} Lesezeit</span>}
+									</div>
+									{post.data.description && (
+										<p class="text-terminal-text text-sm mt-1">{post.data.description}</p>
+									)}
+								</div>
+							</a>
+						</article>
+					))
+				) : (
+					<div class="card">
+						<p class="text-terminal-textDim">Noch keine Beiträge vorhanden.</p>
+					</div>
+				)}
 			</div>
+			<a
+				href="/blog"
+				class="inline-flex items-center gap-2 text-terminal-accent font-mono hover:underline mt-4"
+			>
+				<span>Alle Beiträge anzeigen</span>
+				<span class="text-terminal-accent">→</span>
+			</a>
 		</section>
 
 		<!-- Contact Section -->
-		<section class="mb-8">
+		<section>
 			<h2 class="section-title">
 				<span class="text-white">Kontakt</span>
 			</h2>
@@ -219,19 +252,7 @@ const socialLinks = [
 				</div>
 			</div>
 		</section>
-
-		<!-- Footer -->
-		<footer class="text-center text-terminal-textDim text-sm py-8 border-t border-terminal-border">
-			<p class="font-mono mb-2">
-				© {new Date().getFullYear()} Marco Kretz. Erstellt mit Astro & Tailwind.
-			</p>
-			<div class="flex justify-center gap-4 font-mono">
-				<a href="/impressum" class="hover:text-terminal-accent transition-colors">Impressum</a>
-				<span class="text-terminal-border">|</span>
-				<a href="/datenschutz" class="hover:text-terminal-accent transition-colors">Datenschutz</a>
-			</div>
-		</footer>
-	</main>
+	</div>
 </Layout>
 
 <style>

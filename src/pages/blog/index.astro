@@ -9,14 +9,7 @@ const posts = allPosts
 ---
 
 <Layout title="Blog - Marco Kretz">
-	<main class="max-w-4xl mx-auto px-4 py-8 md:py-16">
-		<nav class="mb-8">
-			<a href="/" class="text-terminal-accent font-mono hover:underline flex items-center gap-2">
-				<span>←</span>
-				<span>Zurück zur Startseite</span>
-			</a>
-		</nav>
-
+	<div class="max-w-4xl mx-auto px-4 py-8 md:py-16">
 		<header class="mb-12">
 			<h1 class="text-4xl md:text-5xl font-bold font-mono mb-4">
 				<span class="text-terminal-accent">&lt;</span>
@@ -65,16 +58,5 @@ const posts = allPosts
 				</article>
 			))}
 		</div>
-
-		<footer class="text-center text-terminal-textDim text-sm py-8 mt-12 border-t border-terminal-border">
-			<p class="font-mono mb-2">
-				© {new Date().getFullYear()} Marco Kretz
-			</p>
-			<div class="flex justify-center gap-4 font-mono">
-				<a href="/impressum" class="hover:text-terminal-accent transition-colors">Impressum</a>
-				<span class="text-terminal-border">|</span>
-				<a href="/datenschutz" class="hover:text-terminal-accent transition-colors">Datenschutz</a>
-			</div>
-		</footer>
-	</main>
+	</div>
 </Layout>
