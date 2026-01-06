@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
 
 const title = 'Marco Kretz';
 const role = 'Webentwickler';
@@ -31,17 +32,17 @@ const socialLinks = [
 	{
 		name: 'GitHub',
 		href: 'https://github.com/marco-kretz',
-		icon: '📦',
+		icon: 'lucide:github',
 	},
 	{
 		name: 'codebites (Meine Firma)',
 		href: 'https://codebites.de/',
-		icon: '💼',
+		icon: 'lucide:briefcase',
 	},
 	{
 		name: 'Email',
 		href: 'mailto:hallo@marco-kretz.de',
-		icon: '📧',
+		icon: 'lucide:mail',
 	},
 ];
 ---
@@ -121,20 +122,20 @@ const socialLinks = [
 				</div>
 			</div>
 
-			<!-- Social Links -->
-			<div class="flex flex-wrap justify-center gap-4 mb-8">
-				{socialLinks.map((link) => (
-					<a
-						href={link.href}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="flex items-center gap-2 px-6 py-3 bg-[#161b22] border border-terminal-border rounded-lg hover:border-terminal-accent hover:text-terminal-accent transition-all duration-200 font-mono"
-					>
-						<span class="text-xl">{link.icon}</span>
-						<span>{link.name}</span>
-					</a>
-				))}
-			</div>
+		<!-- Social Links -->
+		<div class="flex flex-wrap justify-center gap-4 mb-8">
+			{socialLinks.map((link) => (
+				<a
+					href={link.href}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="flex items-center gap-2 px-6 py-3 bg-[#161b22] border border-terminal-border rounded-lg hover:border-terminal-accent hover:text-terminal-accent transition-all duration-200 font-mono"
+				>
+					<Icon name={link.icon} class="w-5 h-5 text-terminal-accent" />
+					<span>{link.name}</span>
+				</a>
+			))}
+		</div>
 		</section>
 
 		<!-- About Section -->

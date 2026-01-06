@@ -12,7 +12,9 @@
     "@astrojs/check": "^0.9.6",
     "@fontsource/ibm-plex-sans": "^5.2.8",
     "@fontsource/jetbrains-mono": "^5.2.8",
+    "@iconify-json/lucide": "^1.2.82",
     "astro": "^5.16.6",
+    "astro-icon": "^1.1.5",
     "rehype": "^13.0.2",
     "typescript": "^5.9.3"
   },
