@@ -107,6 +107,12 @@ export default {
               fontSize: '0.875rem',
               fontWeight: '400',
             },
+            'code::before': {
+              content: 'none',
+            },
+            'code::after': {
+              content: 'none',
+            },
             pre: {
               backgroundColor: '#0d1117',
               color: '#c9d1d9',
@@ -156,20 +162,45 @@ export default {
             },
             table: {
               fontSize: '0.875rem',
+              borderCollapse: 'separate',
+              borderSpacing: '0',
+              border: '1px solid #30363d',
+              borderRadius: '0.5rem',
+              overflow: 'hidden',
+              backgroundColor: '#161b22',
+              marginTop: '2rem',
+              marginBottom: '2rem',
             },
             thead: {
               color: '#ffffff',
+              backgroundColor: '#0d1117',
               borderBottomColor: '#30363d',
             },
             th: {
               fontWeight: '600',
               fontFamily: "'JetBrains Mono', ui-monospace, Cascadia Code, Source Code Pro, Menlo, Consolas, Monaco, monospace",
+              padding: '0.75rem 1rem',
+              textAlign: 'left',
+              borderRight: '1px solid #30363d',
+              '&:last-child': {
+                borderRight: 'none',
+              },
             },
             tbody: {
               color: '#c9d1d9',
             },
+            td: {
+              padding: '0.75rem 1rem',
+              borderRight: '1px solid #30363d',
+              '&:last-child': {
+                borderRight: 'none',
+              },
+            },
             tr: {
               borderBottomColor: '#30363d',
+            },
+            'tbody tr:last-child': {
+              borderBottom: 'none',
             },
           },
         },
