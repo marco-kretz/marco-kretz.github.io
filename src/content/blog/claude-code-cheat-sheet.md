@@ -190,7 +190,7 @@ src/
 └── pages/ # Routes
 ```
 
-**Coding-Konventionen:**
+**Coding-Conventions:**
 
 ```markdown
 ## Coding Conventions
@@ -223,9 +223,9 @@ docs(scope): Documentation update
 
 ### Warum das so hilfreich ist
 
-Ohne CLAUDE.md muss man bei jedem neuen Chat erklären: "Wir nutzen Astro, bitte keine React-Komponenten, achte auf die Farben, halte dich an unsere Commit-Conventions..."
+**Ohne CLAUDE.md** muss man bei jedem neuen Chat erklären: "Wir nutzen Astro, bitte keine React-Komponenten, achte auf die Farben, halte dich an unsere Commit-Conventions..."
 
-Mit CLAUDE.md kennt Claude das alles bereits. Das spart Zeit und führt zu konsistenteren Ergebnissen. Besonders bei längeren Projekten oder im Team ist das Gold wert.
+**Mit CLAUDE.md** kennt Claude das alles bereits. Das spart Zeit und führt zu konsistenteren Ergebnissen. Besonders bei längeren Projekten oder im Team ist das Gold wert.
 
 ### Tipp: AGENTS.md für Modularität
 
