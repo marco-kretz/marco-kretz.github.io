@@ -128,24 +128,29 @@ const navLinks = [
 		</button>
 
 		<script>
-			const backToTopButton = document.getElementById('back-to-top');
+			function initBackToTop() {
+				const backToTopButton = document.getElementById('back-to-top');
+				if (!backToTopButton) return;
 
-			function toggleBackToTop() {
-				if (window.scrollY > 300) {
-					backToTopButton?.classList.remove('opacity-0', 'invisible', 'translate-y-4');
-					backToTopButton?.classList.add('opacity-100', 'visible', 'translate-y-0');
-				} else {
-					backToTopButton?.classList.add('opacity-0', 'invisible', 'translate-y-4');
-					backToTopButton?.classList.remove('opacity-100', 'visible', 'translate-y-0');
+				function toggleBackToTop() {
+					if (window.scrollY > 300) {
+						backToTopButton.classList.remove('opacity-0', 'invisible', 'translate-y-4');
+						backToTopButton.classList.add('opacity-100', 'visible', 'translate-y-0');
+					} else {
+						backToTopButton.classList.add('opacity-0', 'invisible', 'translate-y-4');
+						backToTopButton.classList.remove('opacity-100', 'visible', 'translate-y-0');
+					}
 				}
+
+				window.addEventListener('scroll', toggleBackToTop, { passive: true });
+				toggleBackToTop();
+
+				backToTopButton.addEventListener('click', () => {
+					window.scrollTo({ top: 0, behavior: 'smooth' });
+				});
 			}
 
-			window.addEventListener('scroll', toggleBackToTop, { passive: true });
-			toggleBackToTop();
-
-			backToTopButton?.addEventListener('click', () => {
-				window.scrollTo({ top: 0, behavior: 'smooth' });
-			});
+			document.addEventListener('astro:page-load', initBackToTop);
 		</script>
 	</body>
 </html>
