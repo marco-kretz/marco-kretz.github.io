@@ -108,7 +108,7 @@ Die Status-Line (das, was unter der Eingabezeile steht) ist bei Claude Code von 
 
 Und das Ergebnis sieht dann so aus. Einfacher geht's nicht!
 
-![Claude Code Status-Line](/images/cc-statusline-git.png)
+![Claude Code Status-Line](/images/cc-statusline-git.webp)
 
 Hier sind natürlich der Kreativität keine Grenzen gesetzt. Man kann mit Farben arbeiten, mit externen Programmen und vieles mehr. Es gibt zahlreiche GitHub-Repos, die vollständig angepasste Status-Lines vorkonfigurieren.
 
