@@ -116,6 +116,8 @@ Hier sind natürlich der Kreativität keine Grenzen gesetzt. Man kann mit Farben
 
 Eine der mächtigsten Funktionen von Claude Code, die viele übersehen: Die **CLAUDE.md** Datei im Projekt-Root. Diese Datei wird automatisch von Claude Code eingelesen und dient als zentrale Wissensbasis über dein Projekt. Sieh es als eine "README für Claude".
 
+Neben der projekt-spezifischen CLAUDE.md gibt es auch eine **globale Version** unter `~/.claude/CLAUDE.md`, die für alle Projekte gilt. Perfekt für persönliche Präferenzen wie bevorzugte Sprache, Coding-Style oder allgemeine Anweisungen.
+
 ### Wofür ist die CLAUDE.md?
 
 Die CLAUDE.md enthält alle projekt-spezifischen Informationen, die Claude kennen sollte:
@@ -251,12 +253,12 @@ Wie bereits erwähnt, lassen sich in Claude Code eigene Commands definieren. Was
 
 ### Slash Commands vs. Skills
 
-| Aspekt            | Slash Commands                  | Agent Skills                    |
-| ----------------- | ------------------------------- | ------------------------------- |
-| **Aufruf**        | Explizit via `/command`         | Automatisch durch Claude        |
-| **Komplexität**   | Einfache Prompts                | Komplexe Workflows              |
-| **Dateistruktur** | Eine `.md`-Datei                | Ordner mit `SKILL.md` + Dateien |
-| **Verwendung**    | Wiederkehrende Standard-Prompts | Komplexe Multi-Step-Workflows   |
+| Aspekt            | Slash Commands                  | Agent Skills                        |
+| ----------------- | ------------------------------- | ----------------------------------- |
+| **Aufruf**        | Explizit via `/command`         | Claude erkennt und nutzt bei Bedarf |
+| **Komplexität**   | Einfache Prompts                | Komplexe Workflows                  |
+| **Dateistruktur** | Eine `.md`-Datei                | Ordner mit `SKILL.md` + Dateien     |
+| **Verwendung**    | Wiederkehrende Standard-Prompts | Komplexe Multi-Step-Workflows       |
 
 **Slash Commands** sind im Grunde gespeicherte Prompts, die man immer wieder verwenden möchte. Man ruft sie explizit auf, indem man `/command-name` tippt. Perfekt für wiederkehrende Aufgaben wie "Review meinen Code" oder "Schreibe einen Commit".
 
@@ -362,8 +364,8 @@ Für meinen Blog könnte ich einen Review-Skill erstellen, der automatisch aktiv
 ```yaml
 ---
 name: blog-review
-description: Review blog posts for quality and consistency. Use when reviewing blog content or improving blog posts.
-allowed-tools: Read, Grep
+description: "Review blog posts for quality and consistency. Use when reviewing blog content or improving blog posts."
+allowed-tools: [Read, Grep]
 ---
 
 # Blog Post Review
