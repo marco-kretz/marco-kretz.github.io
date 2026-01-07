@@ -1,0 +1,26 @@
+# Marco Kretz
+
+> Personal website and blog of Marco Kretz, a web developer from Germany with nearly 20 years of experience.
+
+## About
+
+Marco Kretz is a web developer specializing in PHP (Symfony, WordPress, Shopware), API development, and modern frontend technologies. Based in Germany, he focuses on building robust web applications with clean code practices. He is also an agentic coding enthusiast, actively exploring and writing about AI-assisted development tools like Claude Code and OpenCode.
+
+## Expertise
+
+- Backend: PHP, Symfony, WordPress, Shopware, API Development
+- Frontend: HTML, CSS, JavaScript, TailwindCSS, Vue.js
+- Tools: Git, Docker, Linux, Composer, npm
+
+## Links
+
+- Website: https://marco-kretz.de
+- Blog: https://marco-kretz.de/blog
+- GitHub: https://github.com/marco-kretz
+- Company: https://codebites.de
+- Contact: hallo@marco-kretz.de
+- Full LLM Context: https://marco-kretz.de/llms-full.txt
+
+## Optional
+
+- RSS Feed: https://marco-kretz.de/rss.xml

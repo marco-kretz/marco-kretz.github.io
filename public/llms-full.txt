@@ -1,0 +1,106 @@
+# Marco Kretz - Full Context for LLMs
+
+> Comprehensive information about Marco Kretz, a web developer from Germany with nearly 20 years of experience in building robust web applications.
+
+## About Marco Kretz
+
+Marco Kretz is a professional web developer based in Germany with nearly 20 years of experience in the software industry. He specializes in building robust, scalable web applications using modern technologies and best practices. His approach emphasizes clean code, API-first development, and creating seamless user experiences.
+
+### Professional Background
+
+- **Experience**: Nearly 20 years in web development
+- **Location**: Germany
+- **Company**: codebites (https://codebites.de)
+- **Focus Areas**: Custom web applications, CMS development, e-commerce solutions
+- **Approach**: Clean code practices, API-first development, user-centered design
+- **Interests**: Agentic coding enthusiast, actively exploring AI-assisted development workflows with tools like Claude Code and OpenCode
+
+## Technical Expertise
+
+### Backend Development
+- **PHP**: Primary language with deep expertise
+- **Symfony**: Enterprise-grade PHP framework for complex applications
+- **WordPress**: Custom themes, plugins, and enterprise deployments
+- **Shopware**: E-commerce platform development and customization
+- **API Development**: RESTful APIs, integration services
+
+### Frontend Development
+- **HTML/CSS**: Semantic markup, responsive design
+- **JavaScript**: Modern ES6+, DOM manipulation
+- **TailwindCSS**: Utility-first CSS framework
+- **Vue.js**: Progressive JavaScript framework
+- **Svelte**: Compiler-based frontend framework
+
+### DevOps & Tools
+- **Git**: Version control, branching strategies
+- **Docker**: Containerization for development and deployment
+- **Linux**: Server administration, shell scripting
+- **Composer**: PHP dependency management
+- **npm**: Node.js package management
+
+## Blog Content
+
+Marco writes about web development, AI-assisted coding tools, and software engineering best practices on his blog.
+
+### Blog Post: "Schluss mit Vendor Lock-in: Warum ich Cursor für OpenCode verlassen habe"
+
+**URL**: https://marco-kretz.de/blog/claude-code-vs-opencode/
+**Published**: 2026-01-01
+**Read Time**: 8 min
+**Tags**: Claude Code, OpenCode, Comparison, Coding, CLI
+
+**Summary**: This post compares AI-assisted coding tools, specifically Claude Code and OpenCode. Marco explains why he moved away from IDE-based AI tools like Cursor to CLI-based alternatives, citing vendor lock-in, system independence, cost efficiency, and flexibility as key factors.
+
+**Key Points**:
+- CLI tools offer more flexibility than IDE-integrated solutions
+- OpenCode uses MIT license (fully open source), Claude Code is proprietary
+- OpenCode supports multiple AI models (Claude, GPT, Gemini, etc.), while Claude Code focuses on Anthropic models
+- Plan-first workflow: Using Plan mode before Build mode for better control
+- Cost comparison: Claude Max subscription vs OpenCode Zen pay-as-you-go model
+- Model selection matters: Different models excel at different tasks
+
+### Blog Post: "Claude Code Cheat Sheet"
+
+**URL**: https://marco-kretz.de/blog/claude-code-cheat-sheet/
+**Published**: 2026-01-07
+**Read Time**: 12 min
+**Tags**: Claude Code, Cheat Sheet, Tipps, Shortcuts, CLI
+
+**Summary**: A comprehensive guide to using Claude Code effectively, covering keyboard shortcuts, commands, configuration, and advanced features like CLAUDE.md files and custom skills.
+
+**Key Topics Covered**:
+1. **Help Menu & Shortcuts**: Essential keyboard combinations (!, /, @, &)
+2. **Bash Mode**: Execute shell commands with `!` prefix
+3. **Commands**: Built-in commands like `/compact`, `/clear`
+4. **File Referencing**: Using `@` to reference files and folders
+5. **Background Tasks**: Running tasks with `&` prefix
+6. **Status Line Configuration**: Customizing the status line display
+7. **CLAUDE.md**: Project-specific AI context file for consistent behavior
+8. **Custom Commands**: Creating reusable slash commands
+9. **Agent Skills**: Complex workflows that Claude auto-detects
+
+**Important Concepts**:
+- CLAUDE.md serves as a "README for Claude" - defines project context
+- Global CLAUDE.md at `~/.claude/CLAUDE.md` for personal preferences
+- Slash Commands: Explicit user-triggered prompts
+- Agent Skills: Auto-detected complex workflows with SKILL.md
+
+## Contact Information
+
+- **Website**: https://marco-kretz.de
+- **Blog**: https://marco-kretz.de/blog
+- **Email**: hallo@marco-kretz.de
+- **GitHub**: https://github.com/marco-kretz
+- **Company**: https://codebites.de
+
+## Website Technology
+
+This website is built with:
+- **Framework**: Astro 5.x (Static Site Generator)
+- **Styling**: Tailwind CSS 3.x
+- **Design**: Terminal-inspired, modern, professional
+- **Deployment**: Static hosting
+
+## Language
+
+The website content is primarily in German. Marco works with international clients and is fluent in both German and English for technical communication.

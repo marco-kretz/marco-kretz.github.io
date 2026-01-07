@@ -48,6 +48,24 @@ const socialLinks = [
 ---
 
 <Layout>
+	<Fragment slot="head">
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "Person",
+			"name": "Marco Kretz",
+			"url": "https://marco-kretz.de",
+			"jobTitle": "Webentwickler",
+			"worksFor": {
+				"@type": "Organization",
+				"name": "codebites",
+				"url": "https://codebites.de"
+			},
+			"knowsAbout": ["PHP", "Symfony", "WordPress", "Shopware", "JavaScript", "Vue.js", "API-Entwicklung", "Backend-Entwicklung", "Frontend-Entwicklung"],
+			"sameAs": [
+				"https://github.com/marco-kretz"
+			]
+		})} />
+	</Fragment>
 	<div class="max-w-4xl mx-auto px-4 py-8 md:py-16">
 		<!-- Hero Section -->
 		<section class="mb-12">

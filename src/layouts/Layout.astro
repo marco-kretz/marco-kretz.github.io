@@ -53,6 +53,15 @@ const navLinks = [
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={image} />
 
+		<!-- Canonical URL -->
+		<link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+
+		<!-- RSS Feed -->
+		<link rel="alternate" type="application/rss+xml" title="Marco Kretz | Blog" href="/rss.xml" />
+
+		<!-- Additional head content -->
+		<slot name="head" />
+
 		<ViewTransitions />
 	</head>
 	<body>

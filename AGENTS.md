@@ -149,8 +149,11 @@ npx astro check      # Check TypeScript types
 2. Add frontmatter with title, description, pubDate
 3. Write content in Markdown
 4. Include code blocks with language specification
-5. Test locally: `npm run dev`
-6. Check build: `npm run build`
+5. Update `public/llms-full.txt` with a summary of the new blog post
+6. Test locally: `npm run dev`
+7. Check build: `npm run build`
+
+**Note**: The `public/llms.txt` file contains basic site info and rarely needs updates. The `public/llms-full.txt` file should be updated with summaries of new blog posts to help LLMs like ChatGPT and Gemini understand and cite your content.
 
 ### Updating Social Links
 Edit `src/pages/index.astro`:
