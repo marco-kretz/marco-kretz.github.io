@@ -23,39 +23,39 @@ const posts = allPosts
 
 		<div class="space-y-6">
 			{posts.map((post) => (
-				<article class="card hover:border-terminal-accent transition-colors">
-					<div class="flex flex-col gap-2">
-						<a href={`/blog/${post.slug}/`} class="group">
+				<a href={`/blog/${post.slug}/`} class="block group">
+					<article class="card hover:border-terminal-accent transition-colors">
+						<div class="flex flex-col gap-2">
 							<h2 class="text-xl font-semibold font-mono text-terminal-text group-hover:text-terminal-accent transition-colors">
 								{post.data.title}
 							</h2>
-						</a>
-						<div class="text-terminal-textDim text-sm flex items-center gap-4">
-							<time datetime={post.data.pubDate.toISOString()}>
-								{post.data.pubDate.toLocaleDateString('de-DE', {
-									year: 'numeric',
-									month: 'long',
-									day: 'numeric',
-								})}
-							</time>
-							{post.data.readTime && <span>· {post.data.readTime} Lesezeit</span>}
-						</div>
-						{post.data.description && (
-							<p class="text-terminal-text mt-2">{post.data.description}</p>
-						)}
-						{post.data.tags && post.data.tags.length > 0 && (
-							<div class="flex flex-wrap gap-2 mt-3">
-								{post.data.tags.map((tag) => (
-									<span
-										class="px-2 py-1 text-xs font-mono bg-[#161b22] border border-terminal-border rounded text-terminal-textDim"
-									>
-										#{tag}
-									</span>
-								))}
+							<div class="text-terminal-textDim text-sm flex items-center gap-4">
+								<time datetime={post.data.pubDate.toISOString()}>
+									{post.data.pubDate.toLocaleDateString('de-DE', {
+										year: 'numeric',
+										month: 'long',
+										day: 'numeric',
+									})}
+								</time>
+								{post.data.readTime && <span>· {post.data.readTime} Lesezeit</span>}
 							</div>
-						)}
-					</div>
-				</article>
+							{post.data.description && (
+								<p class="text-terminal-text mt-2">{post.data.description}</p>
+							)}
+							{post.data.tags && post.data.tags.length > 0 && (
+								<div class="flex flex-wrap gap-2 mt-3">
+									{post.data.tags.map((tag) => (
+										<span
+											class="px-2 py-1 text-xs font-mono bg-[#161b22] border border-terminal-border rounded text-terminal-textDim"
+										>
+											#{tag}
+										</span>
+									))}
+								</div>
+							)}
+						</div>
+					</article>
+				</a>
 			))}
 		</div>
 	</div>
