@@ -8,7 +8,7 @@ tags: ['Claude Code', 'Cheat Sheet', 'Tipps', 'Shortcuts', 'CLI']
 
 Ich habe in den letzten Tagen sowohl viel mit Claude Code als auch mit OpenCode gearbeitet. Beide haben Vor- und Nachteile. Vor allem bei Claude Code haben mir ein paar Sachen gefehlt, die bei OpenCode schöner gelöst waren. Daher hier einmal mein persönliches **Claude Code Cheat Sheet** mit allen wichtigen Tipps und Tricks.
 
-_Disclaimer: Ich schreibe hier für Beispiele häufiger deutsche Prompts oder Inhalte. Das kann man machen, jedoch ist es erwiesen, dass englische Prompts zu einer etwas besseren Qualität führen. Privat prompt ich fast ausschließlich auf Englisch._
+_Disclaimer: Ich schreibe hier für Beispiele häufiger deutsche Prompts oder Inhalte. Das kann man machen, jedoch ist es erwiesen, dass englische Prompts zu einer etwas besseren Qualität führen. Privat prompte ich fast ausschließlich auf Englisch._
 
 ## Das Hilfe-Menü
 
