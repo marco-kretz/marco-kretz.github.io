@@ -85,6 +85,30 @@ Marco writes about web development, AI-assisted coding tools, and software engin
 - Slash Commands: Explicit user-triggered prompts
 - Agent Skills: Auto-detected complex workflows with SKILL.md
 
+### Blog Post: "Whisperbin – Mein selbstgebauter Pastebin-Service"
+
+**URL**: https://marco-kretz.de/blog/whisperbin-sicheres-pastebin/
+**Published**: 2026-01-24
+**Read Time**: 5 min
+**Tags**: SvelteKit, Open Source, Security, Side Project
+
+**Summary**: Marco introduces Whisperbin, his self-built pastebin service focused on security and privacy. The service offers client-side AES-GCM encryption, configurable expiration times, and self-destructing one-time pastes.
+
+**Key Features**:
+- **Client-side AES-GCM Encryption**: All content is encrypted in the browser before reaching the server
+- **Optional Password Protection**: Additional layer of security with user-defined passwords
+- **Configurable TTL**: Expiration options of 1 hour, 6 hours, 24 hours, or 7 days
+- **One-Time Pastes**: Self-destructing pastes that delete after first view
+- **Syntax Highlighting**: Support for JavaScript, TypeScript, PHP, JSON, HTML, CSS, Bash, Markdown
+- **Confirmation Requirement**: Prevents accidental "burning" of one-time pastes by link previews
+
+**Tech Stack**:
+- Built entirely with SvelteKit (frontend and backend)
+- SQLite database with simple key-value structure
+- Encrypted blobs stored with metadata (expiration, view status)
+
+**Live URL**: https://bin.marco-kretz.de/
+
 ## Contact Information
 
 - **Website**: https://marco-kretz.de
