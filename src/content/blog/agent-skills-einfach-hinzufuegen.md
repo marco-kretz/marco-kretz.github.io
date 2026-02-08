@@ -6,7 +6,7 @@ readTime: '5 min'
 tags: ['Claude Code', 'OpenCode', 'Tipps', 'Codex', 'CLI', 'GitHub']
 ---
 
-<img src="/images/add-agent-skills.webp">
+<img src="/images/add-agent-skills.webp" alt="Agent Skills hinzufügen">
 
 Agent Skills gehören zu den mächtigsten Features von modernen Coding-Agenten wie Claude Code, OpenCode oder Codex. Sie erweitern die Fähigkeiten deines Agents um spezialisierte Workflows und Anweisungen, ohne dass du jedes Mal alles neu erklären musst.
 

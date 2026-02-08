@@ -1,14 +1,15 @@
----
-interface Props {
-	title?: string;
-	titleColor?: string;
-}
+<script lang="ts">
+	import type { Snippet } from 'svelte';
 
-const {
-	title = 'terminal',
-	titleColor = 'text-terminal-accent',
-} = Astro.props;
----
+	interface Props {
+		title?: string;
+		titleColor?: string;
+		children: Snippet;
+	}
+
+	const { title = 'terminal', titleColor = 'text-terminal-accent', children }: Props = $props();
+</script>
+
 <div class="terminal-window">
 	<div class="terminal-header">
 		<div class="terminal-dots">
@@ -16,11 +17,11 @@ const {
 			<div class="terminal-dot terminal-dot-yellow"></div>
 			<div class="terminal-dot terminal-dot-green"></div>
 		</div>
-		<div class={`ml-4 text-sm text-terminal-textDim font-mono flex-1`}>
+		<div class="ml-4 text-sm text-terminal-textDim font-mono flex-1">
 			<span class={titleColor}>{title}</span>
 		</div>
 	</div>
 	<div class="terminal-body">
-		<slot />
+		{@render children()}
 	</div>
 </div>

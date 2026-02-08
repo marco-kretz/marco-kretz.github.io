@@ -1,0 +1,12 @@
+import { getPosts } from '$lib/blog';
+import type { PageServerLoad } from './$types';
+
+export const load: PageServerLoad = async () => {
+	const posts = getPosts().slice(0, 3);
+	return {
+		recentPosts: posts.map((p) => ({
+			slug: p.slug,
+			...p.frontmatter
+		}))
+	};
+};
