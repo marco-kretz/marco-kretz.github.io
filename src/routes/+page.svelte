@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Seo from '$lib/components/Seo.svelte';
+	import InteractiveTerminal from '$lib/components/InteractiveTerminal.svelte';
 	import { Github, Briefcase, Mail } from 'lucide-svelte';
 
 	let { data } = $props();
@@ -93,96 +94,7 @@
 			</p>
 		</div>
 
-		<div class="terminal-window mb-8">
-			<div class="terminal-body">
-				<div class="flex items-center gap-2 mb-4">
-					<span class="prompt-symbol">$</span>
-					<span class="text-terminal-textDim">aboutfetch</span>
-				</div>
-				<div class="grid md:grid-cols-[auto_1fr] gap-x-8 gap-y-0">
-					<!-- ASCII Art -->
-					<div
-						class="font-mono text-terminal-accent leading-tight text-sm hidden md:block perspective-container"
-					>
-						<pre id="archlogo" class="whitespace-pre rotate-y"
-							>{`                   -\`
-                    .o+\`
-                   \`ooo/
-                  \`+oooo:
-                 \`+oooooo:
-                 -+oooooo+:
-               \`/:-:++oooo+:
-              \`/++++/+++++++:
-             \`/++++++++++++++:
-            \`/+++ooooooooooooo/\`
-           ./ooosssso++osssssso+\`
-          .oossssso-\`\`\`\`/ossssss+\`
-         -osssssso.      :ssssssso.
-        :osssssss/        osssso+++.
-       /ossssssss/        +ssssooo/-
-     \`/ossssso+/:-        -:/+osssso+-
-    \`+sso+:-\`                 \`.-/+oso:
-   \`++:.                           \`-/+/
-   .\`                                 \``}</pre>
-					</div>
-					<!-- Info -->
-					<div class="font-mono text-sm space-y-1">
-						<div class="text-terminal-accent font-bold mb-2">marco@web</div>
-						<div class="border-t border-terminal-border mb-2"></div>
-						<div>
-							<span class="text-terminal-accent font-semibold">Rolle:</span>
-							<span class="text-terminal-text">Webentwickler</span>
-						</div>
-						<div>
-							<span class="text-terminal-accent font-semibold">Standort:</span>
-							<span class="text-terminal-text">{location}</span>
-						</div>
-						<div>
-							<span class="text-terminal-accent font-semibold">Kernel:</span>
-							<span class="text-terminal-text">cologne-12.89-de</span>
-						</div>
-						<div>
-							<span class="text-terminal-accent font-semibold">Erfahrung:</span>
-							<span class="text-terminal-text">~20 Jahre</span>
-						</div>
-						<div>
-							<span class="text-terminal-accent font-semibold">Kernkompetenzen:</span>
-							<span class="text-terminal-text">PHP (Symfony, WordPress), JS (Vue.js, Svelte)</span>
-						</div>
-						<div>
-							<span class="text-terminal-accent font-semibold">Shell:</span>
-							<span class="text-terminal-text">zsh</span>
-						</div>
-						<div>
-							<span class="text-terminal-accent font-semibold">Editor:</span>
-							<span class="text-terminal-text">VS Code, Neovim</span>
-						</div>
-						<div>
-							<span class="text-terminal-accent font-semibold">Terminal:</span>
-							<span class="text-terminal-text">Ghostty</span>
-						</div>
-						<div>
-							<span class="text-terminal-accent font-semibold">AI-Tools:</span>
-							<span class="text-terminal-text">Claude Code, OpenCode</span>
-						</div>
-						<div class="mt-3 flex gap-2">
-							<span class="inline-block w-8 h-4 bg-[#0d1117]" title="black"></span>
-							<span class="inline-block w-8 h-4 bg-[#da3633]" title="red"></span>
-							<span class="inline-block w-8 h-4 bg-[#238636]" title="green"></span>
-							<span class="inline-block w-8 h-4 bg-[#d29922]" title="yellow"></span>
-							<span class="inline-block w-8 h-4 bg-[#58a6ff]" title="blue"></span>
-							<span class="inline-block w-8 h-4 bg-[#bc8cff]" title="magenta"></span>
-							<span class="inline-block w-8 h-4 bg-[#39c5cf]" title="cyan"></span>
-							<span class="inline-block w-8 h-4 bg-[#c9d1d9]" title="white"></span>
-						</div>
-					</div>
-				</div>
-				<div class="flex items-center gap-2 mt-4">
-					<span class="prompt-symbol">$</span>
-					<span class="animate-cursor bg-terminal-accent w-2 h-5"></span>
-				</div>
-			</div>
-		</div>
+		<InteractiveTerminal recentPosts={data.recentPosts} {skills} />
 
 		<!-- Social Links -->
 		<div class="flex flex-wrap justify-center gap-4 mb-8">
@@ -330,23 +242,5 @@
 <style>
 	.hero-title {
 		text-shadow: 0 0 20px rgba(210, 153, 34, 0.2);
-	}
-
-	.perspective-container {
-		perspective: 1000px;
-	}
-
-	.rotate-y {
-		animation: rotate-y 8s linear infinite;
-		transform-style: preserve-3d;
-	}
-
-	@keyframes rotate-y {
-		from {
-			transform: rotateY(0deg);
-		}
-		to {
-			transform: rotateY(360deg);
-		}
 	}
 </style>
