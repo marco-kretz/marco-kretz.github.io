@@ -17,8 +17,14 @@
 
 	type TerminalEntry = {
 		command: string;
-		type: 'aboutfetch' | 'help' | 'skills' | 'blog' | 'contact' | 'text';
+		type: 'aboutfetch' | 'help' | 'skills' | 'contact' | 'text';
 		data?: string;
+		note?: string;
+	};
+
+	type HelpSection = {
+		category: 'site' | 'blog' | 'contact' | 'meta';
+		commands: Array<{ name: string; description: string }>;
 	};
 
 	let history = $state<TerminalEntry[]>([{ command: 'aboutfetch', type: 'aboutfetch' }]);
@@ -27,80 +33,353 @@
 	let terminalEl = $state<HTMLDivElement | null>(null);
 	let commandHistory = $state<string[]>([]);
 	let historyIndex = $state(-1);
+	let tabSeed = $state('');
+	let tabCandidates = $state<string[]>([]);
+	let tabIndex = $state(0);
+
+	const commandAliases: Record<string, string> = {
+		about: 'aboutfetch',
+		stack: 'skills',
+		mail: 'contact',
+		'?': 'help',
+		ll: 'ls',
+		cls: 'clear'
+	};
+
+	const internalNavigation: Record<string, string> = {
+		blog: '/blog/',
+		impressum: '/impressum/',
+		datenschutz: '/datenschutz/',
+		rss: '/rss.xml',
+		sitemap: '/sitemap.xml',
+		home: '/'
+	};
+
+	const cdNavigation: Record<string, string> = {
+		blog: '/blog/',
+		impressum: '/impressum/',
+		datenschutz: '/datenschutz/',
+		'~': '/',
+		'/': '/',
+		'..': '/',
+		'.': '/',
+		home: '/',
+		'': '/'
+	};
+
+	const externalOpenTargets: Record<string, string> = {
+		github: 'https://github.com/marco-kretz',
+		codebites: 'https://codebites.de/',
+		email: 'mailto:hallo@marco-kretz.de'
+	};
+
+	const servicesOutput = `Leistungen:
+- Backend-Entwicklung (PHP, Symfony, WordPress, Shopware)
+- Frontend-Entwicklung (Svelte, Vue.js, Tailwind CSS)
+- API-Design und Integrationen
+- Technische Beratung und Code Reviews`;
+
+	const availabilityOutput = `Verfuegbarkeit:
+- Aktuell offen fuer neue Projekte
+- Startzeitpunkt nach Absprache
+- Kontakt: hallo@marco-kretz.de`;
+
+	const cvOutput = `CV:
+- Lebenslauf als PDF auf Anfrage
+- Schreib mir an hallo@marco-kretz.de`;
+
+	const helpSections: HelpSection[] = [
+		{
+			category: 'site',
+			commands: [
+				{ name: 'about | aboutfetch', description: 'profil anzeigen' },
+				{ name: 'stack | skills', description: 'tech stack anzeigen' },
+				{ name: 'services', description: 'angebotene leistungen' },
+				{ name: 'availability', description: 'aktuelle verfuegbarkeit' },
+				{ name: 'cv', description: 'hinweis zum lebenslauf' }
+			]
+		},
+		{
+			category: 'blog',
+			commands: [
+				{ name: 'blog', description: 'zur blog-uebersicht wechseln' },
+				{ name: 'blog <slug>', description: 'direkt zum beitrag wechseln' },
+				{ name: 'impressum | datenschutz', description: 'rechtliche seiten oeffnen' },
+				{ name: 'rss | sitemap', description: 'feeds und index oeffnen' }
+			]
+		},
+		{
+			category: 'contact',
+			commands: [
+				{ name: 'contact', description: 'kontaktblock anzeigen' },
+				{ name: 'open github|codebites|email', description: 'externe links oeffnen' }
+			]
+		},
+		{
+			category: 'meta',
+			commands: [
+				{ name: 'ls | cat <topic>', description: 'inhalte als dateisystem anzeigen' },
+				{ name: 'cd <dir>', description: 'interne navigation' },
+				{ name: 'whoami, pwd, date, echo', description: 'shell utilities' },
+				{ name: 'clear, Ctrl+L, exit', description: 'terminal steuerung' }
+			]
+		}
+	];
 
 	const commandNames = [
 		'aboutfetch',
+		'about',
+		'availability',
 		'blog',
 		'cat',
 		'cd',
 		'clear',
 		'contact',
+		'cv',
+		'datenschutz',
 		'date',
 		'echo',
 		'exit',
 		'help',
+		'impressum',
 		'ls',
+		'open',
 		'pwd',
+		'rss',
+		'services',
+		'sitemap',
 		'skills',
+		'stack',
 		'sudo',
 		'uname',
 		'whoami'
 	];
 
+	const autocompletePool = Array.from(new Set([...commandNames, ...Object.keys(commandAliases)]));
+	const suggestionPool = autocompletePool.filter((candidate) => candidate !== '?');
+
+	function resolveExactCommand(cmd: string): string {
+		return commandAliases[cmd] ?? cmd;
+	}
+
+	function resetTabCompletion() {
+		tabSeed = '';
+		tabCandidates = [];
+		tabIndex = 0;
+	}
+
+	function commandAcceptsArgs(cmd: string): boolean {
+		return ['blog', 'cd', 'open', 'cat', 'echo'].includes(cmd);
+	}
+
+	function getArgumentCandidates(cmd: string): string[] {
+		switch (cmd) {
+			case 'blog':
+				return recentPosts.map((post) => post.slug);
+			case 'cd':
+				return Object.keys(cdNavigation).filter((target) => target !== '');
+			case 'open':
+				return [...Object.keys(externalOpenTargets), ...Object.keys(internalNavigation)];
+			case 'cat':
+				return ['about', 'stack', 'skills', 'services', 'availability', 'cv', 'contact'];
+			default:
+				return [];
+		}
+	}
+
+	function getCompletions(input: string): string[] {
+		const value = input.trimStart().toLowerCase();
+		if (!value) return [];
+
+		const endsWithWhitespace = /\s$/.test(input);
+		const tokens = value.split(/\s+/);
+		const firstToken = tokens[0];
+
+		if (tokens.length === 1 && !endsWithWhitespace) {
+			const prefixMatches = autocompletePool.filter((name) => name.startsWith(firstToken));
+			const containsMatches = autocompletePool.filter(
+				(name) => !name.startsWith(firstToken) && name.includes(firstToken)
+			);
+			return [...prefixMatches, ...containsMatches];
+		}
+
+		const canonical = resolveExactCommand(firstToken);
+		const argCandidates = getArgumentCandidates(canonical);
+		if (argCandidates.length === 0) return [];
+
+		const partialArg = endsWithWhitespace ? '' : tokens.slice(1).join(' ');
+		return argCandidates
+			.filter((candidate) => candidate.startsWith(partialArg))
+			.map((candidate) => `${firstToken} ${candidate}`.trim());
+	}
+
+	function levenshteinDistance(a: string, b: string): number {
+		if (a === b) return 0;
+		if (!a.length) return b.length;
+		if (!b.length) return a.length;
+
+		const matrix = Array.from({ length: a.length + 1 }, (_, row) =>
+			Array.from({ length: b.length + 1 }, (_, col) => {
+				if (row === 0) return col;
+				if (col === 0) return row;
+				return 0;
+			})
+		);
+
+		for (let i = 1; i <= a.length; i++) {
+			for (let j = 1; j <= b.length; j++) {
+				const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+				matrix[i][j] = Math.min(
+					matrix[i - 1][j] + 1,
+					matrix[i][j - 1] + 1,
+					matrix[i - 1][j - 1] + cost
+				);
+			}
+		}
+
+		return matrix[a.length][b.length];
+	}
+
+	function getCommandSuggestions(input: string, limit = 3): string[] {
+		return suggestionPool
+			.map((candidate) => ({
+				candidate,
+				distance: levenshteinDistance(input, candidate)
+			}))
+			.sort((a, b) => a.distance - b.distance || a.candidate.localeCompare(b.candidate))
+			.slice(0, limit)
+			.map((item) => item.candidate);
+	}
+
+	function findFuzzyMatch(input: string): string | null {
+		const [best] = suggestionPool
+			.map((candidate) => ({
+				candidate,
+				distance: levenshteinDistance(input, candidate)
+			}))
+			.sort((a, b) => a.distance - b.distance || a.candidate.localeCompare(b.candidate));
+
+		if (!best) return null;
+		const maxDistance = Math.max(1, Math.floor(input.length / 3) + 1);
+		return best.distance <= maxDistance ? best.candidate : null;
+	}
+
+	function resolveBlogSlug(input: string): string {
+		const normalized = input.trim().toLowerCase();
+		if (!normalized) return '';
+
+		const slugMatch = recentPosts.find((post) => post.slug.toLowerCase() === normalized);
+		if (slugMatch) return slugMatch.slug;
+
+		const titleMatch = recentPosts.find((post) => post.title.toLowerCase() === normalized);
+		if (titleMatch) return titleMatch.slug;
+
+		const slugLike = normalized
+			.replace(/\s+/g, '-')
+			.replace(/[^a-z0-9-]/g, '-')
+			.replace(/-+/g, '-')
+			.replace(/^-|-$/g, '');
+
+		const partialMatch = recentPosts.find((post) => post.slug.toLowerCase().startsWith(slugLike));
+		return partialMatch?.slug ?? slugLike;
+	}
+
+	function navigateInternal(path: string) {
+		void goto(path);
+	}
+
+	function openExternal(targetUrl: string) {
+		window.open(targetUrl, '_blank', 'noopener,noreferrer');
+	}
+
+	function textEntry(command: string, data: string, note?: string): TerminalEntry {
+		return { command, type: 'text', data, note };
+	}
+
 	function executeCommand(input: string): TerminalEntry | null {
 		const trimmed = input.trim();
 		if (!trimmed) return null;
 
-		const [cmd, ...rest] = trimmed.split(/\s+/);
-		const args = rest.join(' ');
+		const [rawCmd = '', ...rest] = trimmed.split(/\s+/);
+		const originalCmd = rawCmd.toLowerCase();
+		const args = rest.join(' ').trim();
+		let cmd = resolveExactCommand(originalCmd);
+		let note: string | undefined;
+
+		if (!autocompletePool.includes(originalCmd)) {
+			const fuzzyMatch = findFuzzyMatch(originalCmd);
+			if (fuzzyMatch) {
+				cmd = resolveExactCommand(fuzzyMatch);
+				note = `auto-corrected '${originalCmd}' -> '${fuzzyMatch}'`;
+			}
+		}
 
 		switch (cmd) {
 			case 'help':
-				return { command: trimmed, type: 'help' };
+				return { command: trimmed, type: 'help', note };
 			case 'aboutfetch':
-				return { command: trimmed, type: 'aboutfetch' };
+				return { command: trimmed, type: 'aboutfetch', note };
 			case 'skills':
-				return { command: trimmed, type: 'skills' };
-			case 'blog':
-				return { command: trimmed, type: 'blog' };
+				return { command: trimmed, type: 'skills', note };
 			case 'contact':
-				return { command: trimmed, type: 'contact' };
-			case 'whoami':
-				return { command: trimmed, type: 'text', data: 'marco@web' };
-			case 'ls':
-				return {
-					command: trimmed,
-					type: 'text',
-					data: 'about/  blog/  skills/  contact/  impressum/  datenschutz/'
-				};
-			case 'cd': {
-				const target = args.replace(/\/$/, '');
-				const routes: Record<string, string> = {
-					blog: '/blog/',
-					impressum: '/impressum/',
-					datenschutz: '/datenschutz/',
-					'~': '/',
-					'': '/'
-				};
-				if (target in routes) {
-					goto(routes[target]);
-					return { command: trimmed, type: 'text', data: '' };
+				return { command: trimmed, type: 'contact', note };
+			case 'services':
+				return textEntry(trimmed, servicesOutput, note);
+			case 'availability':
+				return textEntry(trimmed, availabilityOutput, note);
+			case 'cv':
+				return textEntry(trimmed, cvOutput, note);
+			case 'blog':
+				if (!args) {
+					navigateInternal('/blog/');
+					return textEntry(trimmed, 'Opening /blog/', note);
 				}
-				return {
-					command: trimmed,
-					type: 'text',
-					data: `bash: cd: ${args}: No such file or directory`
-				};
+				{
+					const slug = resolveBlogSlug(args);
+					if (!slug) return textEntry(trimmed, 'usage: blog <slug>', note);
+					const target = `/blog/${slug}/`;
+					navigateInternal(target);
+					return textEntry(trimmed, `Opening ${target}`, note);
+				}
+			case 'impressum':
+			case 'datenschutz':
+			case 'rss':
+			case 'sitemap': {
+				const targetPath = internalNavigation[cmd];
+				navigateInternal(targetPath);
+				return textEntry(trimmed, `Opening ${targetPath}`, note);
+			}
+			case 'whoami':
+				return textEntry(trimmed, 'marco@web', note);
+			case 'ls':
+				return textEntry(
+					trimmed,
+					'about/  services/  blog/  contact/  impressum/  datenschutz/  rss.xml  sitemap.xml',
+					note
+				);
+			case 'cd': {
+				const target = args.toLowerCase().replace(/\/$/, '');
+				if (target.startsWith('blog/')) {
+					const blogPath = `/${target}/`;
+					navigateInternal(blogPath);
+					return textEntry(trimmed, `Opening ${blogPath}`, note);
+				}
+
+				if (target in cdNavigation) {
+					const resolvedPath = cdNavigation[target];
+					navigateInternal(resolvedPath);
+					return textEntry(trimmed, resolvedPath ? `Opening ${resolvedPath}` : '', note);
+				}
+				return textEntry(trimmed, `bash: cd: ${args}: No such file or directory`, note);
 			}
 			case 'pwd':
-				return { command: trimmed, type: 'text', data: '/home/marco' };
+				return textEntry(trimmed, '/home/marco', note);
 			case 'echo':
-				return { command: trimmed, type: 'text', data: args };
+				return textEntry(trimmed, args, note);
 			case 'date':
-				return {
-					command: trimmed,
-					type: 'text',
-					data: new Date().toLocaleString('de-DE', {
+				return textEntry(
+					trimmed,
+					new Date().toLocaleString('de-DE', {
 						weekday: 'short',
 						year: 'numeric',
 						month: 'short',
@@ -108,55 +387,99 @@
 						hour: '2-digit',
 						minute: '2-digit',
 						second: '2-digit'
-					})
-				};
+					}),
+					note
+				);
 			case 'uname':
-				return {
-					command: trimmed,
-					type: 'text',
-					data: 'Linux marco-web 6.18.7-zen1-1-zen #1 SMP x86_64 GNU/Linux'
-				};
+				return textEntry(
+					trimmed,
+					'Linux marco-web 6.18.7-zen1-1-zen #1 SMP x86_64 GNU/Linux',
+					note
+				);
 			case 'sudo':
-				return { command: trimmed, type: 'text', data: 'Nice try.' };
+				return textEntry(trimmed, 'Nice try.', note);
 			case 'rm':
-				return {
-					command: trimmed,
-					type: 'text',
-					data: 'rm: permission denied. This is not your terminal.'
-				};
+				return textEntry(trimmed, 'rm: permission denied. This is not your terminal.', note);
 			case 'vim':
 			case 'nvim':
 			case 'nano':
-				return {
-					command: trimmed,
-					type: 'text',
-					data:
-						cmd === 'vim'
-							? "You're now stuck in vim. Just kidding. Type 'help' for commands."
-							: `${cmd}: not installed. Try 'help' instead.`
-				};
+				return textEntry(
+					trimmed,
+					cmd === 'vim'
+						? "You're now stuck in vim. Just kidding. Type 'help' for commands."
+						: `${cmd}: not installed. Try 'help' instead.`,
+					note
+				);
 			case 'exit':
-				return {
-					command: trimmed,
-					type: 'text',
-					data: 'logout\nConnection to marco-kretz.de closed.'
-				};
+				return textEntry(trimmed, 'logout\nConnection to marco-kretz.de closed.', note);
+			case 'open': {
+				const openTarget = args.toLowerCase();
+				if (!openTarget) return textEntry(trimmed, 'usage: open <target>', note);
+
+				if (openTarget in externalOpenTargets) {
+					openExternal(externalOpenTargets[openTarget]);
+					return textEntry(trimmed, `Opening ${openTarget} in a new tab`, note);
+				}
+				if (openTarget in internalNavigation) {
+					const targetPath = internalNavigation[openTarget];
+					navigateInternal(targetPath);
+					return textEntry(trimmed, `Opening ${targetPath}`, note);
+				}
+				return textEntry(
+					trimmed,
+					`open: unknown target '${args}'. try: ${Object.keys(externalOpenTargets).join(', ')}`,
+					note
+				);
+			}
 			case 'cat':
-				if (!args) return { command: trimmed, type: 'text', data: 'usage: cat [file]' };
-				if (args === '/etc/passwd')
-					return { command: trimmed, type: 'text', data: 'Nice try.' };
-				return {
-					command: trimmed,
-					type: 'text',
-					data: `cat: ${args}: No such file or directory`
-				};
-			default:
-				return {
-					command: trimmed,
-					type: 'text',
-					data: `bash: ${cmd}: command not found. Type 'help' for available commands.`
-				};
+				if (!args) return textEntry(trimmed, 'usage: cat [file]', note);
+				{
+					const catTarget = args.toLowerCase();
+					if (catTarget === 'about') return { command: trimmed, type: 'aboutfetch', note };
+					if (catTarget === 'stack' || catTarget === 'skills')
+						return { command: trimmed, type: 'skills', note };
+					if (catTarget === 'contact') return { command: trimmed, type: 'contact', note };
+					if (catTarget === 'services') return textEntry(trimmed, servicesOutput, note);
+					if (catTarget === 'availability') return textEntry(trimmed, availabilityOutput, note);
+					if (catTarget === 'cv') return textEntry(trimmed, cvOutput, note);
+					if (catTarget === '/etc/passwd')
+						return textEntry(trimmed, 'Nice try.', note);
+				}
+				return textEntry(trimmed, `cat: ${args}: No such file or directory`, note);
+			default: {
+				const suggestions = getCommandSuggestions(originalCmd);
+				const suggestionHint =
+					suggestions.length > 0 ? ` Did you mean: ${suggestions.join(', ')}?` : '';
+				return textEntry(
+					trimmed,
+					`bash: ${originalCmd}: command not found. Type 'help' for available commands.${suggestionHint}`
+				);
+			}
 		}
+	}
+
+	function isClearCommand(input: string): boolean {
+		const [rawCmd = ''] = input.trim().toLowerCase().split(/\s+/);
+		return resolveExactCommand(rawCmd) === 'clear';
+	}
+
+	function handleTabCompletion() {
+		if (!currentInput.trim()) return;
+
+		if (tabSeed !== currentInput) {
+			tabSeed = currentInput;
+			tabCandidates = getCompletions(currentInput);
+			tabIndex = 0;
+		} else if (tabCandidates.length > 1) {
+			tabIndex = (tabIndex + 1) % tabCandidates.length;
+		}
+
+		if (tabCandidates.length === 0) return;
+
+		const completion = tabCandidates[tabIndex];
+		const canonical = resolveExactCommand(completion.trim().toLowerCase());
+		const needsTrailingSpace = !completion.includes(' ') && commandAcceptsArgs(canonical);
+		currentInput = needsTrailingSpace ? `${completion} ` : completion;
 	}
 
 	async function handleSubmit() {
@@ -165,8 +488,9 @@
 			commandHistory = [...commandHistory, trimmed];
 		}
 		historyIndex = -1;
+		resetTabCompletion();
 
-		if (trimmed === 'clear') {
+		if (isClearCommand(trimmed)) {
 			history = [];
 			currentInput = '';
 			return;
@@ -184,9 +508,11 @@
 
 	function handleKeyDown(e: KeyboardEvent) {
 		if (e.key === 'Enter') {
+			e.preventDefault();
 			handleSubmit();
 		} else if (e.key === 'ArrowUp') {
 			e.preventDefault();
+			resetTabCompletion();
 			if (commandHistory.length > 0) {
 				if (historyIndex === -1) {
 					historyIndex = commandHistory.length - 1;
@@ -197,6 +523,7 @@
 			}
 		} else if (e.key === 'ArrowDown') {
 			e.preventDefault();
+			resetTabCompletion();
 			if (historyIndex >= 0) {
 				if (historyIndex < commandHistory.length - 1) {
 					historyIndex++;
@@ -208,16 +535,12 @@
 			}
 		} else if (e.key === 'Tab') {
 			e.preventDefault();
-			const partial = currentInput.trim().toLowerCase();
-			if (partial) {
-				const matches = commandNames.filter((c) => c.startsWith(partial));
-				if (matches.length === 1) {
-					currentInput = matches[0];
-				}
-			}
+			handleTabCompletion();
 		} else if (e.key === 'l' && e.ctrlKey) {
 			e.preventDefault();
 			history = [];
+		} else {
+			resetTabCompletion();
 		}
 	}
 
@@ -255,6 +578,9 @@
 				<span class="prompt-symbol">$</span>
 				<span class="text-terminal-textDim">{entry.command}</span>
 			</div>
+			{#if entry.note}
+				<div class="text-terminal-textDim text-xs font-mono mb-1">{entry.note}</div>
+			{/if}
 
 			<!-- Output -->
 			{#if entry.type === 'aboutfetch'}
@@ -317,48 +643,20 @@
 				</div>
 			{:else if entry.type === 'help'}
 				<div class="mb-4 font-mono text-sm">
-					<div class="text-terminal-accent mb-2">Available commands:</div>
-					<div class="grid grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-1">
-						<div>
-							<span class="text-terminal-accent">aboutfetch</span>
-							<span class="text-terminal-textDim">- system info</span>
-						</div>
-						<div>
-							<span class="text-terminal-accent">skills</span>
-							<span class="text-terminal-textDim">- tech stack</span>
-						</div>
-						<div>
-							<span class="text-terminal-accent">blog</span>
-							<span class="text-terminal-textDim">- recent posts</span>
-						</div>
-						<div>
-							<span class="text-terminal-accent">contact</span>
-							<span class="text-terminal-textDim">- get in touch</span>
-						</div>
-						<div>
-							<span class="text-terminal-accent">whoami</span>
-							<span class="text-terminal-textDim">- current user</span>
-						</div>
-						<div>
-							<span class="text-terminal-accent">ls</span>
-							<span class="text-terminal-textDim">- list sections</span>
-						</div>
-						<div>
-							<span class="text-terminal-accent">cd &lt;dir&gt;</span>
-							<span class="text-terminal-textDim">- navigate</span>
-						</div>
-						<div>
-							<span class="text-terminal-accent">echo &lt;text&gt;</span>
-							<span class="text-terminal-textDim">- echo text</span>
-						</div>
-						<div>
-							<span class="text-terminal-accent">date</span>
-							<span class="text-terminal-textDim">- current date</span>
-						</div>
-						<div>
-							<span class="text-terminal-accent">clear</span>
-							<span class="text-terminal-textDim">- clear screen</span>
-						</div>
+					<div class="text-terminal-accent mb-3">Command tree:</div>
+					<div class="grid md:grid-cols-2 gap-4">
+						{#each helpSections as section}
+							<div>
+								<div class="text-terminal-accent font-semibold mb-1"># {section.category}</div>
+								{#each section.commands as helpCommand}
+									<div class="leading-relaxed">
+										<span class="text-terminal-accent">$</span>
+										<span class="text-terminal-text"> {helpCommand.name}</span>
+										<span class="text-terminal-textDim"> - {helpCommand.description}</span>
+									</div>
+								{/each}
+							</div>
+						{/each}
 					</div>
 					<div class="text-terminal-textDim mt-2">
 						Tip: Use <span class="text-terminal-text">↑↓</span> for history,
@@ -378,29 +676,6 @@
 							{/each}
 						</div>
 					{/each}
-				</div>
-			{:else if entry.type === 'blog'}
-				<div class="mb-4">
-					{#if recentPosts.length > 0}
-						{#each recentPosts as post}
-							<div class="mb-2">
-								<a
-									href="/blog/{post.slug}/"
-									class="text-terminal-blue hover:text-terminal-accent hover:underline"
-								>
-									{post.title}
-								</a>
-								<span class="text-terminal-textDim text-sm ml-2">
-									({post.pubDate.toLocaleDateString('de-DE')})
-								</span>
-							</div>
-						{/each}
-						<div class="text-terminal-textDim text-sm mt-1">
-							Type <span class="text-terminal-accent">'cd blog'</span> to see all posts.
-						</div>
-					{:else}
-						<div class="text-terminal-textDim">No posts found.</div>
-					{/if}
 				</div>
 			{:else if entry.type === 'contact'}
 				<div class="mb-4 font-mono text-sm space-y-1">
