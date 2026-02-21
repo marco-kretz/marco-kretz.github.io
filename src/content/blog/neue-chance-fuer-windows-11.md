@@ -1,8 +1,8 @@
 ---
 title: 'Neue Chance für Windows 11'
 description: 'Nach ein paar Monaten unter Omarchy/Linux gebe ich Windows 11 eine neue Chance.'
-pubDate: 2026-02-20
-readTime: '5 min'
+pubDate: 2026-02-21
+readTime: '7 min'
 tags: ['OS', 'Windows 11', 'WSL2', 'Linux', 'Web Development']
 ---
 
