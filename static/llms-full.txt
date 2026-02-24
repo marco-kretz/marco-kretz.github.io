@@ -109,6 +109,22 @@ Marco writes about web development, AI-assisted coding tools, and software engin
 
 **Live URL**: https://bin.marco-kretz.de/
 
+### Blog Post: "Ein Tag Windows hat gereicht – CachyOS, Niri & DankMaterialShell"
+
+**URL**: https://marco-kretz.de/blog/ein-tag-windows-hat-gereicht/
+**Published**: 2026-02-24
+**Read Time**: 5 min
+**Tags**: OS, Linux, CachyOS, Niri, Wayland
+
+**Summary**: Marco describes his very short-lived return to Windows, abandoning it after just one day due to UI sluggishness, FreeSync issues, and terminal input lag. He introduces his new, highly optimized Linux setup: CachyOS combined with the Niri scrollable tiling window manager and DankMaterialShell, highlighting its speed, ADHD-friendly window management, and beautiful aesthetic.
+
+**Key Points**:
+- The Windows experiment failed after one day due to performance and usability issues.
+- CachyOS offers a fast, pre-optimized Arch experience with a custom kernel (BORE scheduler).
+- Niri (Scrollable Tiling Wayland Compositor) provides a horizontal workflow that prevents losing track of windows.
+- DankMaterialShell adds essential desktop features and aesthetic polish.
+- The resulting setup is incredibly fast, visually motivating, and perfectly suited for his development workflow.
+
 ## Contact Information
 
 - **Website**: https://marco-kretz.de
