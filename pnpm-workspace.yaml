@@ -8,4 +8,4 @@ minimumReleaseAgeExclude:
   - '@sveltejs/kit@2.70.1'
   - mdsvex@0.12.8
 overrides:
-  cookie: '^0.7.2'
+  cookie: ^0.7.2

@@ -1,0 +1,11 @@
+node_modules
+.svelte-kit
+.pnpm-store
+dist
+.git
+.vscode
+.idea
+*.md
+.env
+.env.*
+.DS_Store
