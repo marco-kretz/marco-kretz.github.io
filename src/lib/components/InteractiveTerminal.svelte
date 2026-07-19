@@ -558,193 +558,344 @@
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
-<div class="terminal-window mb-8" onclick={focusInput}>
-	<div bind:this={terminalEl} class="terminal-body overflow-y-auto h-[450px]">
-		{#each history as entry}
-			<!-- Command prompt -->
-			<div class="flex items-center gap-2 mb-1">
-				<span class="prompt-symbol">$</span>
-				<span class="text-terminal-textDim">{entry.command}</span>
-			</div>
-			{#if entry.note}
-				<div class="text-terminal-textDim text-xs font-mono mb-1">{entry.note}</div>
-			{/if}
+<div class="pipboy-terminal terminal-window mb-8" onclick={focusInput}>
+	<div class="pipboy-screen">
+		<div class="pipboy-glass" aria-hidden="true"></div>
+		<div class="pipboy-scanlines" aria-hidden="true"></div>
+		<div class="pipboy-sweep" aria-hidden="true"></div>
 
-			<!-- Output -->
-			{#if entry.type === 'aboutfetch'}
-				<div class="grid md:grid-cols-[auto_1fr] gap-x-8 gap-y-0 mb-4">
-					<div
-						class="font-mono text-terminal-accent leading-none text-base hidden md:block perspective-container self-center"
-					>
-						<pre class="whitespace-pre rotate-y">{asciiArt}</pre>
-					</div>
-					<div class="font-mono text-sm space-y-1">
-						<div class="text-terminal-accent font-bold mb-2">marco@web</div>
-						<div class="border-t border-terminal-border mb-2"></div>
-						<div>
-							<span class="text-terminal-accent font-semibold">Rolle:</span>
-							<span class="text-terminal-text">Webentwickler</span>
-						</div>
-						<div>
-							<span class="text-terminal-accent font-semibold">Standort:</span>
-							<span class="text-terminal-text">Deutschland</span>
-						</div>
-						<div>
-							<span class="text-terminal-accent font-semibold">Kernel:</span>
-							<span class="text-terminal-text">cologne-12.89-de</span>
-						</div>
-						<div>
-							<span class="text-terminal-accent font-semibold">Erfahrung:</span>
-							<span class="text-terminal-text">~20 Jahre</span>
-						</div>
-						<div>
-							<span class="text-terminal-accent font-semibold">Kernkompetenzen:</span>
-							<span class="text-terminal-text">PHP (Symfony, WordPress), JS (Vue.js, Svelte)</span>
-						</div>
-						<div>
-							<span class="text-terminal-accent font-semibold">Shell:</span>
-							<span class="text-terminal-text">zsh</span>
-						</div>
-						<div>
-							<span class="text-terminal-accent font-semibold">Editor:</span>
-							<span class="text-terminal-text">VS Code, Neovim</span>
-						</div>
-						<div>
-							<span class="text-terminal-accent font-semibold">Terminal:</span>
-							<span class="text-terminal-text">Ghostty</span>
-						</div>
-						<div>
-							<span class="text-terminal-accent font-semibold">AI-Tools:</span>
-							<span class="text-terminal-text">Claude Code, OpenCode</span>
-						</div>
-						<div class="mt-3 flex gap-2">
-							<span class="inline-block w-8 h-4 bg-[#0d1117]" title="black"></span>
-							<span class="inline-block w-8 h-4 bg-[#da3633]" title="red"></span>
-							<span class="inline-block w-8 h-4 bg-[#238636]" title="green"></span>
-							<span class="inline-block w-8 h-4 bg-[#d29922]" title="yellow"></span>
-							<span class="inline-block w-8 h-4 bg-[#58a6ff]" title="blue"></span>
-							<span class="inline-block w-8 h-4 bg-[#bc8cff]" title="magenta"></span>
-							<span class="inline-block w-8 h-4 bg-[#39c5cf]" title="cyan"></span>
-							<span class="inline-block w-8 h-4 bg-[#c9d1d9]" title="white"></span>
-						</div>
-					</div>
+		<div bind:this={terminalEl} class="terminal-body pipboy-body overflow-y-auto h-[450px]">
+			{#each history as entry}
+				<!-- Command prompt -->
+				<div class="flex items-center gap-2 mb-1">
+					<span class="prompt-symbol">$</span>
+					<span class="text-terminal-textDim">{entry.command}</span>
 				</div>
-			{:else if entry.type === 'help'}
-				<div class="mb-4 font-mono text-sm">
-					<div class="text-terminal-accent mb-3">Command tree:</div>
-					<div class="grid md:grid-cols-2 gap-4">
-						{#each helpSections as section}
+				{#if entry.note}
+					<div class="text-terminal-textDim text-xs font-mono mb-1">{entry.note}</div>
+				{/if}
+
+				<!-- Output -->
+				{#if entry.type === 'aboutfetch'}
+					<div class="grid md:grid-cols-[auto_1fr] gap-x-8 gap-y-0 mb-4">
+						<div class="company-logo hidden md:flex self-center" aria-hidden="true">
+							<pre class="company-logo-mark whitespace-pre">{asciiArt}</pre>
+						</div>
+						<div class="font-mono text-sm space-y-1">
+							<div class="text-terminal-accent font-bold mb-2">marco@web</div>
+							<div class="border-t border-terminal-border mb-2"></div>
 							<div>
-								<div class="text-terminal-accent font-semibold mb-1"># {section.category}</div>
-								{#each section.commands as helpCommand}
-									<div class="leading-relaxed">
-										<span class="text-terminal-accent">$</span>
-										<span class="text-terminal-text"> {helpCommand.name}</span>
-										<span class="text-terminal-textDim"> - {helpCommand.description}</span>
+								<span class="text-terminal-accent font-semibold">Rolle:</span>
+								<span class="text-terminal-text">Webentwickler</span>
+							</div>
+							<div>
+								<span class="text-terminal-accent font-semibold">Standort:</span>
+								<span class="text-terminal-text">Deutschland</span>
+							</div>
+							<div>
+								<span class="text-terminal-accent font-semibold">Kernel:</span>
+								<span class="text-terminal-text">cologne-12.89-de</span>
+							</div>
+							<div>
+								<span class="text-terminal-accent font-semibold">Erfahrung:</span>
+								<span class="text-terminal-text">~20 Jahre</span>
+							</div>
+							<div>
+								<span class="text-terminal-accent font-semibold">Kernkompetenzen:</span>
+								<span class="text-terminal-text">PHP (Symfony, WordPress), JS (Vue.js, Svelte)</span>
+							</div>
+							<div>
+								<span class="text-terminal-accent font-semibold">Shell:</span>
+								<span class="text-terminal-text">zsh</span>
+							</div>
+							<div>
+								<span class="text-terminal-accent font-semibold">Editor:</span>
+								<span class="text-terminal-text">VS Code, Neovim</span>
+							</div>
+							<div>
+								<span class="text-terminal-accent font-semibold">Terminal:</span>
+								<span class="text-terminal-text">Ghostty</span>
+							</div>
+							<div>
+								<span class="text-terminal-accent font-semibold">AI-Tools:</span>
+								<span class="text-terminal-text">Claude Code, OpenCode</span>
+							</div>
+							<div class="mt-3 flex gap-2">
+								<span class="inline-block w-8 h-4 bg-[#0d1117]" title="black"></span>
+								<span class="inline-block w-8 h-4 bg-[#da3633]" title="red"></span>
+								<span class="inline-block w-8 h-4 bg-[#238636]" title="green"></span>
+								<span class="inline-block w-8 h-4 bg-[#d29922]" title="yellow"></span>
+								<span class="inline-block w-8 h-4 bg-[#58a6ff]" title="blue"></span>
+								<span class="inline-block w-8 h-4 bg-[#bc8cff]" title="magenta"></span>
+								<span class="inline-block w-8 h-4 bg-[#39c5cf]" title="cyan"></span>
+								<span class="inline-block w-8 h-4 bg-[#c9d1d9]" title="white"></span>
+							</div>
+						</div>
+					</div>
+				{:else if entry.type === 'help'}
+					<div class="mb-4 font-mono text-sm">
+						<div class="text-terminal-accent mb-3">Command tree:</div>
+						<div class="grid md:grid-cols-2 gap-4">
+							{#each helpSections as section}
+								<div>
+									<div class="text-terminal-accent font-semibold mb-1"># {section.category}</div>
+									{#each section.commands as helpCommand}
+										<div class="leading-relaxed">
+											<span class="text-terminal-accent">$</span>
+											<span class="text-terminal-text"> {helpCommand.name}</span>
+											<span class="text-terminal-textDim"> - {helpCommand.description}</span>
+										</div>
+									{/each}
+								</div>
+							{/each}
+						</div>
+						<div class="text-terminal-textDim mt-2">
+							Tip: Use <span class="text-terminal-text">↑↓</span> for history,
+							<span class="text-terminal-text">Tab</span> for autocomplete
+						</div>
+					</div>
+				{:else if entry.type === 'skills'}
+					<div class="grid md:grid-cols-3 gap-4 mb-4">
+						{#each skills as cat}
+							<div>
+								<div class="text-terminal-accent font-semibold mb-1"># {cat.category}</div>
+								{#each cat.items as item}
+									<div class="text-terminal-text">
+										<span class="text-terminal-accent">→</span>
+										{item}
 									</div>
 								{/each}
 							</div>
 						{/each}
 					</div>
-					<div class="text-terminal-textDim mt-2">
-						Tip: Use <span class="text-terminal-text">↑↓</span> for history,
-						<span class="text-terminal-text">Tab</span> for autocomplete
-					</div>
-				</div>
-			{:else if entry.type === 'skills'}
-				<div class="grid md:grid-cols-3 gap-4 mb-4">
-					{#each skills as cat}
+				{:else if entry.type === 'contact'}
+					<div class="mb-4 font-mono text-sm space-y-1">
 						<div>
-							<div class="text-terminal-accent font-semibold mb-1"># {cat.category}</div>
-							{#each cat.items as item}
-								<div class="text-terminal-text">
-									<span class="text-terminal-accent">→</span>
-									{item}
-								</div>
-							{/each}
+							<span class="text-terminal-accent font-semibold">Email:</span>
+							<a
+								href="mailto:hallo@marco-kretz.de"
+								class="text-terminal-blue hover:underline">hallo@marco-kretz.de</a
+							>
 						</div>
-					{/each}
-				</div>
-			{:else if entry.type === 'contact'}
-				<div class="mb-4 font-mono text-sm space-y-1">
-					<div>
-						<span class="text-terminal-accent font-semibold">Email:</span>
-						<a
-							href="mailto:hallo@marco-kretz.de"
-							class="text-terminal-blue hover:underline">hallo@marco-kretz.de</a
-						>
+						<div>
+							<span class="text-terminal-accent font-semibold">GitHub:</span>
+							<a
+								href="https://github.com/marco-kretz"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="text-terminal-blue hover:underline">github.com/marco-kretz</a
+							>
+						</div>
+						<div>
+							<span class="text-terminal-accent font-semibold">Web:</span>
+							<a
+								href="https://codebites.de"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="text-terminal-blue hover:underline">codebites.de</a
+							>
+						</div>
 					</div>
-					<div>
-						<span class="text-terminal-accent font-semibold">GitHub:</span>
-						<a
-							href="https://github.com/marco-kretz"
-							target="_blank"
-							rel="noopener noreferrer"
-							class="text-terminal-blue hover:underline">github.com/marco-kretz</a
-						>
-					</div>
-					<div>
-						<span class="text-terminal-accent font-semibold">Web:</span>
-						<a
-							href="https://codebites.de"
-							target="_blank"
-							rel="noopener noreferrer"
-							class="text-terminal-blue hover:underline">codebites.de</a
-						>
-					</div>
-				</div>
-			{:else if entry.type === 'text'}
-				{#if entry.data}
-					<div class="mb-4 whitespace-pre-wrap">{entry.data}</div>
+				{:else if entry.type === 'text'}
+					{#if entry.data}
+						<div class="mb-4 whitespace-pre-wrap">{entry.data}</div>
+					{/if}
 				{/if}
-			{/if}
-		{/each}
+			{/each}
 
-		<!-- Input line -->
-		<div class="flex items-center gap-2">
-			<span class="prompt-symbol">$</span>
-			<input
-				bind:this={inputEl}
-				bind:value={currentInput}
-				onkeydown={handleKeyDown}
-				class="flex-1 bg-transparent border-none outline-none text-terminal-textDim font-mono text-sm caret-terminal-accent"
-				type="text"
-				spellcheck="false"
-				autocomplete="off"
-				autocapitalize="off"
-				placeholder="type 'help' for commands..."
-				aria-label="Terminal command input"
-			/>
+			<!-- Input line -->
+			<div class="flex items-center gap-2">
+				<span class="prompt-symbol">$</span>
+				<input
+					bind:this={inputEl}
+					bind:value={currentInput}
+					onkeydown={handleKeyDown}
+					class="flex-1 bg-transparent border-none outline-none text-terminal-textDim font-mono text-sm caret-terminal-accent"
+					type="text"
+					spellcheck="false"
+					autocomplete="off"
+					autocapitalize="off"
+					placeholder="type 'help' for commands..."
+					aria-label="Terminal command input"
+				/>
+			</div>
 		</div>
 	</div>
 </div>
 
 <style>
-	.perspective-container {
-		perspective: 1000px;
+	.pipboy-terminal {
+		--pip-green: 56, 180, 96;
+		position: relative;
+		border-color: rgba(var(--pip-green), 0.28);
+		background: #0c1210;
+		box-shadow:
+			0 0 0 1px rgba(var(--pip-green), 0.08),
+			0 14px 36px rgba(0, 0, 0, 0.5),
+			0 0 24px rgba(var(--pip-green), 0.08),
+			inset 0 0 0 1px rgba(var(--pip-green), 0.04);
 	}
 
-	.rotate-y {
-		animation: rotate-y 14s linear infinite;
-		transform-style: preserve-3d;
+	.pipboy-screen {
+		position: relative;
+		border-radius: inherit;
+		overflow: hidden;
+		isolation: isolate;
 	}
 
-	@keyframes rotate-y {
-		from {
-			transform: rotateY(0deg);
+	.pipboy-body {
+		position: relative;
+		z-index: 1;
+		color: #c4cfc6;
+		text-shadow: 0 0 6px rgba(var(--pip-green), 0.08);
+	}
+
+	.pipboy-body :global(.text-terminal-text) {
+		color: #c4cfc6;
+	}
+
+	.pipboy-body :global(.text-terminal-textDim) {
+		color: #8b948c;
+	}
+
+	.pipboy-body :global(.text-terminal-accent),
+	.pipboy-body :global(.prompt-symbol) {
+		/* Keep brand gold, with a faint phosphor halo */
+		color: #c9b86a;
+		text-shadow: 0 0 8px rgba(var(--pip-green), 0.18);
+	}
+
+	.pipboy-body :global(.border-terminal-border) {
+		border-color: rgba(var(--pip-green), 0.16);
+	}
+
+	.pipboy-glass {
+		pointer-events: none;
+		position: absolute;
+		inset: 0;
+		z-index: 2;
+		background:
+			radial-gradient(ellipse 115% 95% at 50% 38%, rgba(var(--pip-green), 0.055) 0%, transparent 58%),
+			radial-gradient(ellipse at center, transparent 48%, rgba(0, 0, 0, 0.38) 100%);
+		box-shadow:
+			inset 0 0 40px rgba(0, 0, 0, 0.5),
+			inset 0 0 80px rgba(var(--pip-green), 0.04);
+	}
+
+	.pipboy-scanlines {
+		pointer-events: none;
+		position: absolute;
+		inset: 0;
+		z-index: 3;
+		opacity: 0.45;
+		background: repeating-linear-gradient(
+			to bottom,
+			transparent 0,
+			transparent 2px,
+			rgba(0, 0, 0, 0.22) 2px,
+			rgba(0, 0, 0, 0.22) 3px
+		);
+	}
+
+	.pipboy-sweep {
+		pointer-events: none;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: -28%;
+		height: 24%;
+		z-index: 4;
+		background: linear-gradient(
+			to bottom,
+			transparent 0%,
+			rgba(var(--pip-green), 0.04) 40%,
+			rgba(var(--pip-green), 0.12) 50%,
+			rgba(var(--pip-green), 0.04) 60%,
+			transparent 100%
+		);
+		animation: pipboy-sweep 10s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+	}
+
+	@keyframes pipboy-sweep {
+		0%,
+		68%,
+		100% {
+			transform: translateY(0);
+			opacity: 0;
 		}
-		to {
-			transform: rotateY(360deg);
+		72% {
+			opacity: 1;
+		}
+		90% {
+			transform: translateY(480%);
+			opacity: 0.5;
+		}
+		94%,
+		100% {
+			transform: translateY(480%);
+			opacity: 0;
+		}
+	}
+
+	/* Fallout-style company mark: same ASCII, static emblem */
+	.company-logo {
+		align-items: center;
+		justify-content: center;
+		padding: 0.85rem 1rem 0.7rem;
+		border: 1px solid rgba(var(--pip-green), 0.28);
+		border-radius: 0.35rem;
+		background:
+			radial-gradient(ellipse at 50% 40%, rgba(var(--pip-green), 0.08) 0%, transparent 70%),
+			rgba(8, 14, 10, 0.55);
+		box-shadow:
+			inset 0 0 0 1px rgba(201, 184, 106, 0.12),
+			inset 0 0 18px rgba(0, 0, 0, 0.35),
+			0 0 14px rgba(var(--pip-green), 0.08);
+	}
+
+	.company-logo-mark {
+		margin: 0;
+		font-family: ui-monospace, 'JetBrains Mono', monospace;
+		font-size: 0.95rem;
+		line-height: 1.05;
+		letter-spacing: 0.02em;
+		color: #c9b86a;
+		text-align: left;
+		text-shadow:
+			0 0 6px rgba(var(--pip-green), 0.25),
+			0 0 1px rgba(201, 184, 106, 0.5);
+		animation: logo-phosphor 5.5s ease-in-out infinite;
+	}
+
+	@keyframes logo-phosphor {
+		0%,
+		100% {
+			opacity: 0.88;
+			filter: drop-shadow(0 0 2px rgba(56, 180, 96, 0.15));
+		}
+		50% {
+			opacity: 1;
+			filter: drop-shadow(0 0 6px rgba(56, 180, 96, 0.3));
 		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.rotate-y {
+		.company-logo-mark,
+		.pipboy-sweep {
 			animation: none;
+		}
+
+		.company-logo-mark {
+			opacity: 1;
+			filter: none;
+		}
+
+		.pipboy-sweep {
+			display: none;
 		}
 	}
 
 	input::placeholder {
-		color: rgba(139, 148, 158, 0.4);
+		color: rgba(139, 148, 140, 0.45);
 	}
 </style>
