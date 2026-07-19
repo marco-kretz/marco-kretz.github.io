@@ -1,7 +1,9 @@
 <script lang="ts">
 	import Seo from '$lib/components/Seo.svelte';
 	import InteractiveTerminal from '$lib/components/InteractiveTerminal.svelte';
-	import { Github, Briefcase, Mail } from 'lucide-svelte';
+	import Briefcase from '@lucide/svelte/icons/briefcase';
+	import Mail from '@lucide/svelte/icons/mail';
+	import Github from '$lib/components/icons/Github.svelte';
 
 	let { data } = $props();
 
