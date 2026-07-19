@@ -144,7 +144,7 @@
 	<!-- Skills Section -->
 	<section class="mb-12">
 		<h2 class="section-title">
-			<span class="text-terminal-text">Fähigkeiten</span>
+			<span class="text-terminal-text">Skills</span>
 		</h2>
 		<div class="grid md:grid-cols-3 gap-4">
 			{#each skills as skillCategory}
@@ -169,7 +169,7 @@
 	<!-- Blog Preview Section -->
 	<section class="mb-12">
 		<h2 class="section-title">
-			<span class="text-terminal-text">Neueste Beiträge</span>
+			<span class="text-terminal-text">Blog</span>
 		</h2>
 		<div class="space-y-4">
 			{#if data.recentPosts.length > 0}

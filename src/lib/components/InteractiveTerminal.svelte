@@ -610,7 +610,7 @@
 							</div>
 							<div>
 								<span class="text-terminal-accent font-semibold">Editor:</span>
-								<span class="text-terminal-text">VS Code, Neovim</span>
+								<span class="text-terminal-text">Cursor, Vim</span>
 							</div>
 							<div>
 								<span class="text-terminal-accent font-semibold">Terminal:</span>
@@ -618,7 +618,7 @@
 							</div>
 							<div>
 								<span class="text-terminal-accent font-semibold">AI-Tools:</span>
-								<span class="text-terminal-text">Claude Code, OpenCode</span>
+								<span class="text-terminal-text">Cursor, Claude Code, Codex CLI</span>
 							</div>
 							<div class="mt-3 flex gap-2">
 								<span class="inline-block w-8 h-4 bg-[#0d1117]" title="black"></span>
