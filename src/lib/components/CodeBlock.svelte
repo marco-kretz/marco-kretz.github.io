@@ -36,7 +36,7 @@
 	<div class="code-wrapper relative" bind:this={codeWrapper}>
 		<button
 			onclick={copyCode}
-			class="copy-button absolute top-4 right-4 p-2 rounded bg-[#0d1117] hover:bg-[#21262d] text-terminal-textDim hover:text-terminal-accent transition-colors duration-200 text-xs font-mono border border-terminal-border opacity-0"
+			class="copy-button absolute top-4 right-4 p-2 rounded bg-terminal-bg hover:bg-terminal-surface text-terminal-textDim hover:text-terminal-accent transition-colors duration-200 text-xs font-mono border border-terminal-border opacity-0"
 			aria-label="Code in die Zwischenablage kopieren"
 		>
 			{#if copied}

@@ -5,7 +5,7 @@
 <Seo title="Datenschutz | Marco Kretz" url="https://marco-kretz.de/datenschutz/" />
 
 <div class="max-w-4xl mx-auto px-4 py-8 md:py-16">
-	<h1 class="text-4xl font-bold font-mono mb-8">
+	<h1 class="text-4xl font-bold font-display tracking-tight mb-8">
 		<span class="text-terminal-accent">&lt;</span>
 		Datenschutzerklärung
 		<span class="text-terminal-accent">/&gt;</span>
@@ -13,7 +13,7 @@
 
 	<div class="card space-y-8 text-terminal-text">
 		<section>
-			<h2 class="text-2xl font-mono text-terminal-accent mb-4">1. Datenschutz auf einen Blick</h2>
+			<h2 class="text-2xl font-display tracking-tight text-terminal-accent mb-4">1. Datenschutz auf einen Blick</h2>
 			<h3 class="text-xl font-semibold mb-2">Allgemeine Hinweise</h3>
 			<p>
 				Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren
@@ -25,7 +25,7 @@
 		</section>
 
 		<section>
-			<h2 class="text-2xl font-mono text-terminal-accent mb-4">2. Hosting</h2>
+			<h2 class="text-2xl font-display tracking-tight text-terminal-accent mb-4">2. Hosting</h2>
 			<p>Wir hosten die Inhalte unserer Website bei folgendem Anbieter:</p>
 			<h3 class="text-xl font-semibold mt-4 mb-2">netcup</h3>
 			<p>
@@ -41,7 +41,7 @@
 		</section>
 
 		<section>
-			<h2 class="text-2xl font-mono text-terminal-accent mb-4">
+			<h2 class="text-2xl font-display tracking-tight text-terminal-accent mb-4">
 				3. Allgemeine Hinweise und Pflichtinformationen
 			</h2>
 			<h3 class="text-xl font-semibold mb-2">Datenschutz</h3>
@@ -73,7 +73,7 @@
 		</section>
 
 		<section>
-			<h2 class="text-2xl font-mono text-terminal-accent mb-4">
+			<h2 class="text-2xl font-display tracking-tight text-terminal-accent mb-4">
 				4. Datenerfassung auf dieser Website
 			</h2>
 			<h3 class="text-xl font-semibold mb-2">Server-Log-Dateien</h3>
@@ -95,7 +95,7 @@
 		</section>
 
 		<section>
-			<h2 class="text-2xl font-mono text-terminal-accent mb-4">
+			<h2 class="text-2xl font-display tracking-tight text-terminal-accent mb-4">
 				5. Rechte der betroffenen Person
 			</h2>
 			<p>

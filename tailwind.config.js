@@ -7,20 +7,22 @@ export default {
     extend: {
       colors: {
         terminal: {
-          bg: '#0d1117',
-          border: '#30363d',
-          text: '#c9d1d9',
-          textDim: '#8b949e',
-          accent: '#d29922',
-          accentHover: '#e3b341',
-          blue: '#58a6ff',
-          green: '#238636',
+          bg: '#0c1210',
+          surface: '#141c17',
+          border: '#2f4036',
+          text: '#c4cfc6',
+          textDim: '#8b948c',
+          accent: '#c9b86a',
+          accentHover: '#d9c87a',
+          blue: '#6db3a0',
+          green: '#2d8a4e',
           red: '#da3633',
         },
       },
       fontFamily: {
         mono: ['JetBrains Mono', 'ui-monospace', 'Cascadia Code', 'Source Code Pro', 'Menlo', 'Consolas', 'Monaco', 'monospace'],
         sans: ['IBM Plex Sans', 'system-ui', 'sans-serif'],
+        display: ['"Space Grotesk"', 'IBM Plex Sans', 'system-ui', 'sans-serif'],
       },
       animation: {
         'cursor': 'cursor 1s step-end infinite',
@@ -39,24 +41,24 @@ export default {
       typography: {
         DEFAULT: {
           css: {
-            color: '#c9d1d9',
+            color: '#c4cfc6',
             a: {
-              color: '#58a6ff',
+              color: '#6db3a0',
               textDecoration: 'underline',
               '&:hover': {
-                color: '#d29922',
+                color: '#c9b86a',
               },
             },
             h1: {
-              color: '#ffffff',
+              color: '#e8efe9',
               fontWeight: '700',
-              fontFamily: "'JetBrains Mono', ui-monospace, Cascadia Code, Source Code Pro, Menlo, Consolas, Monaco, monospace",
+              fontFamily: "'Space Grotesk', 'IBM Plex Sans', system-ui, sans-serif",
               marginBottom: '1.5rem',
             },
             h2: {
-              color: '#ffffff',
+              color: '#e8efe9',
               fontWeight: '700',
-              fontFamily: "'JetBrains Mono', ui-monospace, Cascadia Code, Source Code Pro, Menlo, Consolas, Monaco, monospace",
+              fontFamily: "'Space Grotesk', 'IBM Plex Sans', system-ui, sans-serif",
               fontSize: '1.25rem',
               marginTop: '2rem',
               marginBottom: '1rem',
@@ -65,13 +67,13 @@ export default {
               gap: '0.5rem',
               '&::before': {
                 content: '">"',
-                color: '#d29922',
+                color: '#c9b86a',
               },
             },
             h3: {
-              color: '#ffffff',
+              color: '#e8efe9',
               fontWeight: '600',
-              fontFamily: "'JetBrains Mono', ui-monospace, Cascadia Code, Source Code Pro, Menlo, Consolas, Monaco, monospace",
+              fontFamily: "'Space Grotesk', 'IBM Plex Sans', system-ui, sans-serif",
               fontSize: '1.125rem',
               marginTop: '1.5rem',
               marginBottom: '0.75rem',
@@ -80,14 +82,14 @@ export default {
               gap: '0.5rem',
               '&::before': {
                 content: '">>"',
-                color: '#d29922',
+                color: '#c9b86a',
                 opacity: '0.7',
               },
             },
             h4: {
-              color: '#ffffff',
+              color: '#e8efe9',
               fontWeight: '600',
-              fontFamily: "'JetBrains Mono', ui-monospace, Cascadia Code, Source Code Pro, Menlo, Consolas, Monaco, monospace",
+              fontFamily: "'Space Grotesk', 'IBM Plex Sans', system-ui, sans-serif",
               marginTop: '1rem',
               marginBottom: '0.5rem',
             },
@@ -97,11 +99,11 @@ export default {
               lineHeight: '1.75',
             },
             strong: {
-              color: '#ffffff',
+              color: '#e8efe9',
             },
             code: {
-              color: '#d29922',
-              backgroundColor: '#161b22',
+              color: '#c9b86a',
+              backgroundColor: '#141c17',
               padding: '0.25rem 0.375rem',
               borderRadius: '0.25rem',
               fontSize: '0.875rem',
@@ -114,21 +116,21 @@ export default {
               content: 'none',
             },
             pre: {
-              backgroundColor: '#0d1117',
-              color: '#c9d1d9',
+              backgroundColor: '#0c1210',
+              color: '#c4cfc6',
               marginTop: '2rem',
               marginBottom: '2rem',
               borderRadius: '0.5rem',
             },
             'pre code': {
-              color: '#c9d1d9',
+              color: '#c4cfc6',
               backgroundColor: 'transparent',
               padding: '0',
             },
             blockquote: {
-              borderLeftColor: '#30363d',
+              borderLeftColor: '#2f4036',
               fontStyle: 'normal',
-              color: '#8b949e',
+              color: '#8b948c',
             },
             ul: {
               listStyleType: 'none',
@@ -143,7 +145,7 @@ export default {
                 content: '"→"',
                 position: 'absolute',
                 left: '0',
-                color: '#d29922',
+                color: '#c9b86a',
               },
             },
             ol: {
@@ -156,7 +158,7 @@ export default {
               marginBottom: '0.5rem',
             },
             hr: {
-              borderColor: '#30363d',
+              borderColor: '#2f4036',
               marginTop: '2rem',
               marginBottom: '2rem',
             },
@@ -164,40 +166,40 @@ export default {
               fontSize: '0.875rem',
               borderCollapse: 'separate',
               borderSpacing: '0',
-              border: '1px solid #30363d',
+              border: '1px solid #2f4036',
               borderRadius: '0.5rem',
               overflow: 'hidden',
-              backgroundColor: '#161b22',
+              backgroundColor: '#141c17',
               marginTop: '2rem',
               marginBottom: '2rem',
             },
             thead: {
-              color: '#ffffff',
-              backgroundColor: '#0d1117',
-              borderBottomColor: '#30363d',
+              color: '#e8efe9',
+              backgroundColor: '#0c1210',
+              borderBottomColor: '#2f4036',
             },
             th: {
               fontWeight: '600',
               fontFamily: "'JetBrains Mono', ui-monospace, Cascadia Code, Source Code Pro, Menlo, Consolas, Monaco, monospace",
               padding: '0.75rem 1rem',
               textAlign: 'left',
-              borderRight: '1px solid #30363d',
+              borderRight: '1px solid #2f4036',
               '&:last-child': {
                 borderRight: 'none',
               },
             },
             tbody: {
-              color: '#c9d1d9',
+              color: '#c4cfc6',
             },
             td: {
               padding: '0.75rem 1rem',
-              borderRight: '1px solid #30363d',
+              borderRight: '1px solid #2f4036',
               '&:last-child': {
                 borderRight: 'none',
               },
             },
             tr: {
-              borderBottomColor: '#30363d',
+              borderBottomColor: '#2f4036',
             },
             'tbody tr:last-child': {
               borderBottom: 'none',

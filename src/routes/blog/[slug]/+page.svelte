@@ -193,9 +193,9 @@
 	class="fixed left-4 top-1/2 -translate-y-1/2 z-40 hidden xl:block w-56 max-h-[70vh] overflow-y-auto"
 	aria-label="Inhaltsverzeichnis"
 >
-	<div class="bg-[#161b22]/90 backdrop-blur-sm border border-terminal-border rounded-lg p-4">
+	<div class="bg-terminal-surface/90 backdrop-blur-sm border border-terminal-border rounded-lg p-4">
 		<h2
-			class="font-mono text-xs uppercase tracking-wider text-terminal-textDim mb-3 flex items-center gap-2"
+			class="font-display text-xs uppercase tracking-tightr text-terminal-textDim mb-3 flex items-center gap-2"
 		>
 			<span class="text-terminal-accent">$</span> Inhalt
 		</h2>
@@ -208,7 +208,7 @@
 <div class="max-w-4xl mx-auto px-4 py-8 md:py-16">
 	<article id="article-content">
 		<header class="mb-8">
-			<h1 class="text-3xl md:text-4xl font-bold font-mono mb-4">
+			<h1 class="text-3xl md:text-4xl font-bold font-display tracking-tight mb-4">
 				{data.frontmatter.title}
 			</h1>
 			<div class="flex flex-wrap items-center gap-4 text-terminal-textDim text-sm mb-4">
@@ -230,7 +230,7 @@
 				<div class="flex flex-wrap gap-2 mt-4">
 					{#each data.frontmatter.tags as tag}
 						<span
-							class="px-2 py-1 text-xs font-mono bg-[#161b22] border border-terminal-border rounded text-terminal-textDim"
+							class="px-2 py-1 text-xs font-mono bg-terminal-surface border border-terminal-border rounded text-terminal-textDim"
 						>
 							#{tag}
 						</span>
@@ -278,12 +278,12 @@
 	}
 
 	:global(#toc::-webkit-scrollbar-thumb) {
-		background-color: #30363d;
+		background-color: #2f4036;
 		border-radius: 2px;
 	}
 
 	:global(#toc::-webkit-scrollbar-thumb:hover) {
-		background-color: #484f58;
+		background-color: #3d5446;
 	}
 
 	/* Offset headings for sticky header */
@@ -306,38 +306,38 @@
 		transform: translateY(-50%);
 		width: 3px;
 		height: 12px;
-		background-color: #d29922;
+		background-color: #c9b86a;
 		border-radius: 2px;
 	}
 
 	:global(.prose) {
-		--tw-prose-body: #c9d1d9;
-		--tw-prose-headings: #ffffff;
-		--tw-prose-lead: #8b949e;
-		--tw-prose-links: #58a6ff;
-		--tw-prose-bold: #ffffff;
-		--tw-prose-counters: #8b949e;
-		--tw-prose-bullets: #8b949e;
-		--tw-prose-hr: #30363d;
-		--tw-prose-quotes: #c9d1d9;
-		--tw-prose-quote-borders: #30363d;
-		--tw-prose-captions: #8b949e;
-		--tw-prose-code: #d29922;
-		--tw-prose-pre-code: #c9d1d9;
-		--tw-prose-pre-bg: #0d1117;
-		--tw-prose-th-borders: #30363d;
-		--tw-prose-td-borders: #30363d;
+		--tw-prose-body: #c4cfc6;
+		--tw-prose-headings: #e8efe9;
+		--tw-prose-lead: #8b948c;
+		--tw-prose-links: #6db3a0;
+		--tw-prose-bold: #e8efe9;
+		--tw-prose-counters: #8b948c;
+		--tw-prose-bullets: #8b948c;
+		--tw-prose-hr: #2f4036;
+		--tw-prose-quotes: #c4cfc6;
+		--tw-prose-quote-borders: #2f4036;
+		--tw-prose-captions: #8b948c;
+		--tw-prose-code: #c9b86a;
+		--tw-prose-pre-code: #c4cfc6;
+		--tw-prose-pre-bg: #0c1210;
+		--tw-prose-th-borders: #2f4036;
+		--tw-prose-td-borders: #2f4036;
 	}
 
 	:global(.prose p > code),
 	:global(.prose li > code),
 	:global(.prose td > code) {
-		background-color: #161b22;
+		background-color: #141c17;
 		padding: 0.375rem 0.5rem;
 		border-radius: 0.25rem;
 		font-size: 0.875rem;
 		font-family: ui-monospace, monospace;
-		color: #d29922;
+		color: #c9b86a;
 	}
 
 	:global(.prose code::before),
@@ -347,10 +347,10 @@
 
 	/* Table styling */
 	:global(.prose table) {
-		border: 1px solid #30363d !important;
+		border: 1px solid #2f4036 !important;
 		border-radius: 0.5rem !important;
 		overflow: hidden !important;
-		background-color: #161b22 !important;
+		background-color: #141c17 !important;
 		margin-top: 2rem !important;
 		margin-bottom: 2rem !important;
 		border-collapse: separate !important;
@@ -358,7 +358,7 @@
 	}
 
 	:global(.prose thead) {
-		background-color: #0d1117 !important;
+		background-color: #0c1210 !important;
 	}
 
 	:global(.prose th) {
@@ -366,8 +366,8 @@
 		text-align: left !important;
 		font-weight: 600 !important;
 		font-family: 'JetBrains Mono', ui-monospace, monospace !important;
-		border-right: 1px solid #30363d !important;
-		border-bottom: 1px solid #30363d !important;
+		border-right: 1px solid #2f4036 !important;
+		border-bottom: 1px solid #2f4036 !important;
 	}
 
 	:global(.prose th:last-child) {
@@ -376,8 +376,8 @@
 
 	:global(.prose td) {
 		padding: 0.75rem 1rem !important;
-		border-right: 1px solid #30363d !important;
-		border-bottom: 1px solid #30363d !important;
+		border-right: 1px solid #2f4036 !important;
+		border-bottom: 1px solid #2f4036 !important;
 	}
 
 	:global(.prose td:last-child) {
@@ -391,7 +391,7 @@
 	/* Image styling */
 	:global(.prose img) {
 		border-radius: 0.5rem !important;
-		border: 1px solid #30363d !important;
+		border: 1px solid #2f4036 !important;
 		margin: 2rem auto !important;
 		display: block !important;
 		max-width: 100% !important;

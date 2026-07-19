@@ -8,7 +8,7 @@
 
 <div class="max-w-4xl mx-auto px-4 py-8 md:py-16">
 	<header class="mb-12">
-		<h1 class="text-4xl md:text-5xl font-bold font-mono mb-4">
+		<h1 class="text-4xl md:text-5xl font-bold font-display tracking-tight mb-4">
 			<span class="text-terminal-accent">&lt;</span>
 			<span>Blog</span>
 			<span class="text-terminal-accent">/&gt;</span>
@@ -24,7 +24,7 @@
 				<article class="card hover:border-terminal-accent transition-colors">
 					<div class="flex flex-col gap-2">
 						<h2
-							class="text-xl font-semibold font-mono text-terminal-text group-hover:text-terminal-accent transition-colors"
+							class="text-xl font-semibold font-display tracking-tight text-terminal-text group-hover:text-terminal-accent transition-colors"
 						>
 							{post.title}
 						</h2>
@@ -47,7 +47,7 @@
 							<div class="flex flex-wrap gap-2 mt-3">
 								{#each post.tags as tag}
 									<span
-										class="px-2 py-1 text-xs font-mono bg-[#161b22] border border-terminal-border rounded text-terminal-textDim"
+										class="px-2 py-1 text-xs font-mono bg-terminal-surface border border-terminal-border rounded text-terminal-textDim"
 									>
 										#{tag}
 									</span>

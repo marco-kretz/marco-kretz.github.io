@@ -8,6 +8,10 @@
 	import '@fontsource/ibm-plex-sans/500.css';
 	import '@fontsource/ibm-plex-sans/600.css';
 	import '@fontsource/ibm-plex-sans/700.css';
+	import '@fontsource/space-grotesk/400.css';
+	import '@fontsource/space-grotesk/500.css';
+	import '@fontsource/space-grotesk/600.css';
+	import '@fontsource/space-grotesk/700.css';
 	import { page } from '$app/stores';
 	import { onNavigate } from '$app/navigation';
 	import { onMount } from 'svelte';
@@ -52,16 +56,16 @@
 
 <div class="min-h-screen flex flex-col">
 	<!-- Header -->
-	<header class="border-b border-terminal-border bg-[#0d1117]/80 backdrop-blur-sm sticky top-0 z-50">
+	<header class="border-b border-terminal-border bg-terminal-bg/85 backdrop-blur-sm sticky top-0 z-50">
 		<nav class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
 			<a
 				href="/"
-				class="glitch font-mono font-bold text-lg hover:text-terminal-accent transition-colors"
+				class="glitch font-display font-bold text-lg tracking-tight hover:text-terminal-accent transition-colors"
 				data-text="<MK/>"
 			>
 				<span class="text-terminal-accent">&lt;</span>MK<span class="text-terminal-accent">/&gt;</span>
 			</a>
-			<ul class="flex items-center gap-6 font-mono text-sm">
+			<ul class="flex items-center gap-6 font-display text-sm tracking-tight">
 				{#each navLinks as link}
 					<li>
 						<a
@@ -120,7 +124,7 @@
 <!-- Back to Top Button -->
 <button
 	onclick={scrollToTop}
-	class="fixed bottom-6 right-6 z-50 p-3 bg-[#161b22] border border-terminal-border rounded-lg text-terminal-textDim hover:text-terminal-accent hover:border-terminal-accent transition-all duration-200 {showBackToTop
+	class="fixed bottom-6 right-6 z-50 p-3 bg-terminal-surface border border-terminal-border rounded-lg text-terminal-textDim hover:text-terminal-accent hover:border-terminal-accent transition-all duration-200 {showBackToTop
 		? 'opacity-100 visible translate-y-0'
 		: 'opacity-0 invisible translate-y-4'}"
 	aria-label="Zurück nach oben"

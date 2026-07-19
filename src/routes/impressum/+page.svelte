@@ -5,7 +5,7 @@
 <Seo title="Impressum | Marco Kretz" url="https://marco-kretz.de/impressum/" />
 
 <div class="max-w-4xl mx-auto px-4 py-8 md:py-16">
-	<h1 class="text-4xl font-bold font-mono mb-8">
+	<h1 class="text-4xl font-bold font-display tracking-tight mb-8">
 		<span class="text-terminal-accent">&lt;</span>
 		Impressum
 		<span class="text-terminal-accent">/&gt;</span>
@@ -13,7 +13,7 @@
 
 	<div class="card space-y-6">
 		<section>
-			<h2 class="text-xl font-mono text-terminal-accent mb-2">Angaben gemäß § 5 TMG</h2>
+			<h2 class="text-xl font-display tracking-tight text-terminal-accent mb-2">Angaben gemäß § 5 TMG</h2>
 			<p class="text-terminal-text">
 				Marco Kretz<br />
 				Disternicher Weg 1a<br />
@@ -23,7 +23,7 @@
 		</section>
 
 		<section>
-			<h2 class="text-xl font-mono text-terminal-accent mb-2">Kontakt</h2>
+			<h2 class="text-xl font-display tracking-tight text-terminal-accent mb-2">Kontakt</h2>
 			<p class="text-terminal-text">
 				E-Mail: <a href="mailto:hallo@marco-kretz.de" class="text-terminal-blue hover:underline"
 					>hallo@marco-kretz.de</a
@@ -32,7 +32,7 @@
 		</section>
 
 		<section>
-			<h2 class="text-xl font-mono text-terminal-accent mb-2">Redaktionell verantwortlich</h2>
+			<h2 class="text-xl font-display tracking-tight text-terminal-accent mb-2">Redaktionell verantwortlich</h2>
 			<p class="text-terminal-text">
 				Marco Kretz<br />
 				Disternicher Weg 1a<br />
@@ -42,7 +42,7 @@
 		</section>
 
 		<section>
-			<h2 class="text-xl font-mono text-terminal-accent mb-2">EU-Streitschlichtung</h2>
+			<h2 class="text-xl font-display tracking-tight text-terminal-accent mb-2">EU-Streitschlichtung</h2>
 			<p class="text-terminal-text">
 				Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
 				<a
@@ -56,7 +56,7 @@
 		</section>
 
 		<section>
-			<h2 class="text-xl font-mono text-terminal-accent mb-2">
+			<h2 class="text-xl font-display tracking-tight text-terminal-accent mb-2">
 				Verbraucherstreitbeilegung/Universalschlichtungsstelle
 			</h2>
 			<p class="text-terminal-text">

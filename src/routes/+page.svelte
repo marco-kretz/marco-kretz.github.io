@@ -84,7 +84,7 @@
 	<section class="mb-12">
 		<div class="text-center mb-8">
 			<h1
-				class="glitch text-4xl md:text-5xl font-bold font-mono mb-2 hero-title"
+				class="glitch text-4xl md:text-5xl font-bold font-display mb-2 hero-title tracking-tight"
 				data-text="<Marco Kretz/>"
 			>
 				<span class="text-terminal-accent">&lt;</span>
@@ -105,7 +105,7 @@
 					href={link.href}
 					target="_blank"
 					rel="noopener noreferrer"
-					class="flex items-center gap-2 px-6 py-3 bg-[#161b22] border border-terminal-border rounded-lg hover:border-terminal-accent hover:text-terminal-accent transition-all duration-200 font-mono"
+					class="flex items-center gap-2 px-6 py-3 bg-terminal-surface border border-terminal-border rounded-lg hover:border-terminal-accent hover:text-terminal-accent transition-all duration-200 font-display tracking-tight"
 				>
 					<link.icon class="w-5 h-5 text-terminal-accent" />
 					<span>{link.name}</span>
@@ -117,7 +117,7 @@
 	<!-- About Section -->
 	<section class="mb-12">
 		<h2 class="section-title">
-			<span class="text-white">Über mich</span>
+			<span class="text-terminal-text">Über mich</span>
 		</h2>
 		<div class="card">
 			<p class="text-terminal-text leading-relaxed mb-4">
@@ -144,12 +144,12 @@
 	<!-- Skills Section -->
 	<section class="mb-12">
 		<h2 class="section-title">
-			<span class="text-white">Fähigkeiten</span>
+			<span class="text-terminal-text">Fähigkeiten</span>
 		</h2>
 		<div class="grid md:grid-cols-3 gap-4">
 			{#each skills as skillCategory}
 				<div class="card">
-					<h3 class="font-mono text-terminal-accent font-semibold mb-3 flex items-center gap-2">
+					<h3 class="font-display text-terminal-accent font-semibold mb-3 flex items-center gap-2 tracking-tight">
 						<span class="text-terminal-blue">#</span>
 						{skillCategory.category}
 					</h3>
@@ -169,7 +169,7 @@
 	<!-- Blog Preview Section -->
 	<section class="mb-12">
 		<h2 class="section-title">
-			<span class="text-white">Neueste Beiträge</span>
+			<span class="text-terminal-text">Neueste Beiträge</span>
 		</h2>
 		<div class="space-y-4">
 			{#if data.recentPosts.length > 0}
@@ -178,7 +178,7 @@
 						<a href="/blog/{post.slug}/" class="block group">
 							<div class="flex flex-col gap-2">
 								<h3
-									class="text-lg font-semibold font-mono text-terminal-text group-hover:text-terminal-accent transition-colors"
+									class="text-lg font-semibold font-display tracking-tight text-terminal-text group-hover:text-terminal-accent transition-colors"
 								>
 									{post.title}
 								</h3>
@@ -209,7 +209,7 @@
 		</div>
 		<a
 			href="/blog/"
-			class="inline-flex items-center gap-2 text-terminal-accent font-mono hover:underline mt-4"
+			class="inline-flex items-center gap-2 text-terminal-accent font-display tracking-tight hover:underline mt-4"
 		>
 			<span>Alle Beiträge anzeigen</span>
 			<span class="text-terminal-accent">→</span>
@@ -219,7 +219,7 @@
 	<!-- Contact Section -->
 	<section>
 		<h2 class="section-title">
-			<span class="text-white">Kontakt</span>
+			<span class="text-terminal-text">Kontakt</span>
 		</h2>
 		<div class="terminal-window">
 			<div class="terminal-body">
@@ -232,7 +232,7 @@
 				</p>
 				<a
 					href="mailto:hallo@marco-kretz.de"
-					class="inline-flex items-center gap-2 text-terminal-accent font-mono hover:underline"
+					class="inline-flex items-center gap-2 text-terminal-accent font-display tracking-tight hover:underline"
 				>
 					<span>hallo@marco-kretz.de</span>
 				</a>
@@ -243,6 +243,8 @@
 
 <style>
 	.hero-title {
-		text-shadow: 0 0 20px rgba(210, 153, 34, 0.2);
+		text-shadow:
+			0 0 18px rgba(56, 180, 96, 0.18),
+			0 0 28px rgba(201, 184, 106, 0.12);
 	}
 </style>

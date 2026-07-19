@@ -9,6 +9,10 @@
 
 	body {
 		@apply bg-terminal-bg text-terminal-text font-sans antialiased;
+		background-image:
+			radial-gradient(ellipse 120% 80% at 50% -10%, rgba(56, 180, 96, 0.07) 0%, transparent 55%),
+			radial-gradient(ellipse 80% 50% at 100% 100%, rgba(201, 184, 106, 0.03) 0%, transparent 45%);
+		background-attachment: fixed;
 	}
 
 	html {
@@ -20,10 +24,13 @@
 @layer components {
 	.terminal-window {
 		@apply bg-terminal-bg border border-terminal-border rounded-lg overflow-hidden;
+		box-shadow:
+			0 0 0 1px rgba(56, 180, 96, 0.05),
+			0 10px 28px rgba(0, 0, 0, 0.35);
 	}
 
 	.terminal-header {
-		@apply bg-[#161b22] border-b border-terminal-border px-4 py-2 flex items-center gap-2;
+		@apply bg-terminal-surface border-b border-terminal-border px-4 py-2 flex items-center gap-2;
 	}
 
 	.terminal-dots {
@@ -51,7 +58,7 @@
 	}
 
 	.code-block {
-		@apply bg-[#161b22] rounded-lg p-4 font-mono text-sm overflow-x-auto border border-terminal-border;
+		@apply bg-terminal-surface rounded-lg p-4 font-mono text-sm overflow-x-auto border border-terminal-border;
 	}
 
 	.prompt-symbol {
@@ -59,7 +66,8 @@
 	}
 
 	.section-title {
-		@apply font-mono text-xl font-bold mb-4 flex items-center gap-2;
+		@apply font-display text-xl font-bold mb-4 flex items-center gap-2 tracking-tight;
+		text-shadow: 0 0 12px rgba(56, 180, 96, 0.12);
 	}
 
 	.section-title::before {
@@ -72,7 +80,8 @@
 	}
 
 	.card {
-		@apply bg-[#161b22] border border-terminal-border rounded-lg p-4 hover:border-terminal-accent transition-colors duration-200;
+		@apply bg-terminal-surface border border-terminal-border rounded-lg p-4 hover:border-terminal-accent transition-colors duration-200;
+		box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.18);
 	}
 }
 
@@ -83,8 +92,8 @@
 
 pre.shiki {
 	position: relative !important;
-	background-color: #0d1117 !important;
-	border: 1px solid #30363d !important;
+	background-color: #0c1210 !important;
+	border: 1px solid #2f4036 !important;
 	border-radius: 0.5rem !important;
 	overflow: hidden !important;
 	margin-top: 2rem !important;
@@ -100,11 +109,11 @@ pre.shiki::before {
 	left: 0 !important;
 	right: 0 !important;
 	height: 40px !important;
-	background-color: #0d1117 !important;
-	border-bottom: 1px solid #30363d !important;
+	background-color: #0c1210 !important;
+	border-bottom: 1px solid #2f4036 !important;
 	font-family: 'JetBrains Mono', ui-monospace, Cascadia Code, Source Code Pro, Menlo, Consolas, Monaco, monospace;
 	font-size: 0.875rem;
-	color: #8b949e;
+	color: #8b948c;
 	padding-left: 0.75rem;
 	z-index: 5;
 	pointer-events: none;
@@ -124,9 +133,9 @@ pre.shiki > code {
 	position: absolute !important;
 	top: 8px !important;
 	right: 8px !important;
-	background-color: #0d1117 !important;
-	border: 1px solid #30363d !important;
-	color: #8b949e !important;
+	background-color: #0c1210 !important;
+	border: 1px solid #2f4036 !important;
+	color: #8b948c !important;
 	padding: 6px !important;
 	border-radius: 0.375rem !important;
 	cursor: pointer !important;
@@ -139,8 +148,8 @@ pre.shiki > code {
 }
 
 .code-copy-button:hover {
-	color: #d29922 !important;
-	background-color: #21262d !important;
+	color: #c9b86a !important;
+	background-color: #141c17 !important;
 }
 
 .code-block-wrapper:hover .code-copy-button {
@@ -166,12 +175,12 @@ pre.shiki > code {
 }
 
 .glitch::before {
-	color: #d29922;
+	color: #c9b86a;
 	z-index: -1;
 }
 
 .glitch::after {
-	color: #e3b341;
+	color: #6db3a0;
 	z-index: -2;
 }
 
