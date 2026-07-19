@@ -548,25 +548,13 @@
 		inputEl?.focus();
 	}
 
-	const asciiArt = `                   -\`
-                    .o+\`
-                   \`ooo/
-                  \`+oooo:
-                 \`+oooooo:
-                 -+oooooo+:
-               \`/:-:++oooo+:
-              \`/++++/+++++++:
-             \`/++++++++++++++:
-            \`/+++ooooooooooooo/\`
-           ./ooosssso++osssssso+\`
-          .oossssso-\`\`\`\`/ossssss+\`
-         -osssssso.      :ssssssso.
-        :osssssss/        osssso+++.
-       /ossssssss/        +ssssooo/-
-     \`/ossssso+/:-        -:/+osssso+-
-    \`+sso+:-\`                 \`.-/+oso:
-   \`++:.                           \`-/+/
-   .\`                                 \``;
+	const asciiArt = ` ███╗   ███╗██╗  ██╗
+ ████╗ ████║██║ ██╔╝
+ ██╔████╔██║█████╔╝
+ ██║╚██╔╝██║██╔═██╗
+ ██║ ╚═╝ ██║██║  ██╗
+ ╚═╝     ╚═╝╚═╝  ╚═╝
+   < developer />`;
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
@@ -586,7 +574,7 @@
 			{#if entry.type === 'aboutfetch'}
 				<div class="grid md:grid-cols-[auto_1fr] gap-x-8 gap-y-0 mb-4">
 					<div
-						class="font-mono text-terminal-accent leading-tight text-sm hidden md:block perspective-container"
+						class="font-mono text-terminal-accent leading-none text-base hidden md:block perspective-container self-center"
 					>
 						<pre class="whitespace-pre rotate-y">{asciiArt}</pre>
 					</div>
@@ -737,7 +725,7 @@
 	}
 
 	.rotate-y {
-		animation: rotate-y 8s linear infinite;
+		animation: rotate-y 14s linear infinite;
 		transform-style: preserve-3d;
 	}
 
